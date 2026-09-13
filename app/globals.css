@@ -668,7 +668,57 @@ html.light #testimonials .glass-card button:hover {
 }
 
 /* ==========================================================================
-   Section 7: FAQ (Light Mode)
+   Section 7: Team (Light Mode)
+   ========================================================================== */
+html.light #team {
+  background-color: #f1f5f9 !important;
+}
+
+html.light #team .glass-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light #team .glass-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 18px 40px -12px rgba(2, 132, 199, 0.18) !important;
+}
+
+html.light #team .glass-card h3 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light #team .glass-card p {
+  color: #475569 !important;
+}
+
+html.light #team .glass-card span.font-mono {
+  color: #0369a1 !important;
+  background-color: #e0f2fe !important;
+  border-color: #bae6fd !important;
+}
+
+html.light #team .glass-card .absolute.bottom-3 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light #team .glass-card .absolute.bottom-3 div.text-cyan-300 {
+  color: #0284c7 !important;
+}
+
+html.light #team .glass-card .absolute.bottom-3 div.text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light #team .glass-card .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+/* ==========================================================================
+   Section 8: FAQ (Light Mode)
    ========================================================================== */
 html.light #faq {
   background-color: #f8fafc !important;

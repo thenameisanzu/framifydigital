@@ -6,6 +6,7 @@ import RoiCalculator from "@/components/RoiCalculator";
 import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
+import TeamSection from "@/components/TeamSection";
 import FaqSection from "@/components/FaqSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -37,6 +38,9 @@ export default function Home() {
 
       {/* Client Reviews & Social Proof */}
       <Testimonials />
+
+      {/* Creative Team Section */}
+      <TeamSection />
 
       {/* Interactive FAQ Section */}
       <FaqSection />
