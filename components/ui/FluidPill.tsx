@@ -24,9 +24,9 @@ interface UseFluidPillProps {
 export function useFluidPill({
   activeId,
   containerRef,
-  duration = 380,
-  easing = 'cubic-bezier(0.22, 1, 0.36, 1)',
-  stretchIntensity = 0.32,
+  duration = 320,
+  easing = 'cubic-bezier(0.16, 1, 0.3, 1)',
+  stretchIntensity = 0.18,
 }: UseFluidPillProps) {
   const pillRef = useRef<HTMLDivElement | null>(null);
   const prevRectRef = useRef<{

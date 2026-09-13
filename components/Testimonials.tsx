@@ -204,7 +204,7 @@ export function Testimonials() {
         const rect = sectionRef.current.getBoundingClientRect();
         // Check if section is in or near viewport
         if (rect.top < window.innerHeight * 1.3 && rect.bottom > -window.innerHeight * 0.3) {
-          targetOffsetRef.current += deltaY * 0.0038;
+          targetOffsetRef.current += deltaY * 0.0028;
         }
       }
     };
@@ -214,11 +214,11 @@ export function Testimonials() {
     const animate = () => {
       // Subtle ambient drift when not hovered
       if (!isHoveredRef.current) {
-        targetOffsetRef.current += 0.002;
+        targetOffsetRef.current += 0.0015;
       }
 
       // Buttery smooth lerp
-      currentOffsetRef.current += (targetOffsetRef.current - currentOffsetRef.current) * 0.09;
+      currentOffsetRef.current += (targetOffsetRef.current - currentOffsetRef.current) * 0.08;
       setOffset(currentOffsetRef.current);
 
       rafId = requestAnimationFrame(animate);
@@ -273,7 +273,7 @@ export function Testimonials() {
           if (diff > totalCards / 2) diff -= totalCards;
 
           // Only render visible cards within horizon
-          if (Math.abs(diff) > 4.2) return null;
+          if (Math.abs(diff) > 3.2) return null;
 
           const isCenter = Math.abs(diff) < 0.5;
           const translateX = diff * (cardSize * 0.72);

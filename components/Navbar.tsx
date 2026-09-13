@@ -90,8 +90,8 @@ export function Navbar() {
   const { pillRef } = useFluidPill({
     activeId: activeSection,
     containerRef: navContainerRef,
-    duration: 380,
-    stretchIntensity: 0.35,
+    duration: 300,
+    stretchIntensity: 0.18,
   });
 
   useEffect(() => {

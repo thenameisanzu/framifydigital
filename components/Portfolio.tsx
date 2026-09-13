@@ -114,8 +114,8 @@ export function Portfolio() {
   const { pillRef } = useFluidPill({
     activeId: activeTab,
     containerRef: tabsContainerRef,
-    duration: 380,
-    stretchIntensity: 0.32,
+    duration: 300,
+    stretchIntensity: 0.18,
   });
 
   const filteredItems = activeTab === "all"
