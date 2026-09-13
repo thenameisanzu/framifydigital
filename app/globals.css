@@ -59,6 +59,9 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 36px -12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .glass-card:hover {
@@ -841,34 +844,45 @@ html.light #team .glass-card:hover {
 
 html.light #team .glass-card h3 {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html.light #team .glass-card p {
-  color: #475569 !important;
-}
-
-html.light #team .glass-card span.font-mono {
-  color: #0369a1 !important;
-  background-color: #e0f2fe !important;
-  border-color: #bae6fd !important;
-}
-
-html.light #team .glass-card .absolute.bottom-3 {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #team .glass-card .absolute.bottom-3 div.text-cyan-300 {
   color: #0284c7 !important;
 }
 
-html.light #team .glass-card .absolute.bottom-3 div.text-slate-400 {
+html.light #team .glass-card .absolute.top-4 {
+  background-color: #f0f9ff !important;
+  border-color: #bae6fd !important;
+}
+
+html.light #team .glass-card .absolute.top-4 span {
+  color: #0284c7 !important;
+}
+
+html.light #team .glass-card .absolute.top-4 span.text-slate-400 {
   color: #64748b !important;
 }
 
-html.light #team .glass-card .border-t {
+html.light #team .glass-card .rounded-full.border-4 {
   border-color: #e2e8f0 !important;
+  background-color: #f8fafc !important;
+}
+
+html.light #team .glass-card:hover .rounded-full.border-4 {
+  border-color: #0284c7 !important;
+}
+
+html.light #team .glass-card a.size-8 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+html.light #team .glass-card a.size-8:hover {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -1145,33 +1159,36 @@ html.lenis, html.lenis body {
 /* Scroll Reveal Utilities */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .reveal.reveal-down {
-  transform: translateY(-28px);
+  transform: translateY(-18px);
 }
 
 .reveal.reveal-left {
-  transform: translateX(-28px);
+  transform: translateX(-18px);
 }
 
 .reveal.reveal-right {
-  transform: translateX(28px);
+  transform: translateX(18px);
 }
 
 .reveal.reveal-scale {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
+.reveal[data-revealed="true"],
 .reveal.is-revealed {
   opacity: 1;
-  transform: translate(0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Stagger Delays */
+.delay-75  { transition-delay: 75ms; }
 .delay-100 { transition-delay: 100ms; }
 .delay-150 { transition-delay: 150ms; }
 .delay-200 { transition-delay: 200ms; }
@@ -1180,42 +1197,10 @@ html.lenis, html.lenis body {
 .delay-400 { transition-delay: 400ms; }
 .delay-500 { transition-delay: 500ms; }
 
-/* Fluid Click & Tap Ripple Animation */
-@keyframes fluidRippleExpand {
-  0% {
-    transform: translate(-50%, -50%) scale(0.15);
-    opacity: 0.9;
-    border-width: 3px;
-  }
-  50% {
-    opacity: 0.55;
-    border-width: 1.5px;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.8);
-    opacity: 0;
-    border-width: 0.5px;
-  }
-}
-
-.click-fluid-ripple {
-  position: absolute;
-  border-radius: 9999px;
-  border-style: solid;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.15);
-  animation: fluidRippleExpand 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform, opacity;
-}
-
-/* Global Interactive Fluid Tap Response */
-button, a, [role="button"] {
+/* Interactive Element Transitions */
+a, button, [role="button"] {
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-button:active, a:active, [role="button"]:active {
-  transform: scale(0.96);
+  transition: color 0.2s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Detail Crossfade Smooth Switch Animation */

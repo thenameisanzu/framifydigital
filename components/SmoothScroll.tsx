@@ -14,6 +14,8 @@ export function SmoothScroll() {
       touchMultiplier: 1.2,
     });
 
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     // RAF Loop
     let rafId: number;
     function raf(time: number) {
@@ -35,7 +37,7 @@ export function SmoothScroll() {
           e.preventDefault();
           lenis.scrollTo(element as HTMLElement, {
             offset: -70,
-            duration: 1.2,
+            duration: 1.1,
           });
         }
       }
@@ -49,21 +51,26 @@ export function SmoothScroll() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-revealed');
+            (entry.target as HTMLElement).dataset.revealed = 'true';
             // Unobserve once revealed for performance
             revealObserver.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px',
       }
     );
 
     const observeElements = () => {
-      const elements = document.querySelectorAll('.reveal');
+      const elements = document.querySelectorAll<HTMLElement>('.reveal');
       elements.forEach((el) => {
-        if (!el.classList.contains('is-revealed')) {
+        if (el.dataset.revealed === 'true') {
+          if (!el.classList.contains('is-revealed')) {
+            el.classList.add('is-revealed');
+          }
+        } else if (!el.classList.contains('is-revealed')) {
           revealObserver.observe(el);
         }
       });
@@ -76,7 +83,7 @@ export function SmoothScroll() {
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    mutationObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
 
     return () => {
       cancelAnimationFrame(rafId);

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import ClickFeedback from "@/components/ClickFeedback";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import CursorGlow from "@/components/CursorGlow";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -56,7 +55,6 @@ export default function RootLayout({
           <ScrollProgressBar />
           <CursorGlow />
           <SmoothScroll />
-          <ClickFeedback />
           {children}
         </ThemeProvider>
       </body>

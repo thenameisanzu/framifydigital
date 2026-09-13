@@ -66,14 +66,14 @@ export function FaqSection() {
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="space-y-3.5">
+        <div className="reveal delay-100 space-y-3.5">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.question}
                 className={cn(
-                  "reveal rounded-2xl border transition-all duration-300 overflow-hidden",
+                  "rounded-2xl border transition-all duration-300 overflow-hidden",
                   isOpen
                     ? "glass-card border-cyan-400/40 bg-[#0e121a] shadow-xl shadow-black/40"
                     : "bg-white/[0.03] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.05]"
@@ -86,7 +86,7 @@ export function FaqSection() {
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5 pr-4">
-                    <span className="size-2 rounded-full bg-cyan-400 shrink-0" />
+                    <span className={cn("size-2 rounded-full transition-colors", isOpen ? "bg-cyan-400" : "bg-cyan-400/60")} />
                     <span className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-300">
                       {faq.question}
                     </span>
@@ -94,7 +94,7 @@ export function FaqSection() {
 
                   <div
                     className={cn(
-                      "size-8 rounded-xl border flex items-center justify-center shrink-0 transition-transform duration-300",
+                      "size-8 rounded-xl border flex items-center justify-center shrink-0 transition-transform duration-300 ease-out",
                       isOpen
                         ? "rotate-180 bg-cyan-500/20 border-cyan-400 text-cyan-300"
                         : "bg-white/[0.04] border-white/[0.08] text-slate-400"
@@ -104,15 +104,15 @@ export function FaqSection() {
                   </div>
                 </button>
 
-                {/* Animated Answer Body */}
+                {/* Smooth Animated Answer Body */}
                 <div
                   className={cn(
-                    "grid transition-all duration-300 ease-in-out",
-                    isOpen ? "grid-rows-[1fr] opacity-100 pb-5 px-5" : "grid-rows-[0fr] opacity-0 px-5"
+                    "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   )}
                 >
                   <div className="overflow-hidden">
-                    <div className="pt-2 border-t border-white/[0.06] text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div className="pt-2 pb-5 px-5 border-t border-white/[0.06] text-xs sm:text-sm text-slate-300 leading-relaxed">
                       {faq.answer}
                     </div>
                   </div>

@@ -148,18 +148,22 @@ export function Navbar() {
       const sectionId = href.replace("#", "");
       const element = document.getElementById(sectionId);
       if (element) {
-        const offset = 75;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = element.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
         setActiveSection(sectionId);
         closeMobileMenu();
+
+        const lenis = (window as unknown as { __lenis?: { scrollTo: (el: HTMLElement | string, opts?: { offset?: number; duration?: number }) => void } }).__lenis;
+        if (lenis) {
+          lenis.scrollTo(element, { offset: -70, duration: 1.1 });
+        } else {
+          const offset = 70;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const offsetPosition = elementRect - bodyRect - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
       }
     }
   };
@@ -181,15 +185,20 @@ export function Navbar() {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
                 setActiveSection("");
+                const lenis = (window as unknown as { __lenis?: { scrollTo: (target: number | string, opts?: { duration?: number }) => void } }).__lenis;
+                if (lenis) {
+                  lenis.scrollTo(0, { duration: 1.0 });
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
               }}
               className="flex items-center relative z-50 cursor-pointer"
             >
               <Logo size="md" />
             </a>
 
-            {/* Desktop Navigation Links with Clear Active State */}
+            {/* Desktop Navigation Links with Smooth Active State */}
             <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-md shadow-inner">
               {NAV_LINKS.map((link) => {
                 const sectionId = link.href.replace("#", "");
@@ -200,10 +209,10 @@ export function Navbar() {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
-                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 relative cursor-pointer",
+                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 relative cursor-pointer",
                       isActive
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-md shadow-cyan-500/30 scale-[1.03]"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-md shadow-cyan-500/25"
+                        : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
                     )}
                   >
                     {link.name}
