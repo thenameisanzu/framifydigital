@@ -91,10 +91,11 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: #0284c7;
 }
 
-/* Eliminate dark ambient glow orbs in light mode */
-html.light div[class*="blur-"] {
-  opacity: 0.12 !important;
-  background-color: rgba(56, 189, 248, 0.2) !important;
+/* Eliminate only ambient background glow orbs in light mode without touching content containers */
+html.light .pointer-events-none.blur-3xl,
+html.light .pointer-events-none.blur-2xl {
+  opacity: 0.15 !important;
+  background-color: rgba(56, 189, 248, 0.25) !important;
 }
 
 /* ==========================================================================
@@ -235,12 +236,14 @@ html.light footer span.uppercase {
    Section 1: Hero Section (Light Mode)
    ========================================================================== */
 html.light #hero {
-  background-color: #f8fafc !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
   border-color: #e2e8f0 !important;
 }
 
 html.light #hero canvas {
-  opacity: 0.95 !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 html.light #hero .absolute.inset-0.bg-gradient-to-b {
@@ -248,9 +251,11 @@ html.light #hero .absolute.inset-0.bg-gradient-to-b {
 }
 
 html.light #hero .rounded-3xl {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 html.light #hero h1 {
@@ -258,22 +263,26 @@ html.light #hero h1 {
   font-weight: 900 !important;
   text-shadow: none !important;
   filter: none !important;
+  opacity: 1 !important;
 }
 
 html.light #hero p {
-  color: #334155 !important;
+  color: #1e293b !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
 }
 
 html.light #hero p strong {
   color: #0f172a !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
 html.light #hero .inline-flex.rounded-full {
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
   color: #0f172a !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  opacity: 1 !important;
 }
 
 html.light #hero .inline-flex.rounded-full span {
@@ -286,15 +295,16 @@ html.light #hero .inline-flex.rounded-full span[class*="text-cyan"] {
 }
 
 html.light #hero .inline-flex.rounded-full span[class*="text-slate-400"] {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 html.light #hero a[href="#services"] {
   background-color: #ffffff !important;
-  color: #1e293b !important;
+  color: #0f172a !important;
   border-color: #cbd5e1 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06) !important;
   font-weight: 600 !important;
+  opacity: 1 !important;
 }
 
 html.light #hero a[href="#services"]:hover {
@@ -307,10 +317,26 @@ html.light #hero a[href="#services"] svg {
   color: #0284c7 !important;
 }
 
+html.light #hero a[href*="wa.me"] {
+  background: linear-gradient(to right, #10b981, #059669) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.4) !important;
+}
+
+html.light #hero a[href="#contact"] {
+  background: linear-gradient(to right, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.4) !important;
+}
+
 html.light #hero span[class*="bg-\[\#080e27\]"] {
   background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
-  color: #334155 !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  opacity: 1 !important;
 }
 
 /* ==========================================================================
