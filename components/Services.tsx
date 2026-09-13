@@ -9,8 +9,7 @@ import {
   Target,
   CheckCircle2,
   ArrowRight,
-  Sparkles,
-  MessageCircle
+  Sparkles
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -170,22 +169,16 @@ export function Services() {
 
                 {/* Direct Action */}
                 <div className="pt-3 border-t border-sky-500/15 flex items-center justify-between mt-auto">
-                  <a
-                    href={`https://wa.me/919447520844?text=Hi%20Framify,%20I'm%20interested%20in%20your%20${encodeURIComponent(service.title)}%20service.`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300"
-                  >
-                    <MessageCircle className="size-3.5" />
-                    <span>WhatsApp Inquiry</span>
-                  </a>
+                  <span className="text-xs font-mono text-slate-400">
+                    Custom Deliverables
+                  </span>
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 hover:text-cyan-300"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300"
                   >
                     <span>Get Quote</span>
-                    <ArrowRight className="size-3" />
+                    <ArrowRight className="size-3.5" />
                   </a>
                 </div>
               </div>
@@ -193,28 +186,26 @@ export function Services() {
           })}
         </div>
 
-        {/* Direct WhatsApp Callout Banner */}
+        {/* Clean Consultation Callout */}
         <div className="mt-12 rounded-2xl glass-card p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-r from-[#0c1844]/95 via-[#0d2157]/90 to-[#0c1844]/95 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <span className="text-xs font-mono uppercase text-emerald-400 font-bold block mb-1">
+            <span className="text-xs font-mono uppercase text-cyan-400 font-bold block mb-1">
               📍 Kottayam, Karukachal 686540, Kerala
             </span>
             <h3 className="text-lg sm:text-xl font-bold text-white">
               Ready to upgrade your brand's visual identity and content?
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 mt-1">
-              Direct consultation with our creative lead on WhatsApp: <strong>+91 94475 20844</strong>
+              Let's create high-converting logos, viral reels, and commercial posters for your business.
             </p>
           </div>
 
           <a
-            href="https://wa.me/919447520844?text=Hi%20Framify!%20I'd%20like%20to%20get%20a%20quotation%20for%20my%20business."
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all active:scale-95"
+            href="#contact"
+            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
           >
-            <MessageCircle className="size-4" />
-            <span>Chat on WhatsApp Now</span>
+            <span>Request Project Quote</span>
+            <ArrowRight className="size-4" />
           </a>
         </div>
       </div>

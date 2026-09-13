@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import InstagramIcon from "./InstagramIcon";
-import { Menu, X, ArrowRight, PhoneCall, Sparkles, MessageCircle } from "lucide-react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -56,7 +56,7 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Right Action */}
+          {/* Desktop Right Action (Clean single CTA & Instagram) */}
           <div className="hidden lg:flex items-center gap-3.5">
             <a
               href="https://instagram.com/framifydigitalmarketing"
@@ -67,16 +67,6 @@ export function Navbar() {
             >
               <InstagramIcon className="size-3.5 text-pink-400" />
               <span>@framifydigitalmarketing</span>
-            </a>
-
-            <a
-              href="https://wa.me/919447520844"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-3.5 py-2 text-xs font-bold text-white shadow-md transition-all"
-            >
-              <MessageCircle className="size-3.5" />
-              <span>WhatsApp</span>
             </a>
 
             <a
@@ -91,13 +81,10 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
             <a
-              href="https://wa.me/919447520844"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-[11px] font-bold text-white shadow-md"
+              href="#contact"
+              className="inline-flex items-center gap-1 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-1.5 text-xs font-bold text-white shadow-md"
             >
-              <MessageCircle className="size-3" />
-              <span>WhatsApp</span>
+              <span>Get Quote</span>
             </a>
 
             <button
@@ -130,16 +117,6 @@ export function Navbar() {
 
             <div className="pt-3 border-t border-sky-500/15 flex flex-col gap-2">
               <a
-                href="https://wa.me/919447520844"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white shadow-md"
-              >
-                <MessageCircle className="size-4" />
-                <span>WhatsApp: +91 94475 20844</span>
-              </a>
-
-              <a
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
                 rel="noreferrer"
@@ -152,7 +129,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-2.5 text-xs font-bold text-white"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-2.5 text-xs font-bold text-white shadow-md"
               >
                 <Sparkles className="size-3.5" />
                 <span>Request Project Quote</span>

@@ -119,13 +119,11 @@ export function Process() {
         {/* Action Button */}
         <div className="mt-10 text-center">
           <a
-            href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20start%20a%20project."
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all"
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
           >
-            <MessageCircle className="size-4" />
-            <span>Discuss Your Project on WhatsApp</span>
+            <span>Start Your Project</span>
+            <ArrowRight className="size-4" />
           </a>
         </div>
       </div>

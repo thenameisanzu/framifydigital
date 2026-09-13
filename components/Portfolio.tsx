@@ -185,22 +185,16 @@ export function Portfolio() {
               </div>
 
               <div className="pt-3 border-t border-sky-500/15 flex items-center justify-between">
-                <a
-                  href="https://wa.me/919447520844"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"
-                >
-                  <MessageCircle className="size-3.5" />
-                  <span>WhatsApp Quote</span>
-                </a>
+                <span className="text-xs font-mono text-cyan-400">
+                  Verified Delivery
+                </span>
 
                 <button
                   type="button"
                   onClick={() => setSelectedItem(item)}
-                  className="inline-flex items-center gap-1 text-xs font-bold text-slate-300 hover:text-white"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-200 bg-[#0c1844] hover:bg-cyan-600 border border-sky-500/25 px-3 py-1.5 rounded-lg transition-all"
                 >
-                  <span>Details</span>
+                  <span>View Details</span>
                   <ArrowUpRight className="size-3.5" />
                 </button>
               </div>

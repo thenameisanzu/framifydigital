@@ -10,8 +10,8 @@ interface LogoProps {
 export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoProps) {
   const iconSizes = {
     sm: "w-8 h-8",
-    md: "w-10 h-10",
-    lg: "w-14 h-14",
+    md: "w-9 h-9",
+    lg: "w-12 h-12",
   };
 
   const textSizes = {
@@ -22,10 +22,10 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
 
   return (
     <div className={cn("flex items-center gap-2.5 select-none group cursor-pointer", className)}>
-      {/* Exact Circular Logo Icon with Transparent Background */}
+      {/* High-Contrast White Circular Badge Icon (Always clearly visible on dark navbar) */}
       <div
         className={cn(
-          "relative flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105",
+          "relative flex items-center justify-center shrink-0 rounded-full bg-white shadow-lg shadow-cyan-500/10 transition-transform duration-300 group-hover:scale-105 p-1",
           iconSizes[size]
         )}
       >
@@ -33,33 +33,19 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
           viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full drop-shadow-md"
+          className="w-full h-full"
         >
-          <defs>
-            <radialGradient id="discGrad" cx="50%" cy="38%" r="62%">
-              <stop offset="0%" stopColor="#101d52" />
-              <stop offset="65%" stopColor="#081033" />
-              <stop offset="100%" stopColor="#04081c" />
-            </radialGradient>
-          </defs>
-
-          {/* Navy Blue Circular Disc with Transparent Outer BG */}
-          <circle cx="50" cy="50" r="48" fill="url(#discGrad)" stroke="#38bdf8" strokeWidth="1" strokeOpacity="0.4" />
-
-          {/* White Inner Circle */}
-          <circle cx="50" cy="50" r="28" fill="#ffffff" />
-
-          {/* 4-Node Connecting Frame Quad */}
-          <line x1="39" y1="43.5" x2="61" y2="45.5" stroke="#081033" strokeWidth="2.8" strokeLinecap="round" />
-          <line x1="61" y1="45.5" x2="61" y2="57.5" stroke="#081033" strokeWidth="2.8" strokeLinecap="round" />
-          <line x1="61" y1="57.5" x2="39" y2="55" stroke="#081033" strokeWidth="2.8" strokeLinecap="round" />
-          <line x1="39" y1="55" x2="39" y2="43.5" stroke="#081033" strokeWidth="2.8" strokeLinecap="round" />
+          {/* 4-Node Connecting Frame Lines (Deep Navy) */}
+          <line x1="28" y1="36" x2="72" y2="40" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
+          <line x1="72" y1="40" x2="72" y2="68" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
+          <line x1="72" y1="68" x2="28" y2="64" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
+          <line x1="28" y1="64" x2="28" y2="36" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
 
           {/* 4 Connected Nodes */}
-          <circle cx="39" cy="43.5" r="3.8" fill="#081033" />
-          <circle cx="61" cy="45.5" r="3.8" fill="#081033" />
-          <circle cx="61" cy="57.5" r="3.8" fill="#081033" />
-          <circle cx="39" cy="55" r="3.8" fill="#081033" />
+          <circle cx="28" cy="36" r="7.5" fill="#081033" />
+          <circle cx="72" cy="40" r="7.5" fill="#081033" />
+          <circle cx="72" cy="68" r="7.5" fill="#081033" />
+          <circle cx="28" cy="64" r="7.5" fill="#081033" />
         </svg>
       </div>
 
@@ -72,7 +58,7 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 ml-1 mb-2 animate-pulse" />
         </div>
         {showSubtitle && (
-          <span className="text-[9px] uppercase font-mono tracking-widest text-cyan-400/90 font-medium -mt-0.5">
+          <span className="text-[9px] uppercase font-mono tracking-widest text-cyan-400/90 font-semibold -mt-0.5">
             Digital Marketing
           </span>
         )}
