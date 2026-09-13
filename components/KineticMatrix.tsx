@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Sparkles, Play, Pause, ArrowRight, TrendingUp, ShieldCheck, Zap, BarChart3, MessageCircle, Paintbrush } from 'lucide-react';
+import { Sparkles, Play, Pause, ArrowRight, MessageCircle, Phone, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
+import InstagramIcon from './InstagramIcon';
 import { cn } from '@/lib/utils';
 
 interface MatrixNode {
@@ -158,9 +159,9 @@ export function KineticMatrix({
             pointer.prevY = pointer.y;
             const mouseSpeed = Math.sqrt(pointer.vx * pointer.vx + pointer.vy * pointer.vy);
 
-            // Framify Navy background
+            // Framify Deep Navy Background & Cyan Lighting
             const bgColor = '#080e27';
-            const nodeColor = '56, 189, 248'; // Cyan tint
+            const nodeColor = '56, 189, 248';
             const accentGlow = '56, 189, 248';
 
             ctx.fillStyle = bgColor;
@@ -235,7 +236,7 @@ export function KineticMatrix({
             }
 
             // 3. Spawn Random Synaptic Traveling Pulses
-            if (Math.random() < 0.32 && nodes.length > 0 && pulses.length < 45) {
+            if (Math.random() < 0.32 && nodes.length > 0 && pulses.length < 40) {
                 const fromIdx = Math.floor(Math.random() * nodes.length);
                 const fromNode = nodes[fromIdx];
                 const possibleDirections = [
@@ -308,7 +309,7 @@ export function KineticMatrix({
                 ctx.shadowBlur = 0;
             }
 
-            // 6. Render Nodes & HUD Elements
+            // 6. Render Nodes
             for (let i = 0; i < nodes.length; i++) {
                 const n = nodes[i];
                 const dx = pointer.x - n.x;
@@ -452,7 +453,7 @@ export function KineticMatrix({
             onMouseUp={handlePointerUp}
             onMouseLeave={handlePointerLeave}
             className={cn(
-                "relative min-h-[92vh] lg:min-h-screen w-full select-none overflow-hidden bg-[#080e27] pt-24 pb-16 flex flex-col justify-between border-b border-sky-500/15",
+                "relative min-h-[90vh] lg:min-h-screen w-full select-none overflow-hidden bg-[#080e27] pt-24 pb-12 flex flex-col justify-between border-b border-sky-500/15",
                 className
             )}
         >
@@ -460,15 +461,15 @@ export function KineticMatrix({
             <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0" />
 
             {/* Subtle radial lighting overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#080e27]/40 to-[#080e27] pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#080e27]/30 to-[#080e27] pointer-events-none z-10" />
 
-            {/* Top Interactive Physics HUD Deck */}
+            {/* Top Interactive Physics Controls Bar */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
                 <div className="flex items-center justify-between">
                     <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1.5 backdrop-blur-md text-xs font-mono text-cyan-300 shadow-sm">
                         <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
-                        <span className="font-semibold tracking-wider">FRAMIFY KINETIC ENGINE</span>
-                        <span className="text-slate-400 hidden sm:inline">| KERALA, INDIA</span>
+                        <span className="font-semibold">FRAMIFY</span>
+                        <span className="text-slate-400">| Kottayam, Karukachal 686540, Kerala</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -476,10 +477,10 @@ export function KineticMatrix({
                             type="button"
                             onClick={triggerCentralImpulse}
                             className="flex items-center gap-1.5 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-3 py-1.5 text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white shadow-lg active:scale-95"
-                            title="Trigger Shockwave Wave"
+                            title="Trigger Kinetic Shockwave"
                         >
                             <Sparkles className="size-3.5 text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
-                            <span>SHOCKWAVE</span>
+                            <span className="hidden sm:inline">PULSE</span>
                         </button>
 
                         <button
@@ -488,101 +489,82 @@ export function KineticMatrix({
                             className="flex items-center gap-1.5 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-3 py-1.5 text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white shadow-lg active:scale-95"
                         >
                             {isRunning ? <Pause className="size-3.5 text-amber-400" /> : <Play className="size-3.5 text-emerald-400" />}
-                            <span>{isRunning ? "FREEZE" : "RESUME"}</span>
+                            <span className="font-mono text-[10px]">{isRunning ? "FREEZE" : "RUN"}</span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Center Hero Marketing Typography & Conversion Deck */}
-            <div className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 my-auto text-center py-6">
-                {/* Authority Pill Badge with Mascot Tagline */}
-                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-gradient-to-r from-blue-900/50 via-cyan-900/40 to-blue-900/50 px-4 py-1.5 mb-6 backdrop-blur-md shadow-lg shadow-cyan-900/20">
-                    <Paintbrush className="size-4 text-cyan-400" />
+            {/* Clean, Focused Hero Content Deck */}
+            <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-auto text-center py-6">
+                {/* Brand Tagline Badge */}
+                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-[#0c1844]/90 px-4 py-1.5 mb-6 backdrop-blur-md shadow-lg shadow-cyan-950/40">
+                    <span className="text-base">🎨</span>
                     <span className="text-xs sm:text-sm font-semibold tracking-wide text-cyan-200">
-                        Graphic Design & Branding · Logos, Reels, Posters & Thumbnails
+                        Graphic Design & Branding – Kerala
                     </span>
                 </div>
 
-                {/* Main Dynamic Headline using official tagline from Instagram */}
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.15] mb-5 font-sans">
-                    We Don't Just Create Content,{" "}
+                {/* Main Headline - Clean, Direct and Authentic */}
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.15] mb-5 font-sans">
+                    We Don’t Just Create Content,{" "}
                     <span className="gradient-text-brand block mt-1">
                         We Build Growth Systems.
                     </span>
                 </h1>
 
-                {/* Subtitle with authentic bio details */}
-                <p className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-slate-300 font-normal leading-relaxed mb-8">
-                    Smart businesses build systems. Framify crafts high-converting logos, viral reels, showstopping social posters, and data-backed digital marketing that turn attention into loyal customers.
+                {/* Subtitle with their exact core focus */}
+                <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-200 font-normal leading-relaxed mb-8">
+                    Smart businesses create systems. We craft high-impact <strong className="text-white">Logos</strong>, viral <strong className="text-white">Reels</strong>, commercial <strong className="text-white">Posters</strong>, and high-CTR <strong className="text-white">Thumbnails</strong> designed to grow your brand.
                 </p>
 
-                {/* Direct Dual CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-10">
+                {/* 4 Core Offerings Pill Strip */}
+                <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto mb-9">
+                    <a href="#services" className="inline-flex items-center gap-1.5 rounded-xl bg-[#0c1844]/90 border border-sky-500/25 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">
+                        <Palette className="size-3.5 text-cyan-400" />
+                        <span>Logos & Branding</span>
+                    </a>
+                    <a href="#services" className="inline-flex items-center gap-1.5 rounded-xl bg-[#0c1844]/90 border border-sky-500/25 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">
+                        <Video className="size-3.5 text-cyan-400" />
+                        <span>Reels & Video</span>
+                    </a>
+                    <a href="#services" className="inline-flex items-center gap-1.5 rounded-xl bg-[#0c1844]/90 border border-sky-500/25 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">
+                        <Layout className="size-3.5 text-cyan-400" />
+                        <span>Social Posters</span>
+                    </a>
+                    <a href="#services" className="inline-flex items-center gap-1.5 rounded-xl bg-[#0c1844]/90 border border-sky-500/25 px-3.5 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all">
+                        <ImageIcon className="size-3.5 text-cyan-400" />
+                        <span>Thumbnails</span>
+                    </a>
+                </div>
+
+                {/* Direct Authentic Actions */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
                     <a
-                        href="https://wa.me/919447520844"
+                        href="https://wa.me/919447520844?text=Hi%20Framify,%20I%20want%20to%20discuss%20a%20design%20and%20marketing%20project."
                         target="_blank"
                         rel="noreferrer"
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-sm sm:text-base font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95"
                     >
                         <MessageCircle className="size-4" />
-                        <span>Chat on WhatsApp (+91 94475 20844)</span>
+                        <span>WhatsApp: +91 94475 20844</span>
                     </a>
 
                     <a
                         href="#contact"
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-6 py-3.5 text-sm sm:text-base font-bold text-white shadow-xl shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95"
                     >
-                        <span>Request Free Proposal</span>
+                        <span>Request a Quote</span>
                         <ArrowRight className="size-4" />
                     </a>
                 </div>
-
-                {/* Live KPI Metric Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-left">
-                    <div className="glass-card rounded-xl p-3.5 sm:p-4 border border-sky-500/20">
-                        <div className="flex items-center justify-between text-cyan-400 mb-1">
-                            <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-wider text-slate-400">Design Output</span>
-                            <Paintbrush className="size-3.5" />
-                        </div>
-                        <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">500+</div>
-                        <p className="text-[11px] text-slate-400 mt-0.5">Brand Assets & Logos</p>
-                    </div>
-
-                    <div className="glass-card rounded-xl p-3.5 sm:p-4 border border-sky-500/20">
-                        <div className="flex items-center justify-between text-cyan-400 mb-1">
-                            <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-wider text-slate-400">Reels Reach</span>
-                            <TrendingUp className="size-3.5" />
-                        </div>
-                        <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">3.8M+</div>
-                        <p className="text-[11px] text-slate-400 mt-0.5">Video & Social Impressions</p>
-                    </div>
-
-                    <div className="glass-card rounded-xl p-3.5 sm:p-4 border border-sky-500/20">
-                        <div className="flex items-center justify-between text-cyan-400 mb-1">
-                            <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-wider text-slate-400">Growth Lift</span>
-                            <Zap className="size-3.5" />
-                        </div>
-                        <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">+280%</div>
-                        <p className="text-[11px] text-slate-400 mt-0.5">Avg Engagement Spike</p>
-                    </div>
-
-                    <div className="glass-card rounded-xl p-3.5 sm:p-4 border border-sky-500/20">
-                        <div className="flex items-center justify-between text-cyan-400 mb-1">
-                            <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-wider text-slate-400">Quality Rate</span>
-                            <ShieldCheck className="size-3.5" />
-                        </div>
-                        <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">100%</div>
-                        <p className="text-[11px] text-slate-400 mt-0.5">Client Satisfaction</p>
-                    </div>
-                </div>
             </div>
 
-            {/* Bottom Floating Hint */}
+            {/* Bottom Status Tag */}
             <div className="relative z-20 text-center pointer-events-none">
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-slate-400 bg-[#080e27]/80 px-3 py-1 rounded-full border border-sky-500/10">
-                    <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    Interactive synaptic topology · Kottayam, Karukachal 686540, Kerala
+                <span className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#080e27]/80 px-3.5 py-1 rounded-full border border-sky-500/15">
+                    <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Accepting New Projects Across Kerala & Online</span>
                 </span>
             </div>
         </section>

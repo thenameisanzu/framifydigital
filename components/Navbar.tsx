@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { name: "Services", href: "#services" },
-  { name: "Creative Work", href: "#portfolio" },
-  { name: "Growth Forecaster", href: "#calculator" },
-  { name: "Growth Blueprint", href: "#framework" },
-  { name: "Testimonials", href: "#testimonials" },
+  { name: "Our Work", href: "#portfolio" },
+  { name: "Packages", href: "#calculator" },
+  { name: "How It Works", href: "#framework" },
+  { name: "Reviews", href: "#testimonials" },
 ];
 
 export function Navbar() {
@@ -56,8 +56,8 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Right CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop Right Action */}
+          <div className="hidden lg:flex items-center gap-3.5">
             <a
               href="https://instagram.com/framifydigitalmarketing"
               target="_blank"
@@ -70,18 +70,10 @@ export function Navbar() {
             </a>
 
             <a
-              href="tel:+919447520844"
-              className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-cyan-300 transition-colors"
-            >
-              <PhoneCall className="size-3.5 text-cyan-400" />
-              <span>+91 94475 20844</span>
-            </a>
-
-            <a
               href="https://wa.me/919447520844"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-emerald-600/25 transition-all hover:scale-105"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-3.5 py-2 text-xs font-bold text-white shadow-md transition-all"
             >
               <MessageCircle className="size-3.5" />
               <span>WhatsApp</span>
@@ -89,10 +81,10 @@ export function Navbar() {
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 transition-all"
             >
               <Sparkles className="size-3.5" />
-              <span>Get Free Proposal</span>
+              <span>Get Quote</span>
             </a>
           </div>
 
@@ -106,13 +98,6 @@ export function Navbar() {
             >
               <MessageCircle className="size-3" />
               <span>WhatsApp</span>
-            </a>
-
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-2.5 py-1.5 text-[11px] font-bold text-white shadow-md"
-            >
-              <span>Get Audit</span>
             </a>
 
             <button
@@ -129,59 +114,51 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-[#080e27]/98 backdrop-blur-2xl border-b border-sky-500/20 px-4 py-6 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200">
-          <div className="flex flex-col space-y-3">
+        <div className="lg:hidden fixed inset-x-0 top-full bg-[#080e27]/98 backdrop-blur-2xl border-b border-sky-500/20 px-4 py-5 shadow-2xl transition-all animate-in fade-in slide-in-from-top-4 duration-200">
+          <div className="flex flex-col space-y-2.5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-slate-200 hover:text-cyan-400 px-3 py-2 rounded-lg hover:bg-sky-900/20 transition-colors flex items-center justify-between"
+                className="text-sm font-semibold text-slate-200 hover:text-cyan-400 px-3 py-2 rounded-lg hover:bg-sky-900/20 transition-colors flex items-center justify-between"
               >
                 <span>{link.name}</span>
-                <ArrowRight className="size-4 text-cyan-400" />
+                <ArrowRight className="size-3.5 text-cyan-400" />
               </a>
             ))}
 
-            <div className="pt-4 border-t border-sky-500/15 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-sky-500/15 flex flex-col gap-2">
               <a
                 href="https://wa.me/919447520844"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white shadow-lg"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 py-2.5 text-xs font-bold text-white shadow-md"
               >
                 <MessageCircle className="size-4" />
-                <span>Chat on WhatsApp (+91 94475 20844)</span>
+                <span>WhatsApp: +91 94475 20844</span>
               </a>
 
               <a
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#0c1844] border border-pink-500/30 py-2.5 text-xs font-bold text-pink-300"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#0c1844] border border-pink-500/30 py-2 text-xs font-bold text-pink-300"
               >
                 <InstagramIcon className="size-4 text-pink-400" />
-                <span>Follow @framifydigitalmarketing</span>
+                <span>@framifydigitalmarketing</span>
               </a>
 
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/25"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-2.5 text-xs font-bold text-white"
               >
-                <Sparkles className="size-4" />
-                <span>Request Free Strategy Proposal</span>
+                <Sparkles className="size-3.5" />
+                <span>Request Project Quote</span>
               </a>
 
-              <a
-                href="tel:+919447520844"
-                className="flex items-center justify-center gap-2 text-xs font-mono text-slate-300 py-1"
-              >
-                <PhoneCall className="size-3.5 text-cyan-400" />
-                <span>Call Directly: +91 94475 20844</span>
-              </a>
-
-              <p className="text-[11px] font-mono text-center text-slate-400">
+              <p className="text-[10px] font-mono text-center text-slate-400 mt-1">
                 📍 Kottayam, Karukachal 686540, Kerala
               </p>
             </div>

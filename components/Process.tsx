@@ -1,89 +1,82 @@
 import React from "react";
 import {
   Compass,
-  Cpu,
+  Palette,
+  Video,
   Rocket,
-  LineChart,
   CheckCircle2,
   Sparkles,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from "lucide-react";
 
 const STEPS = [
   {
     step: "01",
     icon: Compass,
-    title: "Deep Kinetic Audit & Conversion Recon",
-    subtitle: "Days 1 – 7",
-    description: "We dismantle your existing ad accounts, tracking architecture, and funnel drop-offs. We identify the top 20% of high-leverage revenue leaks and formulate your aggressive 90-day scale model.",
+    title: "Brand Discovery & Strategy",
+    description: "We analyze your business, competitors, and target audience in Kerala and online to define a distinct visual and marketing direction.",
     deliverables: [
-      "Full tracking CAPI & pixel health diagnostic",
-      "Competitor ad intelligence & creative gap report",
-      "Immediate quick-win cost reduction plan",
+      "Visual positioning strategy",
+      "Audience engagement goals",
     ],
   },
   {
     step: "02",
-    icon: Cpu,
-    title: "Conversion Architecture & Creative Lab",
-    subtitle: "Days 8 – 14",
-    description: "Our in-house design & CRO engineers craft bespoke high-velocity landing pages, direct-response UGC video ads, and hook matrices specifically designed to out-convert current benchmarks.",
+    icon: Palette,
+    title: "Identity & Visual Assets",
+    description: "Crafting iconic logos, brand guidelines, and distinctive graphic elements that make your brand immediately recognizable.",
     deliverables: [
-      "Custom high-speed landing page build",
-      "Initial 25+ modular video & static ad creatives",
-      "Full CRM / lead enrichment webhook automation",
+      "Custom vector logo marks",
+      "Typography & color systems",
     ],
   },
   {
     step: "03",
-    icon: Rocket,
-    title: "Omnichannel Kinetic Campaign Launch",
-    subtitle: "Days 15 – 30",
-    description: "We deploy multi-tiered acquisition campaigns across Google, Meta, TikTok & LinkedIn. Algorithmic budget pacing filters out losers within 48 hours to channel 80% of ad capital into verified winning angles.",
+    icon: Video,
+    title: "Content & Creative Production",
+    description: "Producing viral Instagram Reels, commercial posters, and click-generating thumbnails engineered for maximum feed retention.",
     deliverables: [
-      "Multi-audience programmatic campaign deployment",
-      "Automated bid & dayparting calibration",
-      "Live real-time performance dashboard access",
+      "High-retention 9:16 vertical reels",
+      "Feed posters & story creatives",
     ],
   },
   {
     step: "04",
-    icon: LineChart,
-    title: "Aggressive Scale & Market Dominance",
-    subtitle: "Day 30 and Beyond",
-    description: "With proven unit economics secured, we scale ad budgets with confidence—doubling or tripling spend while sustaining target CAC and unlocking record quarterly gross margins.",
+    icon: Rocket,
+    title: "Systemized Growth",
+    description: "Deploying a consistent publishing and marketing system that turns social media attention into direct customer inquiries and sales.",
     deliverables: [
-      "Weekly creative sprint refresh (zero ad fatigue)",
-      "Continuous A/B split-testing on landing pages",
-      "Bi-weekly strategic growth call with leadership",
+      "Publishing schedule & DM funnels",
+      "Targeted reach & community growth",
     ],
   },
 ];
 
 export function Process() {
   return (
-    <section id="framework" className="relative w-full py-24 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
+    <section id="framework" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 right-0 size-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Sparkles className="size-3.5 text-cyan-400" />
-            <span>THE FRAMIFY BLUEPRINT</span>
+            <span>HOW IT WORKS</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            How We Engineer <span className="gradient-text-cyan">Unfair Market Advantage</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Smart Businesses <span className="gradient-text-cyan">Create Systems</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            A repeatable 4-stage growth engineering system honed across $48M+ in profitable ad spend.
+          <p className="mt-3 text-sm sm:text-base text-slate-300">
+            A proven 4-step creative workflow from brand concept to consistent digital growth.
           </p>
         </div>
 
-        {/* 4 Process Cards */}
+        {/* 4 Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STEPS.map((step, idx) => {
+          {STEPS.map((step) => {
             const Icon = step.icon;
             return (
               <div
@@ -91,35 +84,26 @@ export function Process() {
                 className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
-                  {/* Step Header */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-2xl font-black font-mono text-cyan-400/70 group-hover:text-cyan-300 transition-colors">
                       {step.step}
                     </span>
-                    <span className="text-[10px] font-mono uppercase bg-sky-950 px-2 py-0.5 rounded border border-sky-500/30 text-slate-300">
-                      {step.subtitle}
-                    </span>
                   </div>
 
-                  {/* Icon & Title */}
-                  <div className="size-12 rounded-xl bg-gradient-to-br from-blue-600/30 to-cyan-500/20 border border-sky-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
-                    <Icon className="size-6" />
+                  <div className="size-11 rounded-xl bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
+                    <Icon className="size-5" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-cyan-200 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
                     {step.description}
                   </p>
                 </div>
 
-                {/* Deliverables Bullet List */}
-                <div className="pt-4 border-t border-sky-500/15 space-y-2">
-                  <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block font-semibold">
-                    Core Output:
-                  </span>
+                <div className="pt-3 border-t border-sky-500/15 space-y-1.5">
                   {step.deliverables.map((d, i) => (
                     <div key={i} className="flex items-start gap-1.5 text-xs text-slate-300">
                       <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
@@ -132,14 +116,16 @@ export function Process() {
           })}
         </div>
 
-        {/* Bottom CTA Bar */}
-        <div className="mt-12 text-center">
+        {/* Action Button */}
+        <div className="mt-10 text-center">
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#0c1844] hover:bg-cyan-600 border border-sky-500/30 px-6 py-3 text-sm font-bold text-white transition-all shadow-lg hover:scale-105"
+            href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20start%20a%20project."
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all"
           >
-            <span>Ready to implement this framework on your brand?</span>
-            <ArrowRight className="size-4 text-cyan-400" />
+            <MessageCircle className="size-4" />
+            <span>Discuss Your Project on WhatsApp (+91 94475 20844)</span>
           </a>
         </div>
       </div>
