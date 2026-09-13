@@ -244,6 +244,126 @@ html.light footer span.uppercase {
   color: #0284c7 !important;
 }
 
+/* Light Theme Mobile Drawer Menu (Phones & iPads) */
+html.light .lg\:hidden.fixed.top-\[64px\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group:hover {
+  border-color: #0284c7 !important;
+  background-color: #f0f9ff !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group div.text-white {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group div.text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group div.size-10 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group div.size-7 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group div.size-7 svg {
+  color: #0f172a !important;
+}
+
+/* Active item in mobile drawer */
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] {
+  background: #f0f9ff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15) !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] div.text-cyan-300 {
+  color: #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] div.size-10 {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] div.size-10 svg {
+  color: #ffffff !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] div.size-7 {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a.group[class*="from-"] div.size-7 svg {
+  color: #ffffff !important;
+}
+
+/* Quick Action Badges in mobile drawer */
+html.light .lg\:hidden.fixed.top-\[64px\] a[href*="instagram"] {
+  background-color: #fdf2f8 !important;
+  border-color: #fbcfe8 !important;
+  color: #db2777 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a[href*="wa.me"] {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #059669 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] a[href*="wa.me"] svg {
+  color: #059669 !important;
+}
+
+/* Request quote button */
+html.light .lg\:hidden.fixed.top-\[64px\] a[href="#contact"] {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+}
+
+/* Bottom contact box in mobile drawer */
+html.light .lg\:hidden.fixed.top-\[64px\] .mt-2.p-3 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] .mt-2.p-3 a[href*="tel"] {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] .mt-2.p-3 span {
+  color: #475569 !important;
+}
+
+html.light .lg\:hidden.fixed.top-\[64px\] .border-t {
+  border-color: #e2e8f0 !important;
+}
+
 /* ==========================================================================
    Section 1: Hero Section (Light Mode)
    ========================================================================== */
