@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ClickFeedback from "@/components/ClickFeedback";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -49,9 +50,11 @@ export default function RootLayout({
     <html lang="en" className={`${jakarta.variable} ${mono.variable} dark`}>
       <body className="font-sans antialiased bg-[#080e27] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-navy-950">
         <SmoothScroll />
+        <ClickFeedback />
         {children}
       </body>
     </html>
   );
 }
+
 
