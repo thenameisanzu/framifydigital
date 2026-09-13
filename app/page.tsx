@@ -26,11 +26,11 @@ export default function Home() {
       {/* Core Creative & Growth Services Grid */}
       <Services />
 
-      {/* Interactive Reach & Growth Estimator */}
-      <RoiCalculator />
-
       {/* Verified Featured Works & Creative Showcase */}
       <Portfolio />
+
+      {/* Interactive Reach & Growth Estimator */}
+      <RoiCalculator />
 
       {/* The 4-Stage Framify Growth System */}
       <Process />

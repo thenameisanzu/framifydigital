@@ -87,22 +87,30 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Scroll Spy for active section identification
-      const sectionIds = ["services", "portfolio", "calculator", "framework", "testimonials"];
-      const scrollPos = window.scrollY + 220;
+      // If at top of page (Hero), clear active section
+      if (window.scrollY < 260) {
+        setActiveSection("");
+        return;
+      }
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
+      // Pinpoint accurate viewport scroll spy
+      const sectionIds = ["services", "portfolio", "calculator", "framework", "testimonials"];
+      const navbarOffset = 100;
+      let currentSection = "";
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop;
-          if (scrollPos >= top) {
-            setActiveSection(sectionIds[i]);
-            return;
+          const rect = el.getBoundingClientRect();
+          // Active when the section top has crossed into the upper portion of viewport and bottom is still visible
+          if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= navbarOffset) {
+            currentSection = id;
           }
         }
       }
-      if (window.scrollY < 300) {
-        setActiveSection("");
+
+      if (currentSection) {
+        setActiveSection(currentSection);
       }
     };
 
