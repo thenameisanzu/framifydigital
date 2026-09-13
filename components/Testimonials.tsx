@@ -191,8 +191,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       className={cn(
         "testimonial-stagger-card absolute left-1/2 top-1/2 cursor-pointer border-2 p-6 sm:p-8 transition-all duration-500 ease-in-out select-none",
         isCenter
-          ? "z-20 bg-gradient-to-b from-[#16337a] via-[#0f2458] to-[#0c1844] text-white border-cyan-400 shadow-2xl shadow-cyan-500/25 ring-2 ring-cyan-400/30"
-          : "z-0 bg-[#0c1844]/80 backdrop-blur-md text-slate-200 border-sky-500/25 hover:border-cyan-400/60 hover:bg-[#102258]"
+          ? "z-20 bg-gradient-to-b from-[#141d2e] via-[#101726] to-[#0c121d] text-white border-cyan-400 shadow-2xl shadow-cyan-500/20 ring-2 ring-cyan-400/25"
+          : "z-0 bg-[#0e121a]/90 backdrop-blur-md text-slate-200 border-white/[0.08] hover:border-cyan-400/50 hover:bg-[#141a26]"
       )}
       style={{
         width: cardSize,
@@ -307,14 +307,14 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
+    <section id="testimonials" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Background Ambience Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-blue-900/15 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-cyan-500/[0.03] blur-[140px] pointer-events-none" />
 
       {/* Header Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-8">
         <div className="reveal text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Quote className="size-3.5 text-cyan-400" />
             <span>CLIENT EXPERIENCES</span>
           </div>
@@ -350,7 +350,7 @@ export function Testimonials() {
             onClick={() => handleMove(-1)}
             className={cn(
               "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
-              "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
+              "bg-white/[0.05] border-white/[0.12] text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
             )}
             aria-label="Previous testimonial"
           >
@@ -360,7 +360,7 @@ export function Testimonials() {
             onClick={() => handleMove(1)}
             className={cn(
               "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
-              "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
+              "bg-white/[0.05] border-white/[0.12] text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
             )}
             aria-label="Next testimonial"
           >

@@ -68,11 +68,11 @@ export function RoiCalculator() {
   const currentPackage = PACKAGES.find((p) => p.id === selectedPkg) || PACKAGES[0];
 
   return (
-    <section id="calculator" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
+    <section id="calculator" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Calculator className="size-3.5 text-cyan-400" />
             <span>PACKAGE ESTIMATOR</span>
           </div>
@@ -97,8 +97,8 @@ export function RoiCalculator() {
                 className={cn(
                   "relative p-5 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isSelected
-                    ? "border-2 border-cyan-400 ring-2 ring-cyan-400/30 bg-gradient-to-b from-[#183478] via-[#0f2356] to-[#0c1844] shadow-xl shadow-cyan-500/20 scale-[1.03] z-10"
-                    : "bg-[#0a1336]/60 border-sky-500/20 hover:border-sky-400/50 hover:bg-[#0c1a47]/80 text-slate-400 opacity-80 hover:opacity-100"
+                    ? "border-2 border-cyan-400 ring-2 ring-cyan-400/25 bg-gradient-to-b from-[#141d2e] via-[#101726] to-[#0c121d] shadow-xl shadow-cyan-500/15 scale-[1.03] z-10"
+                    : "bg-white/[0.03] border-white/[0.08] hover:border-white/[0.2] hover:bg-white/[0.06] text-slate-400 opacity-80 hover:opacity-100"
                 )}
               >
                 {/* Active Selection Badge */}
@@ -114,7 +114,7 @@ export function RoiCalculator() {
                     "size-11 rounded-xl border flex items-center justify-center mb-3 transition-all",
                     isSelected
                       ? "bg-cyan-400 border-cyan-300 text-slate-950 shadow-md shadow-cyan-400/40"
-                      : "bg-[#080e27] border-sky-500/25 text-cyan-400"
+                      : "bg-white/[0.04] border-white/[0.08] text-cyan-400"
                   )}>
                     <Icon className="size-5 stroke-[2.2]" />
                   </div>
@@ -138,16 +138,16 @@ export function RoiCalculator() {
         </div>
 
         {/* Selected Package Details Box */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto shadow-xl overflow-hidden min-h-[320px]">
+        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-white/[0.1] bg-gradient-to-r from-[#0e121a]/95 via-[#131926]/90 to-[#0e121a]/95 max-w-3xl mx-auto shadow-xl overflow-hidden min-h-[320px]">
           <div key={currentPackage.id} className="animate-detail-fade flex flex-col justify-between h-full">
             <div>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-sky-500/20">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
                 <div>
                   <span className="text-xs font-mono uppercase text-cyan-400 font-semibold block">Selected Plan:</span>
                   <h3 className="text-xl font-bold text-white mt-0.5">{currentPackage.name}</h3>
                 </div>
 
-                <span className="text-xs font-mono text-cyan-200 bg-sky-950/80 px-3.5 py-1.5 rounded-full border border-sky-500/30 shadow-sm">
+                <span className="text-xs font-mono text-cyan-200 bg-white/[0.06] px-3.5 py-1.5 rounded-full border border-white/[0.1] shadow-sm">
                   {currentPackage.unit}
                 </span>
               </div>
@@ -166,7 +166,7 @@ export function RoiCalculator() {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-sky-500/20">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/[0.08]">
               <span className="text-xs font-mono text-slate-400 text-center sm:text-left">
                 Fast turnaround & direct WhatsApp revision support
               </span>

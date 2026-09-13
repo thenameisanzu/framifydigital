@@ -11,12 +11,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative w-full bg-[#05091a] text-slate-300 pt-16 pb-12 border-t border-sky-500/20 overflow-hidden">
+    <footer className="relative w-full bg-[#050608] text-slate-300 pt-16 pb-12 border-t border-white/[0.08] overflow-hidden">
       {/* Glow background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-sky-500/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/[0.06]">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <Logo size="md" />
@@ -43,7 +43,7 @@ export function Footer() {
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0c1844] border border-pink-500/30 text-pink-300 hover:border-pink-400 hover:text-white transition-colors text-xs font-mono font-medium"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-pink-500/30 text-pink-300 hover:border-pink-400 hover:text-white transition-colors text-xs font-mono font-medium"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="size-3.5 text-pink-400" />
@@ -54,7 +54,7 @@ export function Footer() {
                 href="https://wa.me/919447520844"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a2e22] border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 hover:text-white transition-colors text-xs font-mono font-medium"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 hover:text-white transition-colors text-xs font-mono font-medium"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="size-3.5 text-emerald-400" />

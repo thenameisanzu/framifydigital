@@ -64,14 +64,14 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
+    <section id="contact" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 right-1/4 size-[400px] rounded-full bg-cyan-600/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 size-[400px] rounded-full bg-cyan-500/[0.03] blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Zap className="size-3.5 text-cyan-400" />
             <span>CONTACT US</span>
           </div>
@@ -86,14 +86,14 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           {/* Left Column: Direct Info */}
           <div className="reveal delay-100 lg:col-span-5 space-y-4">
-            <div className="glass-card rounded-2xl p-6 border border-sky-500/20 bg-[#0c1844]/80 backdrop-blur-md space-y-4 shadow-xl">
+            <div className="glass-card rounded-2xl p-6 border border-white/[0.08] bg-[#0e121a]/80 backdrop-blur-md space-y-4 shadow-xl">
               <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-cyan-300">
                 Direct Contact
               </h3>
               
               <div className="space-y-4 pt-1">
                 <div className="flex items-center gap-3.5 text-slate-200">
-                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                  <div className="size-10 rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center text-cyan-400 shrink-0">
                     <Phone className="size-4" />
                   </div>
                   <div>
@@ -105,7 +105,7 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-center gap-3.5 text-slate-200">
-                  <div className="size-10 rounded-xl bg-[#080e27] border border-pink-500/30 flex items-center justify-center text-pink-400 shrink-0">
+                  <div className="size-10 rounded-xl bg-white/[0.04] border border-pink-500/30 flex items-center justify-center text-pink-400 shrink-0">
                     <InstagramIcon className="size-4" />
                   </div>
                   <div>
@@ -122,7 +122,7 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-center gap-3.5 text-slate-200">
-                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                  <div className="size-10 rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center text-cyan-400 shrink-0">
                     <MapPin className="size-4" />
                   </div>
                   <div>
@@ -133,8 +133,8 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 text-slate-200 pt-2 border-t border-sky-500/15">
-                  <div className="size-10 rounded-xl bg-[#080e27] border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="flex items-center gap-3.5 text-slate-200 pt-2 border-t border-white/[0.06]">
+                  <div className="size-10 rounded-xl bg-white/[0.04] border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <ShieldCheck className="size-4" />
                   </div>
                   <div>
@@ -150,7 +150,7 @@ export function ContactSection() {
 
           {/* Right Column: Clean Inquiry Form */}
           <div className="reveal delay-200 lg:col-span-7">
-            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-b from-[#0c1844]/95 to-[#080e27]/95 shadow-xl">
+            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-white/[0.1] bg-gradient-to-b from-[#0e121a]/95 to-[#090a0f]/95 shadow-xl">
               {isSubmitted ? (
                 <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
                   <div className="size-14 rounded-full bg-emerald-600 mx-auto flex items-center justify-center text-white">
@@ -192,7 +192,7 @@ export function ContactSection() {
                       placeholder="e.g. Rahul"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
                     />
                   </div>
 
@@ -206,7 +206,7 @@ export function ContactSection() {
                       placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
                     />
                   </div>
 
@@ -217,10 +217,10 @@ export function ContactSection() {
                     <select
                       value={formData.selectedService}
                       onChange={(e) => setFormData({ ...formData, selectedService: e.target.value })}
-                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-cyan-400 focus:outline-none"
+                      className="w-full rounded-xl bg-[#090a0f] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-cyan-400 focus:outline-none"
                     >
                       {AVAILABLE_SERVICES.map((s) => (
-                        <option key={s} value={s} className="bg-[#080e27] text-white">
+                        <option key={s} value={s} className="bg-[#090a0f] text-white">
                           {s}
                         </option>
                       ))}
@@ -236,7 +236,7 @@ export function ContactSection() {
                       placeholder="Tell us what you're looking for (e.g. Logo redesign, 10 reels per month, admission posters...)"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
                     />
                   </div>
 

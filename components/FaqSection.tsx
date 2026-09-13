@@ -46,14 +46,14 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
+    <section id="faq" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Glow ambient background */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 size-[450px] rounded-full bg-cyan-600/10 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 size-[450px] rounded-full bg-cyan-500/[0.03] blur-[150px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <HelpCircle className="size-3.5 text-cyan-400" />
             <span>FREQUENTLY ASKED QUESTIONS</span>
           </div>
@@ -75,8 +75,8 @@ export function FaqSection() {
                 className={cn(
                   "reveal rounded-2xl border transition-all duration-300 overflow-hidden",
                   isOpen
-                    ? "glass-card border-cyan-400/50 bg-[#0c1844]/90 shadow-xl shadow-blue-950/50"
-                    : "bg-[#0c1844]/40 border-sky-500/15 hover:border-sky-400/30 hover:bg-[#0c1844]/60"
+                    ? "glass-card border-cyan-400/40 bg-[#0e121a] shadow-xl shadow-black/40"
+                    : "bg-white/[0.03] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.05]"
                 )}
               >
                 <button
@@ -97,7 +97,7 @@ export function FaqSection() {
                       "size-8 rounded-xl border flex items-center justify-center shrink-0 transition-transform duration-300",
                       isOpen
                         ? "rotate-180 bg-cyan-500/20 border-cyan-400 text-cyan-300"
-                        : "bg-[#080e27] border-sky-500/20 text-slate-400"
+                        : "bg-white/[0.04] border-white/[0.08] text-slate-400"
                     )}
                   >
                     <ChevronDown className="size-4" />
@@ -112,7 +112,7 @@ export function FaqSection() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <div className="pt-2 border-t border-sky-500/15 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    <div className="pt-2 border-t border-white/[0.06] text-xs sm:text-sm text-slate-300 leading-relaxed">
                       {faq.answer}
                     </div>
                   </div>
@@ -123,7 +123,7 @@ export function FaqSection() {
         </div>
 
         {/* Quick Contact Prompt */}
-        <div className="reveal delay-200 mt-10 text-center p-6 rounded-2xl glass-card border border-sky-500/20 bg-gradient-to-r from-[#0c1844]/90 via-[#0e2257]/80 to-[#0c1844]/90 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="reveal delay-200 mt-10 text-center p-6 rounded-2xl glass-card border border-white/[0.1] bg-gradient-to-r from-[#0e121a]/95 via-[#131926]/90 to-[#0e121a]/95 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <h4 className="text-sm font-bold text-white">Have a specific question about your project?</h4>
             <p className="text-xs text-slate-400 mt-0.5">Chat with our creative director on WhatsApp for instant guidance.</p>

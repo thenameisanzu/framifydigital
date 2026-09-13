@@ -9,7 +9,7 @@ export function WhatsAppButton() {
   return (
     <aside aria-label="WhatsApp Quick Contact" className="fixed bottom-6 right-6 z-50 flex items-center gap-2 group">
       {/* Tooltip hint */}
-      <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-[#0c1844]/95 border border-sky-500/30 px-3.5 py-1.5 text-xs font-mono text-cyan-300 shadow-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-2 group-hover:translate-x-0">
+      <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-[#090a0f]/95 border border-white/[0.12] px-3.5 py-1.5 text-xs font-mono text-cyan-300 shadow-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-2 group-hover:translate-x-0">
         <Sparkles className="size-3 text-emerald-400" />
         <span>Chat on WhatsApp</span>
       </div>

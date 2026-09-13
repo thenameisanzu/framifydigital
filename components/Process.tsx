@@ -56,14 +56,14 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section id="framework" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
+    <section id="framework" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 right-0 size-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 size-96 rounded-full bg-cyan-500/[0.03] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Sparkles className="size-3.5 text-cyan-400" />
             <span>HOW IT WORKS</span>
           </div>
@@ -84,7 +84,7 @@ export function Process() {
               <div
                 key={step.step}
                 className={cn(
-                  "reveal group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1",
+                  "reveal group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-white/[0.08] hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1",
                   delays[index % delays.length]
                 )}
               >
@@ -95,7 +95,7 @@ export function Process() {
                     </span>
                   </div>
 
-                  <div className="size-11 rounded-xl bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
+                  <div className="size-11 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
                     <Icon className="size-5" />
                   </div>
 
@@ -108,7 +108,7 @@ export function Process() {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-sky-500/15 space-y-1.5">
+                <div className="pt-3 border-t border-white/[0.06] space-y-1.5">
                   {step.deliverables.map((d, i) => (
                     <div key={i} className="flex items-start gap-1.5 text-xs text-slate-300">
                       <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />

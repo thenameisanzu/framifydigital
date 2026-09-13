@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${mono.variable} dark`} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[#080e27] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-navy-950">
+      <body className="font-sans antialiased bg-[#090a0f] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-slate-950">
         <ThemeProvider>
           <ScrollProgressBar />
           <CursorGlow />

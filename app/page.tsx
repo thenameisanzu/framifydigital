@@ -14,7 +14,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#080e27] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-950 relative">
+    <main className="min-h-screen bg-[#090a0f] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-950 relative">
       {/* Fixed Navigation */}
       <Navbar />
 

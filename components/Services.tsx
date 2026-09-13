@@ -100,16 +100,15 @@ export function Services() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
 
   return (
-    <section id="services" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
+    <section id="services" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 -left-40 size-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 size-96 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-40 size-96 rounded-full bg-cyan-500/[0.04] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 size-96 rounded-full bg-indigo-500/[0.04] blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
         {/* Header */}
         <div className="reveal text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Sparkles className="size-3.5 text-cyan-400" />
             <span>WHAT WE DO</span>
           </div>
@@ -144,7 +143,7 @@ export function Services() {
 
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3.5 mb-3">
-                    <div className="size-11 rounded-xl bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-md">
+                    <div className="size-11 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-md">
                       <Icon className="size-5" />
                     </div>
                     <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
@@ -162,7 +161,7 @@ export function Services() {
                   </p>
 
                   {/* Deliverables List */}
-                  <div className="space-y-2 mb-6 pt-3 border-t border-sky-500/10">
+                  <div className="space-y-2 mb-6 pt-3 border-t border-white/[0.06]">
                     {service.deliverables.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
                         <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
@@ -173,7 +172,7 @@ export function Services() {
                 </div>
 
                 {/* Direct Action */}
-                <div className="pt-3 border-t border-sky-500/15 flex items-center justify-between mt-auto">
+                <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between mt-auto">
                   <span className="text-xs font-mono text-slate-400">
                     Custom Deliverables
                   </span>
@@ -192,7 +191,7 @@ export function Services() {
         </div>
 
         {/* Clean Consultation Callout */}
-        <div className="mt-12 rounded-2xl glass-card p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-r from-[#0c1844]/95 via-[#0d2157]/90 to-[#0c1844]/95 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div className="mt-12 rounded-2xl glass-card p-6 sm:p-8 border border-white/[0.1] bg-gradient-to-r from-[#0e121a]/95 via-[#131926]/90 to-[#0e121a]/95 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
             <span className="text-xs font-mono uppercase text-cyan-400 font-bold block mb-1">
               📍 Kottayam, Karukachal 686540, Kerala

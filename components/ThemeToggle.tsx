@@ -20,7 +20,7 @@ export function ThemeToggle({ className, showLabel = false }: ThemeToggleProps) 
       className={cn(
         "relative flex items-center justify-center gap-2 rounded-xl p-2 transition-all duration-300 cursor-pointer select-none",
         theme === 'dark'
-          ? "bg-[#0c1844] text-amber-300 hover:text-amber-200 border border-sky-500/30 hover:border-amber-400/50 shadow-md"
+          ? "bg-white/[0.05] text-amber-300 hover:text-amber-200 border border-white/[0.12] hover:border-amber-400/50 shadow-md backdrop-blur-md"
           : "bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-300 shadow-sm",
         className
       )}

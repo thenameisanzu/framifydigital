@@ -61,15 +61,15 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 export function TeamSection() {
   return (
-    <section id="team" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
+    <section id="team" className="relative w-full py-20 bg-[#090a0f] border-b border-white/[0.06] overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 size-96 rounded-full bg-cyan-900/10 blur-[130px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 size-96 rounded-full bg-blue-900/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 size-96 rounded-full bg-cyan-500/[0.03] blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 size-96 rounded-full bg-indigo-500/[0.03] blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Users className="size-3.5 text-cyan-400" />
             <span>OUR TEAM</span>
           </div>
@@ -86,11 +86,11 @@ export function TeamSection() {
           {TEAM_MEMBERS.map((member) => (
             <div
               key={member.id}
-              className="glass-card group rounded-2xl overflow-hidden border border-sky-500/15 hover:border-cyan-400/40 bg-[#0a1336]/80 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cyan-950/60"
+              className="glass-card group rounded-2xl overflow-hidden border border-white/[0.08] hover:border-cyan-400/40 bg-white/[0.03] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/60"
             >
               <div>
                 {/* Portrait Container with Hover Zoom */}
-                <div className="relative aspect-square w-full overflow-hidden bg-[#05091a]">
+                <div className="relative aspect-square w-full overflow-hidden bg-[#090a0f]">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -100,10 +100,10 @@ export function TeamSection() {
                     priority
                   />
                   {/* Subtle Gradient Shade on bottom of photo */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1336] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e121a] via-transparent to-transparent opacity-80" />
 
                   {/* Highlight Stat Pill in Corner */}
-                  <div className="absolute bottom-3 right-3 rounded-xl bg-[#080e27]/90 border border-sky-500/30 px-2.5 py-1 backdrop-blur-md text-right shadow-md">
+                  <div className="absolute bottom-3 right-3 rounded-xl bg-[#090a0f]/90 border border-white/[0.12] px-2.5 py-1 backdrop-blur-md text-right shadow-md">
                     <div className="text-xs font-mono font-black text-cyan-300">{member.stat}</div>
                     <div className="text-[9px] font-mono uppercase text-slate-400 leading-none">{member.statLabel}</div>
                   </div>
@@ -124,11 +124,11 @@ export function TeamSection() {
               </div>
 
               {/* Skills Tags */}
-              <div className="px-5 pb-5 pt-2 border-t border-sky-500/10 flex flex-wrap gap-1.5">
+              <div className="px-5 pb-5 pt-2 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                 {member.skills.map((skill, i) => (
                   <span
                     key={i}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#0c1844] border border-sky-500/20 text-slate-300 group-hover:border-cyan-500/30 transition-colors"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-300 group-hover:border-cyan-500/30 transition-colors"
                   >
                     {skill}
                   </span>
