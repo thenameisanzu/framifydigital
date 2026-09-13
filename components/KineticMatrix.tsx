@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Sparkles, Play, Pause, ArrowRight, MessageCircle, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
+import { Sparkles, ArrowRight, MessageCircle, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MatrixNode {
@@ -466,36 +466,15 @@ export function KineticMatrix({
             {/* Subtle Vignette Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#080e27]/40 via-transparent to-[#080e27]/80 pointer-events-none z-10" />
 
-            {/* Top Interactive Physics Controls Bar */}
+            {/* Top Bar with Location Badge */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center justify-start">
                     {/* Location Badge */}
                     <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-[#0c1844]/90 px-3 py-1 backdrop-blur-md text-[11px] font-mono text-cyan-300 shadow-sm">
                         <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
                         <span className="font-semibold">FRAMIFY</span>
                         <span className="text-slate-400 hidden sm:inline">| Kottayam, Karukachal 686540, Kerala</span>
                         <span className="text-slate-400 sm:hidden">| Kerala</span>
-                    </div>
-
-                    <div className="flex items-center gap-1.5">
-                        <button
-                            type="button"
-                            onClick={triggerCentralImpulse}
-                            className="flex items-center gap-1 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white active:scale-95 shadow-md"
-                            title="Trigger Kinetic Shockwave"
-                        >
-                            <Sparkles className="size-3 text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
-                            <span>PULSE</span>
-                        </button>
-
-                        <button
-                            type="button"
-                            onClick={() => setIsRunning((prev) => !prev)}
-                            className="flex items-center gap-1 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white active:scale-95 shadow-md"
-                        >
-                            {isRunning ? <Pause className="size-3 text-amber-400" /> : <Play className="size-3 text-emerald-400" />}
-                            <span className="font-mono text-[10px]">{isRunning ? "FREEZE" : "RUN"}</span>
-                        </button>
                     </div>
                 </div>
             </div>
