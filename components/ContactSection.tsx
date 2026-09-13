@@ -71,14 +71,14 @@ export function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="reveal text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-sky-500/25 bg-white/90 dark:bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-slate-800 dark:text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
-            <Zap className="size-3.5 text-cyan-600 dark:text-cyan-400" />
-            <span className="font-bold">CONTACT US</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+            <Zap className="size-3.5 text-cyan-400" />
+            <span>CONTACT US</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Let’s Build Your <span className="gradient-text-cyan">Growth System</span>
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium">
+          <p className="mt-2 text-sm sm:text-base text-slate-300">
             Get in touch for logo designs, reels production, social media posters, or custom thumbnails.
           </p>
         </div>
@@ -86,60 +86,60 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           {/* Left Column: Direct Info */}
           <div className="reveal delay-100 lg:col-span-5 space-y-4">
-            <div className="glass-card rounded-2xl p-6 border border-slate-200 dark:border-sky-500/20 bg-white/95 dark:bg-[#0c1844]/80 backdrop-blur-md space-y-4 shadow-xl">
-              <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-sky-600 dark:text-cyan-300">
+            <div className="glass-card rounded-2xl p-6 border border-sky-500/20 bg-[#0c1844]/80 backdrop-blur-md space-y-4 shadow-xl">
+              <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-cyan-300">
                 Direct Contact
               </h3>
               
               <div className="space-y-4 pt-1">
-                <div className="flex items-center gap-3.5 text-slate-800 dark:text-slate-200">
-                  <div className="size-10 rounded-xl bg-sky-50 dark:bg-[#080e27] border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-cyan-400 shrink-0 shadow-sm">
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
                     <Phone className="size-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block font-bold">Phone</span>
-                    <a href="tel:+919447520844" className="text-sm font-bold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-cyan-400 font-mono transition-colors">
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Phone</span>
+                    <a href="tel:+919447520844" className="text-sm font-bold text-white hover:text-cyan-400 font-mono transition-colors">
                       +91 94475 20844
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 text-slate-800 dark:text-slate-200">
-                  <div className="size-10 rounded-xl bg-pink-50 dark:bg-[#080e27] border border-pink-200 dark:border-pink-500/30 flex items-center justify-center text-pink-600 dark:text-pink-400 shrink-0 shadow-sm">
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-pink-500/30 flex items-center justify-center text-pink-400 shrink-0">
                     <InstagramIcon className="size-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block font-bold">Social</span>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Social</span>
                     <a
                       href="https://instagram.com/framifydigitalmarketing"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-bold text-slate-900 dark:text-white hover:text-pink-600 dark:hover:text-pink-400 font-mono transition-colors"
+                      className="text-sm font-bold text-white hover:text-pink-400 font-mono transition-colors"
                     >
                       Instagram
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 text-slate-800 dark:text-slate-200">
-                  <div className="size-10 rounded-xl bg-sky-50 dark:bg-[#080e27] border border-sky-200 dark:border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-cyan-400 shrink-0 shadow-sm">
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
                     <MapPin className="size-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block font-bold">Studio Location</span>
-                    <span className="text-sm text-slate-900 dark:text-slate-200 font-bold">
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Studio Location</span>
+                    <span className="text-sm text-slate-200 font-medium">
                       Kottayam, Karukachal 686540, Kerala
                     </span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3.5 text-slate-800 dark:text-slate-200 pt-2 border-t border-slate-200 dark:border-sky-500/15">
-                  <div className="size-10 rounded-xl bg-emerald-50 dark:bg-[#080e27] border border-emerald-200 dark:border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 shadow-sm">
+                <div className="flex items-center gap-3.5 text-slate-200 pt-2 border-t border-sky-500/15">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
                     <ShieldCheck className="size-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-slate-500 dark:text-slate-400 block font-bold">Fast Response</span>
-                    <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Fast Response</span>
+                    <span className="text-xs text-slate-300">
                       Direct creative team consultation & custom quotes
                     </span>
                   </div>
@@ -150,25 +150,25 @@ export function ContactSection() {
 
           {/* Right Column: Clean Inquiry Form */}
           <div className="reveal delay-200 lg:col-span-7">
-            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-sky-500/25 bg-white/95 dark:bg-gradient-to-b dark:from-[#0c1844]/95 dark:to-[#080e27]/95 shadow-xl">
+            <div className="glass-card rounded-2xl p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-b from-[#0c1844]/95 to-[#080e27]/95 shadow-xl">
               {isSubmitted ? (
                 <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">
                   <div className="size-14 rounded-full bg-emerald-600 mx-auto flex items-center justify-center text-white">
                     <CheckCircle2 className="size-8" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl font-bold text-white">
                     Inquiry Received!
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 max-w-sm mx-auto">
-                    Thank you, <strong className="text-slate-900 dark:text-white">{formData.name}</strong>. We will message or call you on <span className="text-sky-600 dark:text-cyan-300 font-mono font-bold">{formData.phone}</span> shortly.
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-sm mx-auto">
+                    Thank you, <strong className="text-white">{formData.name}</strong>. We will message or call you on <span className="text-cyan-300 font-mono">{formData.phone}</span> shortly.
                   </p>
 
                   <a
                     href="https://wa.me/919447520844"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:scale-105"
+                    className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white"
                   >
                     <MessageCircle className="size-4" />
                     <span>Open WhatsApp Directly</span>
@@ -177,13 +177,13 @@ export function ContactSection() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {errorMsg && (
-                    <div className="p-2.5 rounded-lg bg-red-100 dark:bg-red-950/80 border border-red-300 dark:border-red-500/40 text-xs text-red-800 dark:text-red-200 font-medium">
+                    <div className="p-2.5 rounded-lg bg-red-950/80 border border-red-500/40 text-xs text-red-200">
                       {errorMsg}
                     </div>
                   )}
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-slate-800 dark:text-slate-300 mb-1.5 font-bold">
+                    <label className="block text-xs font-mono uppercase text-slate-300 mb-1.5 font-semibold">
                       Your Name *
                     </label>
                     <input
@@ -192,12 +192,12 @@ export function ContactSection() {
                       placeholder="e.g. Rahul"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full rounded-xl bg-slate-50 dark:bg-[#080e27] border border-slate-300 dark:border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-sky-500 dark:focus:border-cyan-400 focus:bg-white focus:outline-none transition-all"
+                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-slate-800 dark:text-slate-300 mb-1.5 font-bold">
+                    <label className="block text-xs font-mono uppercase text-slate-300 mb-1.5 font-semibold">
                       WhatsApp / Phone Number *
                     </label>
                     <input
@@ -206,21 +206,21 @@ export function ContactSection() {
                       placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full rounded-xl bg-slate-50 dark:bg-[#080e27] border border-slate-300 dark:border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-sky-500 dark:focus:border-cyan-400 focus:bg-white focus:outline-none transition-all"
+                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-slate-800 dark:text-slate-300 mb-1.5 font-bold">
+                    <label className="block text-xs font-mono uppercase text-slate-300 mb-1.5 font-semibold">
                       Service You Need:
                     </label>
                     <select
                       value={formData.selectedService}
                       onChange={(e) => setFormData({ ...formData, selectedService: e.target.value })}
-                      className="w-full rounded-xl bg-slate-50 dark:bg-[#080e27] border border-slate-300 dark:border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white focus:border-sky-500 dark:focus:border-cyan-400 focus:bg-white focus:outline-none transition-all cursor-pointer"
+                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-cyan-400 focus:outline-none"
                     >
                       {AVAILABLE_SERVICES.map((s) => (
-                        <option key={s} value={s} className="bg-white dark:bg-[#080e27] text-slate-900 dark:text-white">
+                        <option key={s} value={s} className="bg-[#080e27] text-white">
                           {s}
                         </option>
                       ))}
@@ -228,7 +228,7 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-slate-800 dark:text-slate-300 mb-1.5 font-bold">
+                    <label className="block text-xs font-mono uppercase text-slate-300 mb-1.5 font-semibold">
                       Project Details / Requirements:
                     </label>
                     <textarea
@@ -236,14 +236,14 @@ export function ContactSection() {
                       placeholder="Tell us what you're looking for (e.g. Logo redesign, 10 reels per month, admission posters...)"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full rounded-xl bg-slate-50 dark:bg-[#080e27] border border-slate-300 dark:border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-sky-500 dark:focus:border-cyan-400 focus:bg-white focus:outline-none resize-none transition-all"
+                      className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-600/25 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all cursor-pointer"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all"
                   >
                     <Sparkles className="size-4" />
                     <span>Send Project Request</span>

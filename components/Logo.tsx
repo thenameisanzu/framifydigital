@@ -22,10 +22,10 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
 
   return (
     <div className={cn("flex items-center gap-2.5 select-none group cursor-pointer", className)}>
-      {/* High-Contrast Circular Badge Icon */}
+      {/* High-Contrast White Circular Badge Icon (Always clearly visible on dark navbar) */}
       <div
         className={cn(
-          "relative flex items-center justify-center shrink-0 rounded-full bg-white shadow-lg shadow-cyan-500/10 transition-transform duration-300 group-hover:scale-105 p-1 border border-slate-200/80 dark:border-transparent",
+          "relative flex items-center justify-center shrink-0 rounded-full bg-white shadow-lg shadow-cyan-500/10 transition-transform duration-300 group-hover:scale-105 p-1",
           iconSizes[size]
         )}
       >
@@ -52,13 +52,13 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
       {/* Brand Typography */}
       <div className="flex flex-col">
         <div className="flex items-center">
-          <span className={cn("font-black tracking-tight text-slate-900 dark:text-white leading-none font-sans", textSizes[size])}>
+          <span className={cn("font-black tracking-tight text-white leading-none font-sans", textSizes[size])}>
             Framify
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 ml-1 mb-2 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 ml-1 mb-2 animate-pulse" />
         </div>
         {showSubtitle && (
-          <span className="text-[9px] uppercase font-mono tracking-widest text-sky-600 dark:text-cyan-400/90 font-bold -mt-0.5">
+          <span className="text-[9px] uppercase font-mono tracking-widest text-cyan-400/90 font-semibold -mt-0.5">
             Digital Marketing
           </span>
         )}
