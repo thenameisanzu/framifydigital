@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface LogoProps {
@@ -7,62 +8,26 @@ interface LogoProps {
   size?: "sm" | "md" | "lg";
 }
 
-export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoProps) {
-  const iconSizes = {
-    sm: "w-8 h-8",
-    md: "w-9 h-9",
-    lg: "w-12 h-12",
-  };
-
-  const textSizes = {
-    sm: "text-lg",
-    md: "text-2xl",
-    lg: "text-3xl",
+export function Logo({ className = "", size = "md" }: LogoProps) {
+  const sizeClasses = {
+    sm: "h-8 w-8 sm:h-9 sm:w-9",
+    md: "h-10 w-10 sm:h-12 sm:w-12",
+    lg: "h-14 w-14 sm:h-16 sm:w-16",
   };
 
   return (
-    <div className={cn("flex items-center gap-2.5 select-none group cursor-pointer", className)}>
-      {/* High-Contrast White Circular Badge Icon (Always clearly visible on dark navbar) */}
-      <div
+    <div className={cn("flex items-center select-none group cursor-pointer", className)}>
+      <Image
+        src="/framify-logo.png"
+        alt="Framify Digital Marketing"
+        width={160}
+        height={160}
         className={cn(
-          "relative flex items-center justify-center shrink-0 rounded-full bg-white shadow-lg shadow-cyan-500/10 transition-transform duration-300 group-hover:scale-105 p-1",
-          iconSizes[size]
+          "object-contain rounded-full shadow-md transition-transform duration-300 group-hover:scale-105",
+          sizeClasses[size]
         )}
-      >
-        <svg
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-        >
-          {/* 4-Node Connecting Frame Lines (Deep Navy) */}
-          <line x1="28" y1="36" x2="72" y2="40" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
-          <line x1="72" y1="40" x2="72" y2="68" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
-          <line x1="72" y1="68" x2="28" y2="64" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
-          <line x1="28" y1="64" x2="28" y2="36" stroke="#081033" strokeWidth="5.5" strokeLinecap="round" />
-
-          {/* 4 Connected Nodes */}
-          <circle cx="28" cy="36" r="7.5" fill="#081033" />
-          <circle cx="72" cy="40" r="7.5" fill="#081033" />
-          <circle cx="72" cy="68" r="7.5" fill="#081033" />
-          <circle cx="28" cy="64" r="7.5" fill="#081033" />
-        </svg>
-      </div>
-
-      {/* Brand Typography */}
-      <div className="flex flex-col">
-        <div className="flex items-center">
-          <span className={cn("font-black tracking-tight text-white leading-none font-sans", textSizes[size])}>
-            Framify
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 ml-1 mb-2 animate-pulse" />
-        </div>
-        {showSubtitle && (
-          <span className="text-[9px] uppercase font-mono tracking-widest text-cyan-400/90 font-semibold -mt-0.5">
-            Digital Marketing
-          </span>
-        )}
-      </div>
+        priority
+      />
     </div>
   );
 }
