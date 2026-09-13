@@ -84,77 +84,67 @@ export function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
-          {/* Left Column: Direct Info */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* WhatsApp Quick Action Card */}
-            <div className="glass-card rounded-2xl p-6 border border-emerald-500/30 bg-gradient-to-br from-[#0c2e28]/70 via-[#0c1844]/80 to-[#080e27]/90 shadow-xl">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="size-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
-                  <MessageCircle className="size-5" />
+            {/* Direct Contact Info Card */}
+            <div className="glass-card rounded-2xl p-6 border border-sky-500/20 bg-[#0c1844]/80 backdrop-blur-md space-y-4 shadow-xl">
+              <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-cyan-300">
+                Direct Contact
+              </h3>
+              
+              <div className="space-y-4 pt-1">
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                    <Phone className="size-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Phone</span>
+                    <a href="tel:+919447520844" className="text-sm font-bold text-white hover:text-cyan-400 font-mono transition-colors">
+                      +91 94475 20844
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold block">Instant Reply</span>
-                  <h4 className="text-sm font-bold text-white">WhatsApp Chat</h4>
-                </div>
-              </div>
-              <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-                Connect with our team directly on WhatsApp for immediate project quotes and turnaround time.
-              </p>
-              <a
-                href="https://wa.me/919447520844?text=Hi%20Framify!%20I'd%20like%20to%20discuss%20a%20project."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3 text-xs font-bold text-white shadow-md transition-all"
-              >
-                <MessageCircle className="size-4" />
-                <span>Chat on WhatsApp</span>
-              </a>
-            </div>
 
-            {/* Direct Contact Info */}
-            <div className="glass-card rounded-2xl p-5 border border-sky-500/15 space-y-3.5">
-              <div className="flex items-center gap-3 text-slate-200">
-                <div className="size-8 rounded-lg bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
-                  <Phone className="size-4" />
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-pink-500/30 flex items-center justify-center text-pink-400 shrink-0">
+                    <InstagramIcon className="size-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Social</span>
+                    <a
+                      href="https://instagram.com/framifydigitalmarketing"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-bold text-white hover:text-pink-400 font-mono transition-colors"
+                    >
+                      Instagram
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Phone</span>
-                  <a href="tel:+919447520844" className="text-xs sm:text-sm font-bold text-white hover:text-cyan-400 font-mono">
-                    +91 94475 20844
-                  </a>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-3 text-slate-200">
-                <div className="size-8 rounded-lg bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-pink-400 shrink-0">
-                  <InstagramIcon className="size-4" />
+                <div className="flex items-center gap-3.5 text-slate-200">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                    <MapPin className="size-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Studio Location</span>
+                    <span className="text-sm text-slate-200 font-medium">
+                      Kottayam, Karukachal 686540, Kerala
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Instagram</span>
-                  <a
-                    href="https://instagram.com/framifydigitalmarketing"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs sm:text-sm font-bold text-white hover:text-pink-400 font-mono"
-                  >
-                    @framifydigitalmarketing
-                  </a>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-3 text-slate-200">
-                <div className="size-8 rounded-lg bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 shrink-0">
-                  <MapPin className="size-4" />
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-slate-400 block">Studio Location</span>
-                  <span className="text-xs sm:text-sm text-slate-200">
-                    Kottayam, Karukachal 686540, Kerala
-                  </span>
+                <div className="flex items-center gap-3.5 text-slate-200 pt-2 border-t border-sky-500/15">
+                  <div className="size-10 rounded-xl bg-[#080e27] border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                    <ShieldCheck className="size-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-slate-400 block">Fast Response</span>
+                    <span className="text-xs text-slate-300">
+                      Direct creative team consultation & custom quotes
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Right Column: Clean Inquiry Form */}
           <div className="lg:col-span-7">
