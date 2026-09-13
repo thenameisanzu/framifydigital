@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Sparkles, Play, Pause, ArrowRight, MessageCircle, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 import { cn } from '@/lib/utils';
 
 interface MatrixNode {
@@ -43,6 +44,7 @@ export function KineticMatrix({
 }: KineticMatrixProps) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const { theme } = useTheme();
 
     const [isRunning, setIsRunning] = useState(true);
 
@@ -154,8 +156,6 @@ export function KineticMatrix({
             const shockwaves = shockwavesRef.current;
             const pointer = pointerRef.current;
 
-            const isMobile = width < 640;
-
             // Pointer velocity interpolation
             pointer.vx = (pointer.x - pointer.prevX) / (dt * 1000 || 1);
             pointer.vy = (pointer.y - pointer.prevY) / (dt * 1000 || 1);
@@ -163,32 +163,36 @@ export function KineticMatrix({
             pointer.prevY = pointer.y;
             const mouseSpeed = Math.sqrt(pointer.vx * pointer.vx + pointer.vy * pointer.vy);
 
-            // Framify Deep Navy Background & Subtle Ambience
-            const bgColor = '#080e27';
-            const nodeColor = '56, 189, 248';
-            const accentGlow = '56, 189, 248';
+            const isMobile = width < 640;
+            const isLight = theme === 'light';
+            const accentGlow = isLight ? '2, 132, 199' : '56, 189, 248';
 
-            ctx.fillStyle = bgColor;
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = isLight ? '#f8fafc' : '#080e27';
             ctx.fillRect(0, 0, width, height);
 
             // Subtle navy vignette gradient across canvas
-            const grad = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, Math.max(width, height) * 0.75);
-            grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
-            grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, width, height);
+            // 1. Update & Render Gravitational Shockwaves
+            for (let i = shockwaves.length - 1; i >= 0; i--) {
+                const sw = shockwaves[i];
+                sw.radius += dt * 380;
+                sw.power *= 0.95;
 
-            // 1. Propagate Shockwaves
-            for (let s = shockwaves.length - 1; s >= 0; s--) {
-                const sw = shockwaves[s];
-                sw.radius += 420 * dt;
-                sw.power *= Math.pow(0.12, dt);
-                if (sw.radius > sw.maxRadius || sw.power < 0.01) {
-                    shockwaves.splice(s, 1);
+                if (sw.radius >= sw.maxRadius || sw.power < 0.02) {
+                    shockwaves.splice(i, 1);
+                    continue;
                 }
+
+                ctx.strokeStyle = isLight
+                    ? `rgba(2, 132, 199, ${sw.power * 0.45})`
+                    : `rgba(56, 189, 248, ${sw.power * 0.45})`;
+                ctx.lineWidth = Math.max(1, sw.power * 3);
+                ctx.beginPath();
+                ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+                ctx.stroke();
             }
 
-            // 2. Physics Step (Hooke's Spring-Mass Lattice)
+            // 2. Physics Update (Hooke's Spring Lattice + Touch Drag Inertia)
             const SPRING_K = 26;
             const DAMPING = 0.86;
 
@@ -277,13 +281,13 @@ export function KineticMatrix({
                     if (c < cols - 1) {
                         const rightIdx = (c + 1) * rows + r;
                         const nr = nodes[rightIdx];
-                        if (nr) drawLatticeLink(ctx, n, nr, spacing, isMobile);
+                        if (nr) drawLatticeLink(ctx, n, nr, spacing, isMobile, isLight);
                     }
 
                     if (r < rows - 1) {
                         const downIdx = c * rows + (r + 1);
                         const nd = nodes[downIdx];
-                        if (nd) drawLatticeLink(ctx, n, nd, spacing, isMobile);
+                        if (nd) drawLatticeLink(ctx, n, nd, spacing, isMobile, isLight);
                     }
                 }
             }
@@ -305,7 +309,9 @@ export function KineticMatrix({
                 const px = n1.x + (n2.x - n1.x) * pulse.progress;
                 const py = n1.y + (n2.y - n1.y) * pulse.progress;
 
-                ctx.fillStyle = isMobile ? 'rgba(56, 189, 248, 0.5)' : '#38bdf8';
+                ctx.fillStyle = isLight
+                    ? (isMobile ? 'rgba(2, 132, 199, 0.6)' : '#0284c7')
+                    : (isMobile ? 'rgba(56, 189, 248, 0.5)' : '#38bdf8');
                 ctx.beginPath();
                 ctx.arc(px, py, isMobile ? 1.4 : 2.0, 0, Math.PI * 2);
                 ctx.fill();
@@ -330,9 +336,15 @@ export function KineticMatrix({
                     ctx.fill();
                 }
 
-                ctx.fillStyle = isNear || n.tension > 0.1
-                    ? (isMobile ? 'rgba(255, 255, 255, 0.7)' : '#ffffff')
-                    : (isMobile ? 'rgba(56, 189, 248, 0.18)' : 'rgba(56, 189, 248, 0.28)');
+                if (isLight) {
+                    ctx.fillStyle = isNear || n.tension > 0.1
+                        ? '#0284c7'
+                        : (isMobile ? 'rgba(71, 85, 105, 0.25)' : 'rgba(71, 85, 105, 0.35)');
+                } else {
+                    ctx.fillStyle = isNear || n.tension > 0.1
+                        ? (isMobile ? 'rgba(255, 255, 255, 0.7)' : '#ffffff')
+                        : (isMobile ? 'rgba(56, 189, 248, 0.18)' : 'rgba(56, 189, 248, 0.28)');
+                }
 
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, Math.max(0.7, currentRadius), 0, Math.PI * 2);
@@ -342,14 +354,16 @@ export function KineticMatrix({
                     const radarRing = ((n.pulsePhase * 20) % 32) + 4;
                     const ringAlpha = (1 - radarRing / 36) * 0.35;
 
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${ringAlpha})`;
+                    ctx.strokeStyle = isLight
+                        ? `rgba(2, 132, 199, ${ringAlpha})`
+                        : `rgba(56, 189, 248, ${ringAlpha})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.arc(n.x, n.y, radarRing, 0, Math.PI * 2);
                     ctx.stroke();
 
                     ctx.font = '8px ui-monospace, SFMono-Regular, Consolas, monospace';
-                    ctx.fillStyle = 'rgba(56, 189, 248, 0.8)';
+                    ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.9)' : 'rgba(56, 189, 248, 0.8)';
                     ctx.fillText(n.label, n.x + 9, n.y - 9);
                 }
             }
@@ -359,14 +373,15 @@ export function KineticMatrix({
 
         animId = requestAnimationFrame(render);
         return () => cancelAnimationFrame(animId);
-    }, [isRunning]);
+    }, [isRunning, theme]);
 
     const drawLatticeLink = (
         ctx: CanvasRenderingContext2D,
         n1: MatrixNode,
         n2: MatrixNode,
         restLen: number,
-        isMobile: boolean
+        isMobile: boolean,
+        isLight: boolean = false
     ) => {
         const dx = n1.x - n2.x;
         const dy = n1.y - n2.y;
@@ -376,10 +391,18 @@ export function KineticMatrix({
 
         if (isTensioned) {
             const glow = Math.max(n1.tension, n2.tension, stretch * 2);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
+            if (isLight) {
+                ctx.strokeStyle = `rgba(2, 132, 199, ${Math.min(0.75, (isMobile ? 0.3 : 0.38) + glow * 0.5)})`;
+            } else {
+                ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
+            }
             ctx.lineWidth = isMobile ? 0.7 : (0.8 + glow * 1.2);
         } else {
-            ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
+            if (isLight) {
+                ctx.strokeStyle = isMobile ? 'rgba(148, 163, 184, 0.15)' : 'rgba(148, 163, 184, 0.22)';
+            } else {
+                ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
+            }
             ctx.lineWidth = 0.5;
         }
 
@@ -399,30 +422,45 @@ export function KineticMatrix({
     };
 
     const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (!e.touches[0]) return;
         const container = containerRef.current;
-        if (!container || !e.touches[0]) return;
+        if (!container) return;
 
         const rect = container.getBoundingClientRect();
         pointerRef.current.x = e.touches[0].clientX - rect.left;
         pointerRef.current.y = e.touches[0].clientY - rect.top;
     };
 
-    const handlePointerDown = (e: React.MouseEvent<HTMLDivElement>) => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        pointerRef.current.isDown = true;
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
+    const triggerShockwave = (x: number, y: number, power: number = 1.0) => {
+        const { width, height } = dimensionsRef.current;
         shockwavesRef.current.push({
             x,
             y,
             radius: 8,
-            maxRadius: 360,
-            power: 1.2,
+            maxRadius: Math.max(width, height) * 0.75,
+            power,
         });
+    };
+
+    const handlePointerDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const rect = container.getBoundingClientRect();
+        pointerRef.current.isDown = true;
+        triggerShockwave(e.clientX - rect.left, e.clientY - rect.top, 1.2);
+    };
+
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (!e.touches[0]) return;
+        const container = containerRef.current;
+        if (!container) return;
+
+        const rect = container.getBoundingClientRect();
+        pointerRef.current.isDown = true;
+        pointerRef.current.x = e.touches[0].clientX - rect.left;
+        pointerRef.current.y = e.touches[0].clientY - rect.top;
+        triggerShockwave(e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top, 1.0);
     };
 
     const handlePointerUp = () => {
@@ -437,63 +475,60 @@ export function KineticMatrix({
 
     const triggerCentralImpulse = () => {
         const { width, height } = dimensionsRef.current;
-        shockwavesRef.current.push({
-            x: width / 2,
-            y: height / 2,
-            radius: 10,
-            maxRadius: Math.max(width, height) * 0.85,
-            power: 1.5,
-        });
+        triggerShockwave(width / 2, height / 2, 1.5);
     };
 
     return (
         <section
-            id="hero"
             ref={containerRef}
+            id="hero"
+            aria-label="Framify Interactive Kinetic Matrix Hero"
             onMouseMove={handlePointerMove}
             onTouchMove={handleTouchMove}
             onMouseDown={handlePointerDown}
             onMouseUp={handlePointerUp}
             onMouseLeave={handlePointerLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handlePointerUp}
             className={cn(
-                "relative min-h-screen w-full select-none overflow-hidden bg-[#080e27] pt-24 sm:pt-28 pb-12 flex flex-col justify-between border-b border-sky-500/15",
+                "relative min-h-[92vh] sm:min-h-[95vh] w-full flex flex-col justify-between overflow-hidden pt-20 pb-8 select-none bg-slate-50 dark:bg-[#080e27] border-b border-slate-200 dark:border-sky-500/15 transition-colors duration-300",
                 className
             )}
         >
             {/* Absolute Edge-to-Edge Canvas covering entire hero area */}
-            <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0 opacity-60 sm:opacity-85" />
+            <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0 opacity-70 sm:opacity-90" />
 
             {/* Subtle Vignette Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#080e27]/40 via-transparent to-[#080e27]/80 pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-100/40 via-transparent to-slate-100/90 dark:from-[#080e27]/40 dark:via-transparent dark:to-[#080e27]/80 pointer-events-none z-10" />
 
             {/* Top Interactive Physics Controls Bar */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
                 <div className="flex items-center justify-between gap-2">
                     {/* Location Badge */}
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-[#0c1844]/90 px-3 py-1 backdrop-blur-md text-[11px] font-mono text-cyan-300 shadow-sm">
-                        <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
-                        <span className="font-semibold">FRAMIFY</span>
-                        <span className="text-slate-400 hidden sm:inline">| Kottayam, Karukachal 686540, Kerala</span>
-                        <span className="text-slate-400 sm:hidden">| Kerala</span>
+                    <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-sky-500/25 bg-white/90 dark:bg-[#0c1844]/90 px-3 py-1 backdrop-blur-md text-[11px] font-mono text-slate-700 dark:text-cyan-300 shadow-sm">
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-500 animate-ping shrink-0" />
+                        <span className="font-semibold text-slate-900 dark:text-cyan-300">FRAMIFY</span>
+                        <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">| Kottayam, Karukachal 686540, Kerala</span>
+                        <span className="text-slate-500 dark:text-slate-400 sm:hidden">| Kerala</span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
                         <button
                             type="button"
                             onClick={triggerCentralImpulse}
-                            className="flex items-center gap-1 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white active:scale-95 shadow-md"
+                            className="flex items-center gap-1 rounded-lg border border-slate-200 dark:border-sky-500/30 bg-white/90 dark:bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-700 dark:text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-slate-100 dark:hover:bg-[#152766] hover:text-cyan-600 dark:hover:text-white active:scale-95 shadow-sm"
                             title="Trigger Kinetic Shockwave"
                         >
-                            <Sparkles className="size-3 text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
+                            <Sparkles className="size-3 text-cyan-500 dark:text-cyan-400 animate-spin" style={{ animationDuration: '4s' }} />
                             <span>PULSE</span>
                         </button>
 
                         <button
                             type="button"
                             onClick={() => setIsRunning((prev) => !prev)}
-                            className="flex items-center gap-1 rounded-lg border border-sky-500/30 bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-[#152766] hover:text-white active:scale-95 shadow-md"
+                            className="flex items-center gap-1 rounded-lg border border-slate-200 dark:border-sky-500/30 bg-white/90 dark:bg-[#0c1844]/90 px-2.5 py-1 text-[10px] sm:text-xs font-mono text-slate-700 dark:text-slate-200 backdrop-blur-md transition-all hover:border-cyan-400 hover:bg-slate-100 dark:hover:bg-[#152766] hover:text-cyan-600 dark:hover:text-white active:scale-95 shadow-sm"
                         >
-                            {isRunning ? <Pause className="size-3 text-amber-400" /> : <Play className="size-3 text-emerald-400" />}
+                            {isRunning ? <Pause className="size-3 text-amber-500" /> : <Play className="size-3 text-emerald-500" />}
                             <span className="font-mono text-[10px]">{isRunning ? "FREEZE" : "RUN"}</span>
                         </button>
                     </div>
@@ -502,17 +537,17 @@ export function KineticMatrix({
 
             {/* Center Content Deck with Clean Typography & Matched CTA Buttons */}
             <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 my-auto text-center py-6">
-                <div className="rounded-3xl bg-[#080e27]/70 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none p-5 sm:p-0 border border-sky-500/15 sm:border-none shadow-2xl sm:shadow-none">
+                <div className="rounded-3xl bg-white/85 dark:bg-[#080e27]/70 sm:bg-white/70 sm:dark:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-5 sm:p-0 border border-slate-200/90 dark:border-sky-500/15 sm:border-none shadow-xl dark:shadow-2xl sm:shadow-none">
                     {/* Brand Tagline Badge */}
-                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-[#0c1844]/90 px-3.5 py-1 mb-5 backdrop-blur-md shadow-md">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 dark:bg-[#0c1844]/90 px-3.5 py-1 mb-5 backdrop-blur-md shadow-sm">
                         <span className="text-xs sm:text-sm">🎨</span>
-                        <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-cyan-200">
+                        <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-sky-800 dark:text-cyan-200">
                             Graphic Design & Branding – Kerala
                         </span>
                     </div>
 
                     {/* Main Headline */}
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.15] mb-4 font-sans drop-shadow-md">
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white uppercase leading-[1.15] mb-4 font-sans drop-shadow-sm">
                         We Don’t Just Create Content,{" "}
                         <span className="gradient-text-brand block mt-1">
                             We Build Growth Systems.
@@ -520,26 +555,26 @@ export function KineticMatrix({
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-200 font-normal leading-relaxed mb-6">
-                        Smart businesses create systems. We craft high-impact <strong className="text-white font-semibold">Logos</strong>, viral <strong className="text-white font-semibold">Reels</strong>, commercial <strong className="text-white font-semibold">Posters</strong>, and high-CTR <strong className="text-white font-semibold">Thumbnails</strong> designed to grow your brand.
+                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-600 dark:text-slate-200 font-normal leading-relaxed mb-6">
+                        Smart businesses create systems. We craft high-impact <strong className="text-slate-900 dark:text-white font-semibold">Logos</strong>, viral <strong className="text-slate-900 dark:text-white font-semibold">Reels</strong>, commercial <strong className="text-slate-900 dark:text-white font-semibold">Posters</strong>, and high-CTR <strong className="text-slate-900 dark:text-white font-semibold">Thumbnails</strong> designed to grow your brand.
                     </p>
 
                     {/* 4 Core Offerings Pill Strip */}
                     <div className="flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto mb-8">
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Palette className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white/95 dark:bg-[#0c1844]/95 border border-slate-200 dark:border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Palette className="size-3 text-cyan-500 dark:text-cyan-400" />
                             <span>Logos & Branding</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Video className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white/95 dark:bg-[#0c1844]/95 border border-slate-200 dark:border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Video className="size-3 text-cyan-500 dark:text-cyan-400" />
                             <span>Reels & Video</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Layout className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white/95 dark:bg-[#0c1844]/95 border border-slate-200 dark:border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Layout className="size-3 text-cyan-500 dark:text-cyan-400" />
                             <span>Social Posters</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <ImageIcon className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white/95 dark:bg-[#0c1844]/95 border border-slate-200 dark:border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <ImageIcon className="size-3 text-cyan-500 dark:text-cyan-400" />
                             <span>Thumbnails</span>
                         </a>
                     </div>
@@ -550,7 +585,7 @@ export function KineticMatrix({
                             href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20discuss%20a%20project."
                             target="_blank"
                             rel="noreferrer"
-                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/25 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <MessageCircle className="size-4 shrink-0" />
                             <span>Chat on WhatsApp</span>
@@ -569,8 +604,8 @@ export function KineticMatrix({
 
             {/* Bottom Status Tag */}
             <div className="relative z-20 text-center pointer-events-none mt-4">
-                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-slate-400 bg-[#080e27]/90 px-3.5 py-1 rounded-full border border-sky-500/15">
-                    <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-slate-600 dark:text-slate-400 bg-white/90 dark:bg-[#080e27]/90 px-3.5 py-1 rounded-full border border-slate-200 dark:border-sky-500/15 shadow-sm">
+                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     <span>Accepting Projects Across Kerala & Online</span>
                 </span>
             </div>

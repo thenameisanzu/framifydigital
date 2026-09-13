@@ -39,15 +39,19 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${mono.variable} dark scroll-smooth`}>
-      <body className="font-sans antialiased bg-[#080e27] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-navy-950">
-        {children}
+    <html lang="en" className={`${jakarta.variable} ${mono.variable} dark scroll-smooth`} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-white dark:bg-[#080e27] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white transition-colors duration-300">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -55,21 +55,21 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section id="framework" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
+    <section id="framework" className="relative w-full py-20 bg-white dark:bg-[#060a1d] border-b border-slate-200 dark:border-sky-500/15 overflow-hidden transition-colors duration-300">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 right-0 size-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-0 size-96 rounded-full bg-blue-500/5 dark:bg-blue-600/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
-            <Sparkles className="size-3.5 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-sky-500/25 bg-slate-100 dark:bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-700 dark:text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
+            <Sparkles className="size-3.5 text-cyan-500 dark:text-cyan-400" />
             <span>HOW IT WORKS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Smart Businesses <span className="gradient-text-cyan">Create Systems</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300">
+          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
             A proven 4-step creative workflow from brand concept to consistent digital growth.
           </p>
         </div>
@@ -81,32 +81,32 @@ export function Process() {
             return (
               <div
                 key={step.step}
-                className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-slate-200 dark:border-sky-500/15 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-black font-mono text-cyan-400/70 group-hover:text-cyan-300 transition-colors">
+                    <span className="text-2xl font-black font-mono text-cyan-600/70 dark:text-cyan-400/70 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                       {step.step}
                     </span>
                   </div>
 
-                  <div className="size-11 rounded-xl bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all">
+                  <div className="size-11 rounded-xl bg-slate-100 dark:bg-[#0c1844] border border-slate-200 dark:border-sky-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-4 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-sm">
                     <Icon className="size-5" />
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                     {step.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-sky-500/15 space-y-1.5">
+                <div className="pt-3 border-t border-slate-200 dark:border-sky-500/15 space-y-1.5">
                   {step.deliverables.map((d, i) => (
-                    <div key={i} className="flex items-start gap-1.5 text-xs text-slate-300">
-                      <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                    <div key={i} className="flex items-start gap-1.5 text-xs text-slate-600 dark:text-slate-300">
+                      <CheckCircle2 className="size-3.5 text-cyan-500 dark:text-cyan-400 shrink-0 mt-0.5" />
                       <span>{d}</span>
                     </div>
                   ))}
