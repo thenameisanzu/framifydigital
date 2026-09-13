@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Sparkles, Play, Pause, ArrowRight, MessageCircle, Phone, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
-import InstagramIcon from './InstagramIcon';
+import { Sparkles, Play, Pause, ArrowRight, MessageCircle, Palette, Video, Image as ImageIcon, Layout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MatrixNode {
@@ -55,22 +54,24 @@ export function KineticMatrix({
         prevY: -2000,
         vx: 0,
         vy: 0,
-        radius: 220,
+        radius: 240,
         isDown: false,
     });
 
     const nodesRef = useRef<MatrixNode[]>([]);
     const pulsesRef = useRef<SynapticPulse[]>([]);
     const shockwavesRef = useRef<GravitationalShockwave[]>([]);
-    const dimensionsRef = useRef({ width: 0, height: 0, cols: 0, rows: 0, spacing: 56 });
+    const dimensionsRef = useRef({ width: 0, height: 0, cols: 0, rows: 0, spacing: 54 });
 
-    // Grid lattice initializer
+    // Grid lattice initializer that guarantees full edge-to-edge coverage past bottom and right edges
     const buildLattice = useCallback((width: number, height: number) => {
-        // Adjust spacing based on mobile vs desktop
+        if (!width || !height) return;
         const isMobile = width < 640;
-        const spacing = isMobile ? 68 : 56;
-        const cols = Math.ceil(width / spacing) + 1;
-        const rows = Math.ceil(height / spacing) + 1;
+        const spacing = isMobile ? 60 : 52;
+        
+        // Add extra rows and cols to guarantee 100% full background coverage on all aspect ratios
+        const cols = Math.ceil(width / spacing) + 3;
+        const rows = Math.ceil(height / spacing) + 3;
         const nodes: MatrixNode[] = [];
 
         for (let c = 0; c < cols; c++) {
@@ -86,7 +87,7 @@ export function KineticMatrix({
                     baseY: y,
                     col: c,
                     row: r,
-                    radius: isMobile ? 1.0 : 1.3,
+                    radius: isMobile ? 1.0 : 1.35,
                     label: `0x${((c * 17 + r * 31) % 256).toString(16).padStart(2, '0').toUpperCase()}`,
                     tension: 0,
                     pulsePhase: Math.random() * Math.PI * 2,
@@ -99,7 +100,7 @@ export function KineticMatrix({
         pulsesRef.current = [];
     }, []);
 
-    // Canvas Resize Observer with subpixel rounding correction
+    // Canvas Resize Observer with exact container bounding
     useEffect(() => {
         const container = containerRef.current;
         const canvas = canvasRef.current;
@@ -108,20 +109,19 @@ export function KineticMatrix({
         const ctx = canvas.getContext('2d', { alpha: false });
         if (!ctx) return;
 
-        const resizeObserver = new ResizeObserver((entries) => {
-            for (const entry of entries) {
-                const rect = entry.contentRect;
-                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const resizeObserver = new ResizeObserver(() => {
+            const width = container.offsetWidth || window.innerWidth;
+            const height = container.offsetHeight || window.innerHeight;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-                canvas.width = Math.floor(rect.width * dpr);
-                canvas.height = Math.floor(rect.height * dpr);
-                canvas.style.width = `${rect.width}px`;
-                canvas.style.height = `${rect.height}px`;
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
 
-                ctx.setTransform(1, 0, 0, 1, 0, 0);
-                ctx.scale(dpr, dpr);
-                buildLattice(rect.width, rect.height);
-            }
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
+            buildLattice(width, height);
         });
 
         resizeObserver.observe(container);
@@ -165,15 +165,15 @@ export function KineticMatrix({
 
             // Framify Deep Navy Background & Subtle Ambience
             const bgColor = '#080e27';
-            const nodeColor = isMobile ? '56, 189, 248' : '56, 189, 248';
+            const nodeColor = '56, 189, 248';
             const accentGlow = '56, 189, 248';
 
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, width, height);
 
-            // Subtle navy vignette gradient on canvas
-            const grad = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, Math.max(width, height) * 0.7);
-            grad.addColorStop(0, 'rgba(12, 24, 68, 0.4)');
+            // Subtle navy vignette gradient across canvas
+            const grad = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, Math.max(width, height) * 0.75);
+            grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
             grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, width, height);
@@ -239,7 +239,7 @@ export function KineticMatrix({
                 n.tension = Math.max(0, n.tension - dt * 0.9);
             }
 
-            // 3. Spawn Random Synaptic Traveling Pulses (fewer on mobile)
+            // 3. Spawn Random Synaptic Traveling Pulses
             const maxPulses = isMobile ? 18 : 35;
             if (Math.random() < (isMobile ? 0.15 : 0.28) && nodes.length > 0 && pulses.length < maxPulses) {
                 const fromIdx = Math.floor(Math.random() * nodes.length);
@@ -305,13 +305,13 @@ export function KineticMatrix({
                 const px = n1.x + (n2.x - n1.x) * pulse.progress;
                 const py = n1.y + (n2.y - n1.y) * pulse.progress;
 
-                ctx.fillStyle = isMobile ? 'rgba(56, 189, 248, 0.4)' : '#38bdf8';
+                ctx.fillStyle = isMobile ? 'rgba(56, 189, 248, 0.5)' : '#38bdf8';
                 ctx.beginPath();
                 ctx.arc(px, py, isMobile ? 1.4 : 2.0, 0, Math.PI * 2);
                 ctx.fill();
             }
 
-            // 6. Render Nodes (Subtle on mobile so it doesn't obstruct reading)
+            // 6. Render Nodes
             for (let i = 0; i < nodes.length; i++) {
                 const n = nodes[i];
                 const dx = pointer.x - n.x;
@@ -331,8 +331,8 @@ export function KineticMatrix({
                 }
 
                 ctx.fillStyle = isNear || n.tension > 0.1
-                    ? (isMobile ? 'rgba(255, 255, 255, 0.6)' : '#ffffff')
-                    : (isMobile ? 'rgba(56, 189, 248, 0.15)' : 'rgba(56, 189, 248, 0.25)');
+                    ? (isMobile ? 'rgba(255, 255, 255, 0.7)' : '#ffffff')
+                    : (isMobile ? 'rgba(56, 189, 248, 0.18)' : 'rgba(56, 189, 248, 0.28)');
 
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, Math.max(0.7, currentRadius), 0, Math.PI * 2);
@@ -376,10 +376,10 @@ export function KineticMatrix({
 
         if (isTensioned) {
             const glow = Math.max(n1.tension, n2.tension, stretch * 2);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.6, (isMobile ? 0.15 : 0.25) + glow * 0.5)})`;
+            ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
             ctx.lineWidth = isMobile ? 0.7 : (0.8 + glow * 1.2);
         } else {
-            ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.04)' : 'rgba(56, 189, 248, 0.07)';
+            ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
             ctx.lineWidth = 0.5;
         }
 
@@ -456,20 +456,20 @@ export function KineticMatrix({
             onMouseUp={handlePointerUp}
             onMouseLeave={handlePointerLeave}
             className={cn(
-                "relative min-h-[90vh] lg:min-h-screen w-full select-none overflow-hidden bg-[#080e27] pt-20 sm:pt-24 pb-10 sm:pb-12 flex flex-col justify-between border-b border-sky-500/15",
+                "relative min-h-screen w-full select-none overflow-hidden bg-[#080e27] pt-24 sm:pt-28 pb-12 flex flex-col justify-between border-b border-sky-500/15",
                 className
             )}
         >
-            {/* Edge-to-Edge Canvas (subtler opacity on mobile) */}
-            <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0 opacity-40 sm:opacity-85" />
+            {/* Absolute Edge-to-Edge Canvas covering entire hero area */}
+            <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0 opacity-60 sm:opacity-85" />
 
-            {/* Dark Radial Center Vignette - Protects text readability from background lines */}
-            <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-[#080e27]/85 via-[#080e27]/70 to-[#080e27]/95 pointer-events-none z-10" />
+            {/* Subtle Vignette Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#080e27]/40 via-transparent to-[#080e27]/80 pointer-events-none z-10" />
 
             {/* Top Interactive Physics Controls Bar */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
                 <div className="flex items-center justify-between gap-2">
-                    {/* Location Badge - Clean and responsive */}
+                    {/* Location Badge */}
                     <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-[#0c1844]/90 px-3 py-1 backdrop-blur-md text-[11px] font-mono text-cyan-300 shadow-sm">
                         <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
                         <span className="font-semibold">FRAMIFY</span>
@@ -500,76 +500,76 @@ export function KineticMatrix({
                 </div>
             </div>
 
-            {/* Center Content Deck with Enhanced Background Backdrop for 100% Mobile Readability */}
-            <div className="relative z-20 w-full max-w-3xl mx-auto px-4 sm:px-6 my-auto text-center py-4 sm:py-6">
-                <div className="rounded-3xl bg-[#080e27]/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-5 sm:p-0 border border-sky-500/20 sm:border-none shadow-2xl sm:shadow-none">
+            {/* Center Content Deck with Clean Typography & Matched CTA Buttons */}
+            <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 my-auto text-center py-6">
+                <div className="rounded-3xl bg-[#080e27]/70 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none p-5 sm:p-0 border border-sky-500/15 sm:border-none shadow-2xl sm:shadow-none">
                     {/* Brand Tagline Badge */}
-                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-[#0c1844]/90 px-3.5 py-1 mb-4 sm:mb-5 backdrop-blur-md shadow-md">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-[#0c1844]/90 px-3.5 py-1 mb-5 backdrop-blur-md shadow-md">
                         <span className="text-xs sm:text-sm">🎨</span>
                         <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-cyan-200">
                             Graphic Design & Branding – Kerala
                         </span>
                     </div>
 
-                    {/* Main Headline - Clean, High Contrast & Responsive */}
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase leading-[1.2] mb-3 sm:mb-4 font-sans drop-shadow-md">
+                    {/* Main Headline */}
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.15] mb-4 font-sans drop-shadow-md">
                         We Don’t Just Create Content,{" "}
                         <span className="gradient-text-brand block mt-1">
                             We Build Growth Systems.
                         </span>
                     </h1>
 
-                    {/* Subtitle with High-Contrast Text */}
-                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-200 font-normal leading-relaxed mb-5 sm:mb-6">
+                    {/* Subtitle */}
+                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-200 font-normal leading-relaxed mb-6">
                         Smart businesses create systems. We craft high-impact <strong className="text-white font-semibold">Logos</strong>, viral <strong className="text-white font-semibold">Reels</strong>, commercial <strong className="text-white font-semibold">Posters</strong>, and high-CTR <strong className="text-white font-semibold">Thumbnails</strong> designed to grow your brand.
                     </p>
 
                     {/* 4 Core Offerings Pill Strip */}
-                    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-xl mx-auto mb-6 sm:mb-8">
-                        <a href="#services" className="inline-flex items-center gap-1 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
+                    <div className="flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto mb-8">
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
                             <Palette className="size-3 text-cyan-400" />
                             <span>Logos & Branding</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
                             <Video className="size-3 text-cyan-400" />
                             <span>Reels & Video</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
                             <Layout className="size-3 text-cyan-400" />
                             <span>Social Posters</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-2.5 py-1 text-[11px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
                             <ImageIcon className="size-3 text-cyan-400" />
                             <span>Thumbnails</span>
                         </a>
                     </div>
 
-                    {/* Direct Authentic Actions */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 max-w-md mx-auto">
+                    {/* Aligned, Fixed-Height, Single-Line CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-xl mx-auto">
                         <a
-                            href="https://wa.me/919447520844?text=Hi%20Framify,%20I%20want%20to%20discuss%20a%20design%20and%20marketing%20project."
+                            href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20discuss%20a%20project."
                             target="_blank"
                             rel="noreferrer"
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95"
+                            className="w-full sm:w-auto min-w-[220px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
-                            <MessageCircle className="size-4" />
+                            <MessageCircle className="size-4 shrink-0" />
                             <span>WhatsApp: +91 94475 20844</span>
                         </a>
 
                         <a
                             href="#contact"
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-5 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95"
+                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <span>Request a Quote</span>
-                            <ArrowRight className="size-3.5" />
+                            <ArrowRight className="size-4 shrink-0" />
                         </a>
                     </div>
                 </div>
             </div>
 
             {/* Bottom Status Tag */}
-            <div className="relative z-20 text-center pointer-events-none">
-                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-slate-400 bg-[#080e27]/90 px-3 py-0.5 rounded-full border border-sky-500/15">
+            <div className="relative z-20 text-center pointer-events-none mt-4">
+                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-slate-400 bg-[#080e27]/90 px-3.5 py-1 rounded-full border border-sky-500/15">
                     <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>Accepting Projects Across Kerala & Online</span>
                 </span>
