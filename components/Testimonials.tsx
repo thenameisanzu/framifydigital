@@ -88,6 +88,86 @@ const TESTIMONIALS_DATA: TestimonialItem[] = [
     service: "Visual Guidelines & Posters",
     imgSrc: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&h=200&q=80",
   },
+  {
+    tempId: 7,
+    testimonial: "Framify built our entire visual brand system from scratch. The aesthetic is clean, modern, and easily beats multinational agency work.",
+    by: "Deepak V.",
+    role: "Co-Founder, Urban Brews",
+    location: "Calicut, Kerala",
+    rating: 5,
+    service: "Complete Brand Identity",
+    imgSrc: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 8,
+    testimonial: "The video pacing and sound engineering in our product reveal reels helped us cross 500+ pre-orders in the first 48 hours.",
+    by: "Reshma S.",
+    role: "Product Lead, Aura Organics",
+    location: "Kochi, Kerala",
+    rating: 5,
+    service: "Product Launch Reels",
+    imgSrc: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 9,
+    testimonial: "Extremely reliable turnaround. We needed 15 event posters during festival week and Framify delivered every single creative on time.",
+    by: "Mathew Varghese",
+    role: "Events Director, Grand Festive Events",
+    location: "Kottayam, Kerala",
+    rating: 5,
+    service: "Festival Creatives Pack",
+    imgSrc: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 10,
+    testimonial: "Our channel growth jumped 300% after Framify redesigned our video hooks and thumbnail typography. Best investment for creators.",
+    by: "Arun Joseph",
+    role: "Finance & Creator Educator",
+    location: "Kerala & Online",
+    rating: 5,
+    service: "Thumbnails & Reel Hooks",
+    imgSrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 11,
+    testimonial: "Top-notch vector craft. The icon mark works flawlessly on physical neon signage, business cards, and digital apps alike.",
+    by: "Kavya R.",
+    role: "CEO, Nexora Technologies",
+    location: "Trivandrum, Kerala",
+    rating: 5,
+    service: "Vector Brand Icon",
+    imgSrc: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 12,
+    testimonial: "Professional, responsive, and creative. They understand what sells on Instagram and how to capture short attention spans.",
+    by: "Gokul Krishna",
+    role: "Marketing Head, Elite Automotive",
+    location: "Kollam, Kerala",
+    rating: 5,
+    service: "Automotive Social Reels",
+    imgSrc: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 13,
+    testimonial: "Our restaurant's daily story engagement tripled with Framify's animated motion graphics. Highly recommended!",
+    by: "Pooja Pillai",
+    role: "Hospitality Manager, Spice Garden",
+    location: "Alappuzha, Kerala",
+    rating: 5,
+    service: "Food Motion Creatives",
+    imgSrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&h=200&q=80",
+  },
+  {
+    tempId: 14,
+    testimonial: "Framify gave our academy a premium corporate look. Students and parents immediately noticed the quality leap.",
+    by: "Sujith Nair",
+    role: "Director, Global IELTS Institute",
+    location: "Kottayam, Kerala",
+    rating: 5,
+    service: "Educational Ad Creatives",
+    imgSrc: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=200&h=200&q=80",
+  },
 ];
 
 interface TestimonialCardProps {
@@ -120,7 +200,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         clipPath: `polygon(45px 0%, calc(100% - 45px) 0%, 100% 45px, 100% 100%, calc(100% - 45px) 100%, 45px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize / 1.5) * position}px)
+          translateX(${(cardSize / 1.4) * position}px)
           translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
           rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
         `,
@@ -231,9 +311,9 @@ export function Testimonials() {
       {/* Background Ambience Orbs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-blue-900/15 blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="reveal text-center max-w-3xl mx-auto mb-10">
+      {/* Header Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-8">
+        <div className="reveal text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
             <Quote className="size-3.5 text-cyan-400" />
             <span>CLIENT EXPERIENCES</span>
@@ -245,47 +325,47 @@ export function Testimonials() {
             Click any card or use navigation arrows to explore real results and client feedback.
           </p>
         </div>
+      </div>
 
-        {/* 3D Staggered Carousel Area */}
-        <div className="relative w-full overflow-hidden" style={{ height: 560 }}>
-          {testimonialsList.map((testimonial, index) => {
-            const position = testimonialsList.length % 2
-              ? index - (testimonialsList.length + 1) / 2
-              : index - testimonialsList.length / 2;
-            return (
-              <TestimonialCard
-                key={testimonial.tempId}
-                testimonial={testimonial}
-                handleMove={handleMove}
-                position={position}
-                cardSize={cardSize}
-              />
-            );
-          })}
+      {/* 3D Staggered Carousel Area - Full-Bleed Edge-to-Edge */}
+      <div className="relative w-full overflow-hidden" style={{ height: 570 }}>
+        {testimonialsList.map((testimonial, index) => {
+          const position = testimonialsList.length % 2
+            ? index - (testimonialsList.length + 1) / 2
+            : index - testimonialsList.length / 2;
+          return (
+            <TestimonialCard
+              key={testimonial.tempId}
+              testimonial={testimonial}
+              handleMove={handleMove}
+              position={position}
+              cardSize={cardSize}
+            />
+          );
+        })}
 
-          {/* Center Bottom Control Buttons */}
-          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-3 z-30">
-            <button
-              onClick={() => handleMove(-1)}
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
-                "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
-              )}
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="size-6" />
-            </button>
-            <button
-              onClick={() => handleMove(1)}
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
-                "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
-              )}
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="size-6" />
-            </button>
-          </div>
+        {/* Center Bottom Control Buttons */}
+        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-3 z-30">
+          <button
+            onClick={() => handleMove(-1)}
+            className={cn(
+              "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
+              "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
+            )}
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="size-6" />
+          </button>
+          <button
+            onClick={() => handleMove(1)}
+            className={cn(
+              "flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-200 cursor-pointer shadow-lg active:scale-95",
+              "bg-[#0c1844] border-sky-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 hover:border-cyan-400 hover:shadow-cyan-500/30"
+            )}
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="size-6" />
+          </button>
         </div>
       </div>
     </section>
