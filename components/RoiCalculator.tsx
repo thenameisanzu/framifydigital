@@ -86,24 +86,25 @@ export function RoiCalculator() {
 
         {/* Package Selector Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {PACKAGES.map((pkg, index) => {
+          {PACKAGES.map((pkg) => {
             const Icon = pkg.icon;
             const isSelected = selectedPkg === pkg.id;
-            const delays = ["delay-100", "delay-150", "delay-200", "delay-250"];
             return (
               <button
                 key={pkg.id}
                 type="button"
                 onClick={() => setSelectedPkg(pkg.id)}
                 className={cn(
-                  "reveal p-5 rounded-2xl text-left border transition-all duration-200",
-                  delays[index % delays.length],
+                  "p-5 rounded-2xl text-left border transition-all duration-200 cursor-pointer",
                   isSelected
-                    ? "glass-card border-cyan-400 bg-[#0e2154]/80 shadow-lg shadow-cyan-950"
-                    : "bg-[#0c1844]/40 border-sky-500/15 hover:border-sky-400/30 text-slate-300"
+                    ? "glass-card border-cyan-400 bg-[#0e2154]/90 shadow-lg shadow-cyan-950/80 scale-[1.02]"
+                    : "bg-[#0c1844]/40 border-sky-500/15 hover:border-sky-400/40 hover:bg-[#0c1844]/70 text-slate-300"
                 )}
               >
-                <div className="size-10 rounded-xl bg-[#080e27] border border-sky-500/25 flex items-center justify-center text-cyan-400 mb-3">
+                <div className={cn(
+                  "size-10 rounded-xl border flex items-center justify-center mb-3 transition-colors",
+                  isSelected ? "bg-cyan-500/20 border-cyan-400 text-cyan-300" : "bg-[#080e27] border-sky-500/25 text-cyan-400"
+                )}>
                   <Icon className="size-5" />
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1">{pkg.name}</h3>
@@ -114,7 +115,7 @@ export function RoiCalculator() {
         </div>
 
         {/* Selected Package Details Box */}
-        <div className="reveal delay-200 glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto">
+        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto shadow-xl">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-sky-500/20">
             <div>
               <span className="text-xs font-mono uppercase text-cyan-400 font-semibold block">Selected Plan:</span>

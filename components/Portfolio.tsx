@@ -155,16 +155,12 @@ export function Portfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, index) => {
-            const delays = ["delay-100", "delay-150", "delay-200", "delay-250", "delay-300"];
+        <div className="reveal grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredItems.map((item) => {
             return (
               <div
                 key={item.id}
-                className={cn(
-                  "reveal group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300",
-                  delays[index % delays.length]
-                )}
+                className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 animate-in fade-in zoom-in-95 duration-200"
               >
               <div>
                 <span className="text-[11px] font-mono font-semibold text-cyan-400 uppercase tracking-wider bg-sky-950/80 px-2.5 py-0.5 rounded-md border border-sky-500/20 mb-3 inline-block">

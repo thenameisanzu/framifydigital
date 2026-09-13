@@ -69,16 +69,21 @@ export function SmoothScroll() {
       });
     };
 
-    // Initial observation + observation after DOM updates
+    // Initial observation
     observeElements();
-    const timeoutId = setTimeout(observeElements, 500);
+
+    // Observe DOM mutations for dynamically mounted elements
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
       document.removeEventListener('click', handleAnchorClick);
       revealObserver.disconnect();
-      clearTimeout(timeoutId);
+      mutationObserver.disconnect();
     };
   }, []);
 
