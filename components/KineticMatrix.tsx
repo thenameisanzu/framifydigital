@@ -473,35 +473,35 @@ export function KineticMatrix({
             {/* Absolute Edge-to-Edge Canvas covering entire hero area */}
             <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full cursor-crosshair z-0 opacity-60 sm:opacity-85" />
 
-            {/* Subtle Vignette Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#080e27]/40 via-transparent to-[#080e27]/80 pointer-events-none z-10" />
+            {/* Subtle Vignette Overlay for dark mode only */}
+            <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-[#080e27]/40 dark:via-transparent dark:to-[#080e27]/80 pointer-events-none z-10" />
 
             {/* Top Bar with Location Badge */}
             <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
                 <div className="flex items-center justify-start">
                     {/* Location Badge */}
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-[#0c1844]/90 px-3 py-1 backdrop-blur-md text-[11px] font-mono text-cyan-300 shadow-sm">
-                        <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
-                        <span className="font-semibold">FRAMIFY</span>
-                        <span className="text-slate-400 hidden sm:inline">| Kottayam, Karukachal 686540, Kerala</span>
-                        <span className="text-slate-400 sm:hidden">| Kerala</span>
+                    <div className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 dark:border-sky-500/25 bg-white/95 dark:bg-[#0c1844]/90 px-3.5 py-1 backdrop-blur-md text-[11px] font-mono text-slate-800 dark:text-cyan-300 shadow-sm">
+                        <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-ping shrink-0" />
+                        <span className="font-bold text-slate-900 dark:text-cyan-300">FRAMIFY</span>
+                        <span className="text-slate-600 dark:text-slate-400 hidden sm:inline">| Kottayam, Karukachal 686540, Kerala</span>
+                        <span className="text-slate-600 dark:text-slate-400 sm:hidden">| Kerala</span>
                     </div>
                 </div>
             </div>
 
             {/* Center Content Deck with Clean Typography & Matched CTA Buttons */}
             <div className="relative z-20 w-full max-w-4xl mx-auto px-4 sm:px-6 my-auto text-center py-6">
-                <div className="rounded-3xl bg-[#080e27]/70 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none p-5 sm:p-0 border border-sky-500/15 sm:border-none shadow-2xl sm:shadow-none">
+                <div className="rounded-3xl bg-white/90 dark:bg-[#080e27]/70 sm:bg-transparent dark:sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none p-5 sm:p-0 border border-slate-200 dark:border-sky-500/15 sm:border-none shadow-xl sm:shadow-none">
                     {/* Brand Tagline Badge */}
-                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-[#0c1844]/90 px-3.5 py-1 mb-5 backdrop-blur-md shadow-md">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-sky-500/30 bg-white/95 dark:bg-[#0c1844]/90 px-3.5 py-1 mb-5 backdrop-blur-md shadow-sm">
                         <span className="text-xs sm:text-sm">🎨</span>
-                        <span className="text-[11px] sm:text-xs font-semibold tracking-wide text-cyan-200">
+                        <span className="text-[11px] sm:text-xs font-bold tracking-wide text-slate-800 dark:text-cyan-200">
                             Graphic Design & Branding – Kerala
                         </span>
                     </div>
 
                     {/* Main Headline */}
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-[1.15] mb-4 font-sans drop-shadow-md">
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white uppercase leading-[1.15] mb-4 font-sans">
                         We Don’t Just Create Content,{" "}
                         <span className="gradient-text-brand block mt-1">
                             We Build Growth Systems.
@@ -509,26 +509,26 @@ export function KineticMatrix({
                     </h1>
 
                     {/* Subtitle */}
-                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-200 font-normal leading-relaxed mb-6">
-                        Smart businesses create systems. We craft high-impact <strong className="text-white font-semibold">Logos</strong>, viral <strong className="text-white font-semibold">Reels</strong>, commercial <strong className="text-white font-semibold">Posters</strong>, and high-CTR <strong className="text-white font-semibold">Thumbnails</strong> designed to grow your brand.
+                    <p className="max-w-xl mx-auto text-xs sm:text-base text-slate-700 dark:text-slate-200 font-medium leading-relaxed mb-6">
+                        Smart businesses create systems. We craft high-impact <strong className="text-slate-900 dark:text-white font-bold">Logos</strong>, viral <strong className="text-slate-900 dark:text-white font-bold">Reels</strong>, commercial <strong className="text-slate-900 dark:text-white font-bold">Posters</strong>, and high-CTR <strong className="text-slate-900 dark:text-white font-bold">Thumbnails</strong> designed to grow your brand.
                     </p>
 
                     {/* 4 Core Offerings Pill Strip */}
                     <div className="flex flex-wrap items-center justify-center gap-2 max-w-xl mx-auto mb-8">
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Palette className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white dark:bg-[#0c1844]/95 border border-slate-300 dark:border-sky-500/30 px-3 py-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Palette className="size-3 text-cyan-600 dark:text-cyan-400" />
                             <span>Logos & Branding</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Video className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white dark:bg-[#0c1844]/95 border border-slate-300 dark:border-sky-500/30 px-3 py-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Video className="size-3 text-cyan-600 dark:text-cyan-400" />
                             <span>Reels & Video</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <Layout className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white dark:bg-[#0c1844]/95 border border-slate-300 dark:border-sky-500/30 px-3 py-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <Layout className="size-3 text-cyan-600 dark:text-cyan-400" />
                             <span>Social Posters</span>
                         </a>
-                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-[#0c1844]/95 border border-sky-500/30 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-sm">
-                            <ImageIcon className="size-3 text-cyan-400" />
+                        <a href="#services" className="inline-flex items-center gap-1.5 rounded-lg bg-white dark:bg-[#0c1844]/95 border border-slate-300 dark:border-sky-500/30 px-3 py-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:border-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all shadow-sm">
+                            <ImageIcon className="size-3 text-cyan-600 dark:text-cyan-400" />
                             <span>Thumbnails</span>
                         </a>
                     </div>
@@ -539,7 +539,7 @@ export function KineticMatrix({
                             href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20discuss%20a%20project."
                             target="_blank"
                             rel="noreferrer"
-                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 via-green-600 to-teal-700 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <MessageCircle className="size-4 shrink-0" />
                             <span>Chat on WhatsApp</span>
@@ -547,7 +547,7 @@ export function KineticMatrix({
 
                         <a
                             href="#contact"
-                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <span>Request a Quote</span>
                             <ArrowRight className="size-4 shrink-0" />
@@ -558,8 +558,8 @@ export function KineticMatrix({
 
             {/* Bottom Status Tag */}
             <div className="relative z-20 text-center pointer-events-none mt-4">
-                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono text-slate-400 bg-[#080e27]/90 px-3.5 py-1 rounded-full border border-sky-500/15">
-                    <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-mono font-semibold text-slate-700 dark:text-slate-400 bg-white/95 dark:bg-[#080e27]/90 px-3.5 py-1 rounded-full border border-slate-300 dark:border-sky-500/15 shadow-sm">
+                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     <span>Accepting Projects Across Kerala & Online</span>
                 </span>
             </div>

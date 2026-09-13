@@ -119,7 +119,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-auto",
           isScrolled
-            ? "bg-[#080e27]/95 backdrop-blur-xl border-b border-sky-500/20 py-3 shadow-2xl shadow-blue-950/60"
+            ? "bg-white/95 dark:bg-[#080e27]/95 backdrop-blur-xl border-b border-slate-200 dark:border-sky-500/20 py-3 shadow-md dark:shadow-2xl shadow-slate-900/5 dark:shadow-blue-950/60"
             : "bg-transparent py-4 sm:py-5"
         )}
       >
@@ -136,10 +136,10 @@ export function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors relative py-1 group"
+                  className="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-cyan-400 transition-colors relative py-1 group"
                 >
                   {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-sky-500 dark:bg-cyan-400 transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
             </nav>
@@ -152,16 +152,16 @@ export function Navbar() {
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-pink-400 transition-colors bg-[#0c1844] px-3 py-2 rounded-xl border border-sky-500/20 hover:border-pink-500/40"
+                className="flex items-center gap-1.5 text-xs font-mono font-medium text-slate-700 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors bg-slate-100 dark:bg-[#0c1844] px-3 py-2 rounded-xl border border-slate-200 dark:border-sky-500/20 hover:border-pink-300 dark:hover:border-pink-500/40"
                 title="Instagram"
               >
-                <InstagramIcon className="size-3.5 text-pink-400" />
+                <InstagramIcon className="size-3.5 text-pink-500 dark:text-pink-400" />
                 <span>Instagram</span>
               </a>
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all"
               >
                 <Sparkles className="size-3.5" />
                 <span>Get Quote</span>
@@ -175,7 +175,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={closeMobileMenu}
-                className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-2 text-xs font-bold text-white shadow-md active:scale-95 transition-all"
+                className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 px-3 py-2 text-xs font-bold text-white shadow-md active:scale-95 transition-all"
               >
                 <Sparkles className="size-3 text-white" />
                 <span>Get Quote</span>
@@ -185,15 +185,15 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={toggleMobileMenu}
-                className="min-h-[42px] min-w-[42px] rounded-xl border border-sky-500/30 bg-[#0c1844] p-2.5 text-slate-200 hover:text-white hover:border-cyan-400 active:bg-sky-950 transition-all flex items-center justify-center cursor-pointer touch-manipulation select-none"
+                className="min-h-[42px] min-w-[42px] rounded-xl border border-slate-300 dark:border-sky-500/30 bg-slate-100 dark:bg-[#0c1844] p-2.5 text-slate-800 dark:text-slate-200 hover:text-sky-600 dark:hover:text-white transition-all flex items-center justify-center cursor-pointer touch-manipulation select-none"
                 style={{ touchAction: "manipulation" }}
                 aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
                 aria-expanded={mobileMenuOpen}
               >
                 {mobileMenuOpen ? (
-                  <X className="size-5 text-cyan-300 animate-in spin-in-90 duration-150" />
+                  <X className="size-5 text-sky-600 dark:text-cyan-300 animate-in spin-in-90 duration-150" />
                 ) : (
-                  <Menu className="size-5 text-slate-200" />
+                  <Menu className="size-5 text-slate-800 dark:text-slate-200" />
                 )}
               </button>
             </div>
@@ -205,16 +205,16 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div
           onClick={closeMobileMenu}
-          className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 lg:hidden transition-opacity animate-in fade-in duration-200"
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-40 lg:hidden transition-opacity animate-in fade-in duration-200"
           aria-hidden="true"
         />
       )}
 
       {/* Mobile Drawer Menu Content */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-[64px] inset-x-0 bottom-0 z-40 bg-[#080e27]/98 backdrop-blur-2xl border-b border-sky-500/20 px-4 py-5 shadow-2xl overflow-y-auto transition-all animate-in slide-in-from-top-4 fade-in duration-200">
+        <div className="lg:hidden fixed top-[64px] inset-x-0 bottom-0 z-40 bg-white/98 dark:bg-[#080e27]/98 backdrop-blur-2xl border-b border-slate-200 dark:border-sky-500/20 px-4 py-5 shadow-2xl overflow-y-auto transition-all animate-in slide-in-from-top-4 fade-in duration-200">
           <div className="max-w-md mx-auto flex flex-col space-y-2.5 pb-8">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-cyan-400 font-bold px-1 mb-1">
+            <div className="text-[11px] font-mono uppercase tracking-widest text-sky-600 dark:text-cyan-400 font-bold px-1 mb-1">
               Navigation Menu
             </div>
 
@@ -226,7 +226,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={closeMobileMenu}
-                  className="group flex items-center justify-between p-3 rounded-2xl bg-[#0c1844]/80 hover:bg-[#102158] border border-sky-500/20 hover:border-cyan-400/50 transition-all active:scale-[0.99]"
+                  className="group flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-[#0c1844]/80 hover:bg-sky-50 dark:hover:bg-[#102158] border border-slate-200 dark:border-sky-500/20 hover:border-sky-300 dark:hover:border-cyan-400/50 transition-all active:scale-[0.99]"
                 >
                   <div className="flex items-center gap-3.5">
                     <div
@@ -239,16 +239,16 @@ export function Navbar() {
                       <IconComp className={cn("size-5", link.colorClass)} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <div className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors">
                         {link.name}
                       </div>
-                      <div className="text-[11px] text-slate-400 font-medium">
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                         {link.subtitle}
                       </div>
                     </div>
                   </div>
 
-                  <div className="size-7 rounded-lg bg-sky-950/60 border border-sky-500/20 flex items-center justify-center text-slate-400 group-hover:text-cyan-300 group-hover:border-cyan-500/40 transition-colors shrink-0">
+                  <div className="size-7 rounded-lg bg-slate-100 dark:bg-sky-950/60 border border-slate-200 dark:border-sky-500/20 flex items-center justify-center text-slate-500 dark:text-slate-400 group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors shrink-0">
                     <ChevronRight className="size-4" />
                   </div>
                 </a>

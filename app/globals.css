@@ -39,7 +39,53 @@
 }
 
 /* ==========================================================================
-   Light Theme System (Default is Dark Theme)
+   Brand Typography Gradients (Light & Dark Theme)
+   ========================================================================== */
+.gradient-text-brand {
+  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 50%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark .gradient-text-brand,
+.dark .gradient-text-brand {
+  background: linear-gradient(135deg, #ffffff 20%, #93c5fd 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4338ca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark .gradient-text-cyan,
+.dark .gradient-text-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism & Glow utilities */
+.glass-card {
+  background: rgba(12, 24, 68, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.2);
+}
+
+.bg-radial-navy {
+  background: radial-gradient(circle at 50% 0%, #152766 0%, #080e27 65%, #05091a 100%);
+}
+
+/* ==========================================================================
+   Light Theme Overrides
    ========================================================================== */
 html.light {
   color-scheme: light;
@@ -66,14 +112,6 @@ html.light div[class*="blur-"] {
   background-color: rgba(56, 189, 248, 0.2) !important;
 }
 
-/* Brand Logo in Light Mode */
-html.light .logo-brand-title {
-  color: #0f172a !important;
-}
-html.light .logo-brand-subtitle {
-  color: #0284c7 !important;
-}
-
 /* Light Theme Cards & Glassmorphism */
 html.light .glass-card {
   background: rgba(255, 255, 255, 0.95) !important;
@@ -98,369 +136,7 @@ html.light section:nth-of-type(even) {
   background-color: #f1f5f9 !important;
 }
 
-/* Hero Section in Light Mode */
-html.light #hero {
-  background-color: #f8fafc !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #hero .absolute.inset-0.bg-gradient-to-b {
-  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.2) 0%, transparent 40%, rgba(248, 250, 252, 0.85) 100%) !important;
-}
-
-html.light #hero .rounded-3xl.bg-\[\#080e27\]\/70 {
-  background-color: rgba(255, 255, 255, 0.88) !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
-}
-
-html.light #hero h1 {
-  color: #0f172a !important;
-  font-weight: 900 !important;
-}
-
-html.light #hero .gradient-text-brand {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4338ca 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-html.light #hero p {
-  color: #334155 !important;
-}
-
-html.light #hero p strong {
-  color: #0f172a !important;
-  font-weight: 700 !important;
-}
-
-html.light #hero a[href="#services"] {
-  background-color: #ffffff !important;
-  color: #1e293b !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  font-weight: 600;
-}
-
-html.light #hero a[href="#services"]:hover {
-  border-color: #0284c7 !important;
-  color: #0284c7 !important;
-  background-color: #f0f9ff !important;
-}
-
-html.light #hero a[href="#services"] svg {
-  color: #0284c7 !important;
-}
-
-/* Light Theme Typography & Readability */
-html.light h1,
-html.light h2,
-html.light h3,
-html.light h4,
-html.light h5 {
-  color: #0f172a !important;
-}
-
-html.light .text-white {
-  color: #0f172a !important;
-}
-
-html.light .text-slate-100,
-html.light .text-slate-200 {
-  color: #1e293b !important;
-}
-
-html.light .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light .text-slate-400 {
-  color: #64748b !important;
-}
-
-html.light .gradient-text-brand {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4338ca 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-html.light .gradient-text-cyan {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4338ca 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Light Theme Category Badges & Tags */
-html.light .bg-sky-950,
-html.light .bg-sky-950\/80,
-html.light .bg-sky-950\/60,
-html.light [class*="bg-sky-950"] {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #bae6fd !important;
-}
-
-html.light .inline-flex.rounded-full.border-sky-500\/25,
-html.light .inline-flex.rounded-full.border-sky-500\/30 {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  color: #0f172a !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-html.light .inline-flex.rounded-full.border-sky-500\/25 span.text-cyan-300,
-html.light .inline-flex.rounded-full.border-sky-500\/30 span.text-cyan-200 {
-  color: #0284c7 !important;
-}
-
-/* Light Theme Icon Containers */
-html.light .size-10.rounded-xl,
-html.light .size-11.rounded-xl,
-html.light .size-8.rounded-lg {
-  background-color: #e0f2fe !important;
-  border-color: #bae6fd !important;
-  color: #0284c7 !important;
-}
-
-/* Light Theme Form Controls */
-html.light input,
-html.light select,
-html.light textarea {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light input::placeholder,
-html.light textarea::placeholder {
-  color: #94a3b8 !important;
-}
-
-html.light select option {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-}
-
-/* Light Theme Sub-Containers */
-html.light .bg-\[\#0c1844\],
-html.light .bg-\[\#080e27\],
-html.light .bg-\[\#060a1d\],
-html.light .bg-\[\#05091a\] {
-  background-color: #ffffff !important;
-}
-
-html.light .bg-\[\#0c1844\]\/80,
-html.light .bg-\[\#0c1844\]\/90,
-html.light .bg-\[\#080e27\]\/80,
-html.light .bg-\[\#080e27\]\/90 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-html.light .border-sky-500\/10,
-html.light .border-sky-500\/15,
-html.light .border-sky-500\/20,
-html.light .border-sky-500\/25,
-html.light .border-sky-500\/30 {
-  border-color: rgba(203, 213, 225, 0.8) !important;
-}
-
-/* Light Theme Package Estimator (ROI Calculator) */
-html.light #calculator {
-  background-color: #f1f5f9 !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #calculator button {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
-  color: #1e293b !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-}
-
-html.light #calculator button:hover {
-  border-color: #38bdf8 !important;
-  background-color: #f0f9ff !important;
-}
-
-html.light #calculator button h3 {
-  color: #0f172a !important;
-  font-weight: 700;
-}
-
-html.light #calculator button span {
-  color: #0284c7 !important;
-  font-weight: 600;
-}
-
-html.light #calculator button div.size-10 {
-  background-color: #f0f9ff !important;
-  border-color: #bae6fd !important;
-  color: #0284c7 !important;
-}
-
-html.light #calculator button.glass-card {
-  background-color: #ffffff !important;
-  border-color: #0284c7 !important;
-  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.2), 0 0 0 2px #0284c7 !important;
-}
-
-html.light #calculator button.glass-card div.size-10 {
-  background-color: #e0f2fe !important;
-  border-color: #0284c7 !important;
-  color: #0284c7 !important;
-}
-
-html.light #calculator .glass-card.max-w-3xl {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.09) !important;
-}
-
-html.light #calculator .glass-card.max-w-3xl h3 {
-  color: #0f172a !important;
-  font-weight: 800;
-}
-
-html.light #calculator .glass-card.max-w-3xl p {
-  color: #334155 !important;
-}
-
-html.light #calculator .glass-card.max-w-3xl span {
-  color: #1e293b !important;
-}
-
-html.light #calculator .glass-card.max-w-3xl span.text-cyan-400 {
-  color: #0284c7 !important;
-  font-weight: 700;
-}
-
-html.light #calculator .glass-card.max-w-3xl span.text-slate-400 {
-  color: #64748b !important;
-}
-
-html.light #calculator .glass-card.max-w-3xl span.bg-sky-950\/80 {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #bae6fd !important;
-  font-weight: 600;
-}
-
-html.light #calculator .glass-card.max-w-3xl .border-b,
-html.light #calculator .glass-card.max-w-3xl .border-t {
-  border-color: #e2e8f0 !important;
-}
-
-/* Light Theme Contact Section */
-html.light #contact {
-  background-color: #f8fafc !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #contact .glass-card {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08) !important;
-}
-
-html.light #contact .lg\:col-span-5 h3 {
-  color: #0284c7 !important;
-}
-
-html.light #contact .lg\:col-span-5 .text-\[10px\] {
-  color: #64748b !important;
-  font-weight: 700 !important;
-}
-
-html.light #contact .lg\:col-span-5 a,
-html.light #contact .lg\:col-span-5 span.text-slate-200 {
-  color: #0f172a !important;
-  font-weight: 700 !important;
-}
-
-html.light #contact .lg\:col-span-5 span.text-slate-300 {
-  color: #475569 !important;
-}
-
-html.light #contact .lg\:col-span-5 .size-10 {
-  background-color: #f1f5f9 !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #contact .lg\:col-span-5 .border-t {
-  border-color: #e2e8f0 !important;
-}
-
-html.light #contact label {
-  color: #0f172a !important;
-  font-weight: 700 !important;
-}
-
-html.light #contact input,
-html.light #contact select,
-html.light #contact textarea {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #contact input:focus,
-html.light #contact select:focus,
-html.light #contact textarea:focus {
-  background-color: #ffffff !important;
-  border-color: #0284c7 !important;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
-}
-
-html.light #contact input::placeholder,
-html.light #contact textarea::placeholder {
-  color: #94a3b8 !important;
-}
-
-/* Light Theme Portfolio Filter Tabs */
-html.light #portfolio .bg-\[\#0c1844\]\/80 {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #portfolio button {
-  color: #475569 !important;
-}
-
-html.light #portfolio button.bg-gradient-to-r {
-  color: #ffffff !important;
-}
-
-html.light #portfolio button.bg-\[\#0c1844\] {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #portfolio button.bg-\[\#0c1844\]:hover {
-  background-color: #0284c7 !important;
-  color: #ffffff !important;
-}
-
-/* Light Theme Marquee */
-html.light .animate-marquee div {
-  background-color: #ffffff !important;
-  color: #1e293b !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-/* Light Theme FAQ */
-html.light #faq .bg-\[\#0c1844\]\/40 {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #faq .glass-card.border-cyan-400\/50 {
-  background-color: #f0f9ff !important;
-  border-color: #0284c7 !important;
-}
-
-/* Light Theme Header */
+/* Header in Light Mode */
 html.light header {
   background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: rgba(226, 232, 240, 0.95) !important;
@@ -474,182 +150,26 @@ html.light header nav a:hover {
   color: #0284c7 !important;
 }
 
-/* Light Theme Services */
-html.light #services .glass-card {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-}
-
-html.light #services .glass-card h3 {
-  color: #0f172a !important;
-  font-weight: 700;
-}
-
-html.light #services .glass-card p {
-  color: #475569 !important;
-}
-
-html.light #services .glass-card p.text-cyan-200\/90 {
-  color: #0284c7 !important;
-  font-weight: 600;
-}
-
-html.light #services .glass-card span.text-cyan-400 {
-  color: #0284c7 !important;
-}
-
-html.light #services .glass-card .size-11 {
-  background-color: #e0f2fe !important;
-  border-color: #bae6fd !important;
-  color: #0284c7 !important;
-}
-
-html.light #services .glass-card .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light #services .mt-12.glass-card {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08) !important;
-}
-
-html.light #services .mt-12.glass-card h3 {
-  color: #0f172a !important;
-}
-
-html.light #services .mt-12.glass-card p {
-  color: #334155 !important;
-}
-
-/* Light Theme Process (How It Works) */
-html.light #framework .glass-card {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-}
-
-html.light #framework .glass-card h3 {
-  color: #0f172a !important;
-  font-weight: 700;
-}
-
-html.light #framework .glass-card p {
-  color: #475569 !important;
-}
-
-html.light #framework .glass-card span.font-black {
-  color: #0284c7 !important;
-}
-
-html.light #framework .glass-card .size-11 {
-  background-color: #e0f2fe !important;
-  border-color: #bae6fd !important;
-  color: #0284c7 !important;
-}
-
-html.light #framework .glass-card .text-slate-300 {
-  color: #334155 !important;
-}
-
-/* Light Theme Testimonials */
-html.light #testimonials .glass-card {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08) !important;
-}
-
-html.light #testimonials .glass-card h3 {
-  color: #0f172a !important;
-}
-
-html.light #testimonials .glass-card p {
-  color: #334155 !important;
-}
-
-html.light #testimonials .glass-card h4 {
-  color: #0f172a !important;
-}
-
-html.light #testimonials .glass-card span.bg-cyan-950 {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #bae6fd !important;
-  font-weight: 600;
-}
-
-html.light #testimonials .glass-card button {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-  color: #0f172a !important;
-}
-
-html.light #testimonials .glass-card button:hover {
-  border-color: #0284c7 !important;
-  color: #0284c7 !important;
-}
-
-/* Light Theme Portfolio */
-html.light #portfolio .glass-card {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-}
-
-html.light #portfolio .glass-card h3 {
-  color: #0f172a !important;
-}
-
-html.light #portfolio .glass-card p {
-  color: #475569 !important;
-}
-
-html.light #portfolio .glass-card .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light #portfolio .glass-card button {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #portfolio .glass-card button:hover {
-  background-color: #0284c7 !important;
-  color: #ffffff !important;
-}
-
-html.light #portfolio .fixed .relative.max-w-lg {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.2) !important;
-}
-
-html.light #portfolio .fixed h3 {
-  color: #0f172a !important;
-}
-
-html.light #portfolio .fixed p {
-  color: #334155 !important;
-}
-
-html.light #portfolio .fixed li {
+/* Marquee in Light Mode */
+html.light .animate-marquee div {
+  background-color: #ffffff !important;
   color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-html.light #portfolio .fixed .rounded-xl {
-  background-color: #f8fafc !important;
+/* FAQ in Light Mode */
+html.light #faq .bg-\[\#0c1844\]\/40 {
+  background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
 }
 
-html.light #portfolio .fixed button {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
+html.light #faq .glass-card.border-cyan-400\/50 {
+  background-color: #f0f9ff !important;
+  border-color: #0284c7 !important;
 }
 
-/* Light Theme Footer */
+/* Footer in Light Mode */
 html.light footer {
   background-color: #f8fafc !important;
   border-color: #e2e8f0 !important;
@@ -732,35 +252,7 @@ html.light footer .footer-back-to-top:hover {
   color: #0369a1 !important;
 }
 
-/* Glassmorphism & Glow utilities */
-.glass-card {
-  background: rgba(12, 24, 68, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.14);
-}
-
-.glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.2);
-}
-
-.gradient-text-brand {
-  background: linear-gradient(135deg, #ffffff 20%, #93c5fd 60%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-cyan {
-  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.bg-radial-navy {
-  background: radial-gradient(circle at 50% 0%, #152766 0%, #080e27 65%, #05091a 100%);
-}
-
+/* Keyframes & Animations */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -894,6 +386,3 @@ button:active, a:active, [role="button"]:active {
   animation: detailCrossfade 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity, filter;
 }
-
-
-

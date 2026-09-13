@@ -52,13 +52,13 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
       {/* Brand Typography */}
       <div className="flex flex-col">
         <div className="flex items-center">
-          <span className={cn("font-black tracking-tight text-white logo-brand-title leading-none font-sans", textSizes[size])}>
+          <span className={cn("font-black tracking-tight text-slate-900 dark:text-white leading-none font-sans", textSizes[size])}>
             Framify
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 ml-1 mb-2 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 ml-1 mb-2 animate-pulse" />
         </div>
         {showSubtitle && (
-          <span className="text-[9px] uppercase font-mono tracking-widest text-cyan-400/90 logo-brand-subtitle font-semibold -mt-0.5">
+          <span className="text-[9px] uppercase font-mono tracking-widest text-sky-600 dark:text-cyan-400/90 font-bold -mt-0.5">
             Digital Marketing
           </span>
         )}
