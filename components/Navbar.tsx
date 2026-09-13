@@ -134,6 +134,28 @@ export function Navbar() {
     setMobileMenuOpen(false);
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#") && href.length > 1) {
+      e.preventDefault();
+      const sectionId = href.replace("#", "");
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 75;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        setActiveSection(sectionId);
+        closeMobileMenu();
+      }
+    }
+  };
+
   return (
     <>
       <header
@@ -147,7 +169,15 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#" className="flex items-center relative z-50">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                setActiveSection("");
+              }}
+              className="flex items-center relative z-50 cursor-pointer"
+            >
               <Logo size="md" />
             </a>
 
@@ -160,9 +190,9 @@ export function Navbar() {
                   <a
                     key={link.name}
                     href={link.href}
-                    onClick={() => setActiveSection(sectionId)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
-                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 relative",
+                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 relative cursor-pointer",
                       isActive
                         ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-md shadow-cyan-500/30 scale-[1.03]"
                         : "text-slate-300 hover:text-white hover:bg-white/5"
@@ -191,7 +221,8 @@ export function Navbar() {
 
               <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 <Sparkles className="size-3.5" />
                 <span>Get Quote</span>
@@ -204,11 +235,11 @@ export function Navbar() {
 
               <a
                 href="#contact"
-                onClick={closeMobileMenu}
-                className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-2 text-xs font-bold text-white shadow-md active:scale-95 transition-all"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-3 py-2 text-xs font-bold text-white shadow-md active:scale-95 transition-all cursor-pointer"
               >
                 <Sparkles className="size-3 text-white" />
-                <span>Get Quote</span>
+                <span>Quote</span>
               </a>
 
               {/* Instant-response hamburger button */}

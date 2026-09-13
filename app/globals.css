@@ -508,24 +508,47 @@ html.light #calculator button div.size-11 {
   color: #0284c7 !important;
 }
 
-html.light #calculator button[class*="border-2"] {
-  background-color: #ffffff !important;
+html.light #calculator button[class*="border-2"],
+html.light #calculator button[class*="from-"] {
+  background: #ffffff !important;
+  background-image: linear-gradient(to bottom, #f0f9ff, #ffffff) !important;
   border-color: #0284c7 !important;
   box-shadow: 0 12px 30px -8px rgba(2, 132, 199, 0.25), 0 0 0 2px #0284c7 !important;
 }
 
-html.light #calculator button[class*="border-2"] div.size-11 {
+html.light #calculator button[class*="border-2"] h3,
+html.light #calculator button[class*="from-"] h3 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html.light #calculator button[class*="border-2"] span,
+html.light #calculator button[class*="from-"] span {
+  color: #0284c7 !important;
+  font-weight: 600 !important;
+}
+
+html.light #calculator button[class*="border-2"] div.size-11,
+html.light #calculator button[class*="from-"] div.size-11 {
   background-color: #0284c7 !important;
   border-color: #0284c7 !important;
   color: #ffffff !important;
 }
 
-html.light #calculator button[class*="border-2"] .absolute {
+html.light #calculator button[class*="border-2"] .absolute,
+html.light #calculator button[class*="from-"] .absolute {
   background-color: #0284c7 !important;
   color: #ffffff !important;
 }
 
-html.light #calculator button[class*="border-2"] .absolute svg {
+html.light #calculator button[class*="border-2"] .absolute span,
+html.light #calculator button[class*="from-"] .absolute span {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+html.light #calculator button[class*="border-2"] .absolute svg,
+html.light #calculator button[class*="from-"] .absolute svg {
   color: #ffffff !important;
   fill: #ffffff !important;
 }
