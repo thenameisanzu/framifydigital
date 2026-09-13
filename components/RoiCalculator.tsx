@@ -95,20 +95,43 @@ export function RoiCalculator() {
                 type="button"
                 onClick={() => setSelectedPkg(pkg.id)}
                 className={cn(
-                  "p-5 rounded-2xl text-left border transition-all duration-200 cursor-pointer",
+                  "relative p-5 rounded-2xl text-left border transition-all duration-200 cursor-pointer flex flex-col justify-between",
                   isSelected
-                    ? "glass-card border-cyan-400 bg-[#0e2154]/90 shadow-lg shadow-cyan-950/80 scale-[1.02]"
-                    : "bg-[#0c1844]/40 border-sky-500/15 hover:border-sky-400/40 hover:bg-[#0c1844]/70 text-slate-300"
+                    ? "border-2 border-cyan-400 ring-2 ring-cyan-400/30 bg-gradient-to-b from-[#183478] via-[#0f2356] to-[#0c1844] shadow-xl shadow-cyan-500/20 scale-[1.03] z-10"
+                    : "bg-[#0a1336]/60 border-sky-500/20 hover:border-sky-400/50 hover:bg-[#0c1a47]/80 text-slate-400 opacity-80 hover:opacity-100"
                 )}
               >
-                <div className={cn(
-                  "size-10 rounded-xl border flex items-center justify-center mb-3 transition-colors",
-                  isSelected ? "bg-cyan-500/20 border-cyan-400 text-cyan-300" : "bg-[#080e27] border-sky-500/25 text-cyan-400"
-                )}>
-                  <Icon className="size-5" />
+                {/* Active Selection Badge */}
+                {isSelected && (
+                  <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-cyan-400 text-slate-950 px-2 py-0.5 text-[10px] font-mono font-black shadow-md shadow-cyan-400/30 uppercase">
+                    <CheckCircle2 className="size-3 fill-slate-950 text-cyan-400" />
+                    <span>Selected</span>
+                  </div>
+                )}
+
+                <div>
+                  <div className={cn(
+                    "size-11 rounded-xl border flex items-center justify-center mb-3 transition-all",
+                    isSelected
+                      ? "bg-cyan-400 border-cyan-300 text-slate-950 shadow-md shadow-cyan-400/40"
+                      : "bg-[#080e27] border-sky-500/25 text-cyan-400"
+                  )}>
+                    <Icon className="size-5 stroke-[2.2]" />
+                  </div>
+                  <h3 className={cn(
+                    "text-sm font-bold mb-1 transition-colors",
+                    isSelected ? "text-white font-extrabold text-[15px]" : "text-slate-300"
+                  )}>
+                    {pkg.name}
+                  </h3>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{pkg.name}</h3>
-                <span className="text-[11px] font-mono text-cyan-300 block">{pkg.unit}</span>
+
+                <span className={cn(
+                  "text-[11px] font-mono block mt-2 font-semibold",
+                  isSelected ? "text-cyan-200" : "text-slate-400"
+                )}>
+                  {pkg.unit}
+                </span>
               </button>
             );
           })}

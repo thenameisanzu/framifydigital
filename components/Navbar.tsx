@@ -81,12 +81,33 @@ const NAV_LINKS: NavLinkItem[] = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Scroll Spy for active section identification
+      const sectionIds = ["services", "portfolio", "calculator", "framework", "testimonials"];
+      const scrollPos = window.scrollY + 220;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPos >= top) {
+            setActiveSection(sectionIds[i]);
+            return;
+          }
+        }
+      }
+      if (window.scrollY < 300) {
+        setActiveSection("");
+      }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -119,8 +140,8 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-auto",
           isScrolled
-            ? "bg-[#080e27]/95 backdrop-blur-xl border-b border-sky-500/20 py-3 shadow-2xl shadow-blue-950/60"
-            : "bg-transparent py-4 sm:py-5"
+            ? "bg-[#080e27]/95 backdrop-blur-xl border-b border-sky-500/20 py-2.5 sm:py-3 shadow-2xl shadow-blue-950/60"
+            : "bg-transparent py-3 sm:py-4"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,18 +151,27 @@ export function Navbar() {
               <Logo size="md" />
             </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-7">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors relative py-1 group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                </a>
-              ))}
+            {/* Desktop Navigation Links with Clear Active State */}
+            <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-[#0a1233]/70 border border-sky-500/20 backdrop-blur-md shadow-inner">
+              {NAV_LINKS.map((link) => {
+                const sectionId = link.href.replace("#", "");
+                const isActive = activeSection === sectionId;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setActiveSection(sectionId)}
+                    className={cn(
+                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 relative",
+                      isActive
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-md shadow-cyan-500/30 scale-[1.03]"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                    )}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
             </nav>
 
             {/* Desktop Right Action */}
@@ -221,34 +251,47 @@ export function Navbar() {
             {/* Redesigned Rich Navigation Cards */}
             {NAV_LINKS.map((link) => {
               const IconComp = link.icon;
+              const sectionId = link.href.replace("#", "");
+              const isActive = activeSection === sectionId;
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={closeMobileMenu}
-                  className="group flex items-center justify-between p-3 rounded-2xl bg-[#0c1844]/80 hover:bg-[#102158] border border-sky-500/20 hover:border-cyan-400/50 transition-all active:scale-[0.99]"
+                  onClick={() => {
+                    setActiveSection(sectionId);
+                    closeMobileMenu();
+                  }}
+                  className={cn(
+                    "group flex items-center justify-between p-3 rounded-2xl border transition-all active:scale-[0.99]",
+                    isActive
+                      ? "bg-gradient-to-r from-[#173070] to-[#0c1844] border-cyan-400 shadow-lg shadow-cyan-950/80 ring-1 ring-cyan-400/40"
+                      : "bg-[#0c1844]/80 hover:bg-[#102158] border-sky-500/20 hover:border-cyan-400/50"
+                  )}
                 >
                   <div className="flex items-center gap-3.5">
                     <div
                       className={cn(
                         "size-10 rounded-xl border flex items-center justify-center shrink-0 transition-transform group-hover:scale-105",
-                        link.iconBgClass,
-                        link.borderClass
+                        isActive ? "bg-cyan-400 border-cyan-300 text-slate-950 shadow-md shadow-cyan-400/30" : link.iconBgClass,
+                        isActive ? "" : link.borderClass
                       )}
                     >
-                      <IconComp className={cn("size-5", link.colorClass)} />
+                      <IconComp className={cn("size-5", isActive ? "text-slate-950 stroke-[2.2]" : link.colorClass)} />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <div className={cn("text-sm font-bold transition-colors", isActive ? "text-cyan-300" : "text-white group-hover:text-cyan-300")}>
                         {link.name}
                       </div>
-                      <div className="text-[11px] text-slate-400 font-medium">
+                      <div className={cn("text-[11px] font-medium", isActive ? "text-slate-300" : "text-slate-400")}>
                         {link.subtitle}
                       </div>
                     </div>
                   </div>
 
-                  <div className="size-7 rounded-lg bg-sky-950/60 border border-sky-500/20 flex items-center justify-center text-slate-400 group-hover:text-cyan-300 group-hover:border-cyan-500/40 transition-colors shrink-0">
+                  <div className={cn(
+                    "size-7 rounded-lg border flex items-center justify-center transition-colors shrink-0",
+                    isActive ? "bg-cyan-400 text-slate-950 border-cyan-300 font-bold" : "bg-sky-950/60 border-sky-500/20 text-slate-400 group-hover:text-cyan-300 group-hover:border-cyan-500/40"
+                  )}>
                     <ChevronRight className="size-4" />
                   </div>
                 </a>

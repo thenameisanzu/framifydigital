@@ -196,13 +196,25 @@ html.light header {
   border-color: rgba(226, 232, 240, 0.95) !important;
 }
 
+html.light header nav {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
 html.light header nav a {
-  color: #334155 !important;
+  color: #475569 !important;
   font-weight: 600 !important;
 }
 
 html.light header nav a:hover {
   color: #0284c7 !important;
+}
+
+html.light header nav a[class*="from-cyan-500"],
+html.light header nav a[class*="to-blue-600"] {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
 }
 
 html.light header a[title="Instagram"] {
@@ -490,22 +502,32 @@ html.light #calculator button span {
   font-weight: 600 !important;
 }
 
-html.light #calculator button div.size-10 {
+html.light #calculator button div.size-11 {
   background-color: #f0f9ff !important;
   border-color: #bae6fd !important;
   color: #0284c7 !important;
 }
 
-html.light #calculator button.glass-card {
+html.light #calculator button[class*="border-2"] {
   background-color: #ffffff !important;
   border-color: #0284c7 !important;
-  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.2), 0 0 0 2px #0284c7 !important;
+  box-shadow: 0 12px 30px -8px rgba(2, 132, 199, 0.25), 0 0 0 2px #0284c7 !important;
 }
 
-html.light #calculator button.glass-card div.size-10 {
-  background-color: #e0f2fe !important;
+html.light #calculator button[class*="border-2"] div.size-11 {
+  background-color: #0284c7 !important;
   border-color: #0284c7 !important;
-  color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html.light #calculator button[class*="border-2"] .absolute {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html.light #calculator button[class*="border-2"] .absolute svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
 html.light #calculator .glass-card.max-w-3xl {
