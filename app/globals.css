@@ -799,15 +799,17 @@ html.light #testimonials {
   background-color: #f8fafc !important;
 }
 
+/* Side cards in Light Mode */
 html.light #testimonials .testimonial-stagger-card {
   background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
   color: #1e293b !important;
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 html.light #testimonials .testimonial-stagger-card:hover {
   border-color: #0284c7 !important;
+  box-shadow: 0 16px 40px -10px rgba(2, 132, 199, 0.15) !important;
 }
 
 html.light #testimonials .testimonial-stagger-card h3 {
@@ -824,19 +826,43 @@ html.light #testimonials .testimonial-stagger-card p.text-xs {
   font-weight: 700 !important;
 }
 
-html.light #testimonials .testimonial-stagger-card[class*="z-20"] {
+html.light #testimonials .testimonial-stagger-card span.text-cyan-300 {
+  color: #0284c7 !important;
+}
+
+/* Center Active Card in Light Mode */
+html.light #testimonials .testimonial-stagger-card.is-center,
+html.light #testimonials .testimonial-stagger-card[data-center="true"] {
   background: #ffffff !important;
-  background-image: linear-gradient(to bottom, #f0f9ff, #ffffff) !important;
+  background-image: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%) !important;
   border-color: #0284c7 !important;
   box-shadow: 0 20px 45px -12px rgba(2, 132, 199, 0.25), 0 0 0 2px #0284c7 !important;
 }
 
-html.light #testimonials .testimonial-stagger-card[class*="z-20"] h3 {
+html.light #testimonials .testimonial-stagger-card.is-center h3,
+html.light #testimonials .testimonial-stagger-card[data-center="true"] h3 {
   color: #0f172a !important;
   font-weight: 800 !important;
 }
 
-html.light #testimonials .testimonial-stagger-card[class*="z-20"] span.bg-cyan-400 {
+html.light #testimonials .testimonial-stagger-card.is-center p,
+html.light #testimonials .testimonial-stagger-card[data-center="true"] p {
+  color: #1e293b !important;
+}
+
+html.light #testimonials .testimonial-stagger-card.is-center p.text-xs,
+html.light #testimonials .testimonial-stagger-card[data-center="true"] p.text-xs {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html.light #testimonials .testimonial-stagger-card.is-center .text-cyan-200,
+html.light #testimonials .testimonial-stagger-card[data-center="true"] .text-cyan-200 {
+  color: #0284c7 !important;
+}
+
+html.light #testimonials .testimonial-stagger-card span.bg-cyan-400,
+html.light #testimonials .testimonial-stagger-card.is-center span.bg-cyan-400 {
   background-color: #0284c7 !important;
   color: #ffffff !important;
 }
@@ -845,17 +871,8 @@ html.light #testimonials .testimonial-stagger-card .border-t {
   border-color: #e2e8f0 !important;
 }
 
-html.light #testimonials button {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  color: #0f172a !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-}
-
-html.light #testimonials button:hover {
-  border-color: #0284c7 !important;
+html.light #testimonials .testimonial-stagger-card span[class*="origin-top-right"] {
   background-color: #0284c7 !important;
-  color: #ffffff !important;
 }
 
 /* ==========================================================================

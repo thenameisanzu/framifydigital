@@ -288,11 +288,12 @@ export function Testimonials() {
           return (
             <div
               key={testimonial.id}
+              data-center={isCenter ? "true" : "false"}
               onClick={() => handleCardClick(diff)}
               className={cn(
                 "testimonial-stagger-card absolute left-1/2 top-1/2 cursor-pointer border-2 p-6 sm:p-8 select-none will-change-transform",
                 isCenter
-                  ? "bg-gradient-to-b from-[#141d2e] via-[#101726] to-[#0c121d] text-white border-cyan-400 shadow-2xl shadow-cyan-500/20 ring-2 ring-cyan-400/25"
+                  ? "is-center bg-gradient-to-b from-[#141d2e] via-[#101726] to-[#0c121d] text-white border-cyan-400 shadow-2xl shadow-cyan-500/20 ring-2 ring-cyan-400/25"
                   : "bg-[#0e121a]/90 backdrop-blur-md text-slate-200 border-white/[0.08] hover:border-cyan-400/50 hover:bg-[#141a26]"
               )}
               style={{
