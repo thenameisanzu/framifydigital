@@ -1276,3 +1276,39 @@ a, button, [role="button"] {
   animation: detailCrossfade 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity, filter;
 }
+
+/* Mobile & Tablet Navigation Menu Animations */
+@keyframes mobileDrawerSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes mobileItemCascadeIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-mobile-drawer {
+  animation: mobileDrawerSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+.animate-mobile-item {
+  opacity: 0;
+  animation: mobileItemCascadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}

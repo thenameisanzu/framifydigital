@@ -272,58 +272,75 @@ export function Navbar() {
                 <span>Quote</span>
               </a>
 
-              {/* Instant-response hamburger button */}
+              {/* Smooth Animated Morphing Hamburger Button */}
               <button
                 type="button"
                 onClick={toggleMobileMenu}
-                className="min-h-[42px] min-w-[42px] rounded-xl border border-white/[0.12] bg-white/[0.05] p-2.5 text-slate-200 hover:text-white hover:border-cyan-400 active:bg-white/[0.1] transition-all flex items-center justify-center cursor-pointer touch-manipulation select-none"
+                className="min-h-[42px] min-w-[42px] rounded-xl border border-white/[0.12] bg-white/[0.05] p-2.5 text-slate-200 hover:text-white hover:border-cyan-400 active:bg-white/[0.1] active:scale-95 transition-all flex items-center justify-center cursor-pointer touch-manipulation select-none"
                 style={{ touchAction: "manipulation" }}
                 aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
                 aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? (
-                  <X className="size-5 text-cyan-300 animate-in spin-in-90 duration-150" />
-                ) : (
-                  <Menu className="size-5 text-slate-200" />
-                )}
+                <div className="relative w-5 h-4 flex flex-col justify-between items-center pointer-events-none">
+                  <span
+                    className={cn(
+                      "w-full h-0.5 rounded-full transition-all duration-300 ease-out origin-center",
+                      mobileMenuOpen ? "translate-y-[7px] rotate-45 bg-cyan-300" : "translate-y-0 rotate-0 bg-slate-200"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "w-full h-0.5 rounded-full transition-all duration-200 ease-out",
+                      mobileMenuOpen ? "opacity-0 scale-x-0 bg-cyan-300" : "opacity-100 scale-x-100 bg-slate-200"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "w-full h-0.5 rounded-full transition-all duration-300 ease-out origin-center",
+                      mobileMenuOpen ? "-translate-y-[7px] -rotate-45 bg-cyan-300" : "translate-y-0 rotate-0 bg-slate-200"
+                    )}
+                  />
+                </div>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay Backdrop */}
+      {/* Mobile Drawer Overlay Backdrop with Smooth Fade */}
       {mobileMenuOpen && (
         <div
           onClick={closeMobileMenu}
-          className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 lg:hidden transition-opacity animate-in fade-in duration-200"
+          className="fixed inset-0 bg-black/75 backdrop-blur-md z-40 lg:hidden transition-opacity animate-in fade-in duration-300"
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Drawer Menu Content */}
+      {/* Mobile Drawer Menu Content with Apple-style Fluid Reveal */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-[64px] inset-x-0 bottom-0 z-40 bg-[#090a0f]/98 backdrop-blur-2xl border-b border-white/[0.08] px-4 py-5 shadow-2xl overflow-y-auto transition-all animate-in slide-in-from-top-4 fade-in duration-200">
+        <div className="lg:hidden fixed top-[60px] inset-x-0 bottom-0 z-40 bg-[#090a0f]/98 backdrop-blur-2xl border-b border-white/[0.08] px-4 py-5 shadow-2xl overflow-y-auto animate-mobile-drawer">
           <div className="max-w-md mx-auto flex flex-col space-y-2.5 pb-8">
-            <div className="text-[11px] font-mono uppercase tracking-widest text-cyan-400 font-bold px-1 mb-1">
+            <div className="animate-mobile-item text-[11px] font-mono uppercase tracking-widest text-cyan-400 font-bold px-1 mb-1" style={{ animationDelay: '30ms' }}>
               Navigation Menu
             </div>
 
-            {/* Redesigned Rich Navigation Cards */}
-            {NAV_LINKS.map((link) => {
+            {/* Redesigned Rich Navigation Cards with Staggered Cascading Reveal */}
+            {NAV_LINKS.map((link, idx) => {
               const IconComp = link.icon;
               const sectionId = link.href.replace("#", "");
               const isActive = activeSection === sectionId;
+              const itemDelay = `${idx * 50 + 60}ms`;
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => {
-                    setActiveSection(sectionId);
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
                     closeMobileMenu();
                   }}
+                  style={{ animationDelay: itemDelay }}
                   className={cn(
-                    "group flex items-center justify-between p-3 rounded-2xl border transition-all active:scale-[0.99]",
+                    "animate-mobile-item group flex items-center justify-between p-3 rounded-2xl border transition-all active:scale-[0.98]",
                     isActive
                       ? "bg-gradient-to-r from-[#141d2e] to-[#0c121d] border-cyan-400 shadow-lg ring-1 ring-cyan-400/40"
                       : "bg-white/[0.03] hover:bg-white/[0.06] border-white/[0.08] hover:border-cyan-400/50"
@@ -360,7 +377,10 @@ export function Navbar() {
             })}
 
             {/* Quick Action Badges */}
-            <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-2.5">
+            <div
+              className="animate-mobile-item pt-4 border-t border-white/[0.08] flex flex-col gap-2.5"
+              style={{ animationDelay: `${NAV_LINKS.length * 50 + 80}ms` }}
+            >
               <div className="grid grid-cols-2 gap-2.5">
                 <a
                   href="https://instagram.com/framifydigitalmarketing"
@@ -387,8 +407,11 @@ export function Navbar() {
 
               <a
                 href="#contact"
-                onClick={closeMobileMenu}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3.5 text-xs font-bold text-white shadow-lg shadow-cyan-500/25 active:scale-95 transition-all"
+                onClick={(e) => {
+                  handleNavClick(e, "#contact");
+                  closeMobileMenu();
+                }}
+                className="btn-shimmer w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3.5 text-xs font-bold text-white shadow-lg shadow-cyan-500/25 active:scale-95 transition-all cursor-pointer"
               >
                 <Sparkles className="size-4" />
                 <span>Request Project Quote</span>
