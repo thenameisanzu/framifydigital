@@ -163,18 +163,25 @@ export function KineticMatrix({
             pointer.prevY = pointer.y;
             const mouseSpeed = Math.sqrt(pointer.vx * pointer.vx + pointer.vy * pointer.vy);
 
-            // Framify Deep Navy Background & Subtle Ambience
-            const bgColor = '#080e27';
-            const nodeColor = '56, 189, 248';
-            const accentGlow = '56, 189, 248';
+            const isLight = typeof document !== 'undefined' && document.documentElement.classList.contains('light');
+
+            // Framify Background & Subtle Ambience (Theme-aware)
+            const bgColor = isLight ? '#ffffff' : '#080e27';
+            const nodeColor = isLight ? '2, 132, 199' : '56, 189, 248';
+            const accentGlow = isLight ? '2, 132, 199' : '56, 189, 248';
 
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, width, height);
 
-            // Subtle navy vignette gradient across canvas
+            // Subtle vignette gradient across canvas
             const grad = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, Math.max(width, height) * 0.75);
-            grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
-            grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
+            if (isLight) {
+                grad.addColorStop(0, 'rgba(240, 249, 255, 0.8)');
+                grad.addColorStop(1, 'rgba(255, 255, 255, 0.98)');
+            } else {
+                grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
+                grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
+            }
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, width, height);
 
@@ -277,13 +284,13 @@ export function KineticMatrix({
                     if (c < cols - 1) {
                         const rightIdx = (c + 1) * rows + r;
                         const nr = nodes[rightIdx];
-                        if (nr) drawLatticeLink(ctx, n, nr, spacing, isMobile);
+                        if (nr) drawLatticeLink(ctx, n, nr, spacing, isMobile, isLight);
                     }
 
                     if (r < rows - 1) {
                         const downIdx = c * rows + (r + 1);
                         const nd = nodes[downIdx];
-                        if (nd) drawLatticeLink(ctx, n, nd, spacing, isMobile);
+                        if (nd) drawLatticeLink(ctx, n, nd, spacing, isMobile, isLight);
                     }
                 }
             }
@@ -305,7 +312,9 @@ export function KineticMatrix({
                 const px = n1.x + (n2.x - n1.x) * pulse.progress;
                 const py = n1.y + (n2.y - n1.y) * pulse.progress;
 
-                ctx.fillStyle = isMobile ? 'rgba(56, 189, 248, 0.5)' : '#38bdf8';
+                ctx.fillStyle = isLight
+                    ? (isMobile ? 'rgba(2, 132, 199, 0.7)' : '#0284c7')
+                    : (isMobile ? 'rgba(56, 189, 248, 0.5)' : '#38bdf8');
                 ctx.beginPath();
                 ctx.arc(px, py, isMobile ? 1.4 : 2.0, 0, Math.PI * 2);
                 ctx.fill();
@@ -330,9 +339,15 @@ export function KineticMatrix({
                     ctx.fill();
                 }
 
-                ctx.fillStyle = isNear || n.tension > 0.1
-                    ? (isMobile ? 'rgba(255, 255, 255, 0.7)' : '#ffffff')
-                    : (isMobile ? 'rgba(56, 189, 248, 0.18)' : 'rgba(56, 189, 248, 0.28)');
+                if (isLight) {
+                    ctx.fillStyle = isNear || n.tension > 0.1
+                        ? (isMobile ? 'rgba(15, 23, 42, 0.85)' : '#0f172a')
+                        : (isMobile ? 'rgba(2, 132, 199, 0.3)' : 'rgba(2, 132, 199, 0.45)');
+                } else {
+                    ctx.fillStyle = isNear || n.tension > 0.1
+                        ? (isMobile ? 'rgba(255, 255, 255, 0.7)' : '#ffffff')
+                        : (isMobile ? 'rgba(56, 189, 248, 0.18)' : 'rgba(56, 189, 248, 0.28)');
+                }
 
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, Math.max(0.7, currentRadius), 0, Math.PI * 2);
@@ -340,16 +355,18 @@ export function KineticMatrix({
 
                 if (dist < 80 && !isMobile) {
                     const radarRing = ((n.pulsePhase * 20) % 32) + 4;
-                    const ringAlpha = (1 - radarRing / 36) * 0.35;
+                    const ringAlpha = (1 - radarRing / 36) * (isLight ? 0.45 : 0.35);
 
-                    ctx.strokeStyle = `rgba(56, 189, 248, ${ringAlpha})`;
+                    ctx.strokeStyle = isLight
+                        ? `rgba(2, 132, 199, ${ringAlpha})`
+                        : `rgba(56, 189, 248, ${ringAlpha})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.arc(n.x, n.y, radarRing, 0, Math.PI * 2);
                     ctx.stroke();
 
                     ctx.font = '8px ui-monospace, SFMono-Regular, Consolas, monospace';
-                    ctx.fillStyle = 'rgba(56, 189, 248, 0.8)';
+                    ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.95)' : 'rgba(56, 189, 248, 0.8)';
                     ctx.fillText(n.label, n.x + 9, n.y - 9);
                 }
             }
@@ -366,7 +383,8 @@ export function KineticMatrix({
         n1: MatrixNode,
         n2: MatrixNode,
         restLen: number,
-        isMobile: boolean
+        isMobile: boolean,
+        isLight: boolean = false
     ) => {
         const dx = n1.x - n2.x;
         const dy = n1.y - n2.y;
@@ -374,13 +392,24 @@ export function KineticMatrix({
         const stretch = Math.abs(dist - restLen) / restLen;
         const isTensioned = n1.tension > 0.05 || n2.tension > 0.05 || stretch > 0.1;
 
-        if (isTensioned) {
-            const glow = Math.max(n1.tension, n2.tension, stretch * 2);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
-            ctx.lineWidth = isMobile ? 0.7 : (0.8 + glow * 1.2);
+        if (isLight) {
+            if (isTensioned) {
+                const glow = Math.max(n1.tension, n2.tension, stretch * 2);
+                ctx.strokeStyle = `rgba(2, 132, 199, ${Math.min(0.7, (isMobile ? 0.3 : 0.38) + glow * 0.5)})`;
+                ctx.lineWidth = isMobile ? 0.8 : (1.0 + glow * 1.2);
+            } else {
+                ctx.strokeStyle = isMobile ? 'rgba(2, 132, 199, 0.12)' : 'rgba(2, 132, 199, 0.16)';
+                ctx.lineWidth = 0.6;
+            }
         } else {
-            ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
-            ctx.lineWidth = 0.5;
+            if (isTensioned) {
+                const glow = Math.max(n1.tension, n2.tension, stretch * 2);
+                ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
+                ctx.lineWidth = isMobile ? 0.7 : (0.8 + glow * 1.2);
+            } else {
+                ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
+                ctx.lineWidth = 0.5;
+            }
         }
 
         ctx.beginPath();
