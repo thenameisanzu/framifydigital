@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Logo from "./Logo";
 import InstagramIcon from "./InstagramIcon";
 import ThemeToggle from "./ThemeToggle";
+import { useFluidPill, FluidPillIndicator } from "./ui/FluidPill";
 import {
   Menu,
   X,
@@ -83,6 +84,14 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
 
+  const navContainerRef = useRef<HTMLDivElement | null>(null);
+  const { pillRef } = useFluidPill({
+    activeId: activeSection,
+    containerRef: navContainerRef,
+    duration: 380,
+    stretchIntensity: 0.35,
+  });
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -109,9 +118,8 @@ export function Navbar() {
         }
       }
 
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      // Always update active section (resets to "" when scrolled past all nav sections like into Team, FAQ, Contact, Footer)
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -198,8 +206,12 @@ export function Navbar() {
               <Logo size="md" />
             </a>
 
-            {/* Desktop Navigation Links with Smooth Active State */}
-            <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-md shadow-inner">
+            {/* Desktop Navigation Links with Apple-style Fluid Morphing Pill */}
+            <nav
+              ref={navContainerRef}
+              className="relative hidden lg:flex items-center gap-1.5 p-1 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-md shadow-inner"
+            >
+              <FluidPillIndicator pillRef={pillRef} className="rounded-full" />
               {NAV_LINKS.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
@@ -207,12 +219,13 @@ export function Navbar() {
                   <a
                     key={link.name}
                     href={link.href}
+                    data-nav-id={sectionId}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={cn(
-                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 relative cursor-pointer",
+                      "text-xs font-semibold px-3.5 py-1.5 rounded-full transition-colors duration-200 relative z-10 cursor-pointer select-none",
                       isActive
-                        ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-md shadow-cyan-500/25"
-                        : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
+                        ? "text-white font-bold"
+                        : "text-slate-300 hover:text-white hover:bg-white/[0.04]"
                     )}
                   >
                     {link.name}
@@ -239,7 +252,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="btn-shimmer inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-xs font-bold text-white shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 <Sparkles className="size-3.5" />
                 <span>Get Quote</span>

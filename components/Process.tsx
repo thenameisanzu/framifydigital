@@ -122,10 +122,10 @@ export function Process() {
         </div>
 
         {/* Action Button */}
-        <div className="mt-10 text-center">
+        <div className="reveal delay-200 mt-10 text-center">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
+            className="btn-shimmer inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
           >
             <span>Start Your Project</span>
             <ArrowRight className="size-4" />

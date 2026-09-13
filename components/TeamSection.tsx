@@ -129,19 +129,22 @@ export function TeamSection() {
           </p>
         </div>
 
-        {/* Team Members Grid */}
-        <div className="reveal delay-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {TEAM_MEMBERS.map((member, index) => (
-            <div
-              key={member.id}
-              className={cn(
-                "group relative flex flex-col items-center justify-end overflow-hidden rounded-2xl glass-card p-6 text-center border border-white/[0.08] transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70",
-                member.borderHover
-              )}
-              style={{
-                background: 'rgba(14, 18, 28, 0.72)',
-              }}
-            >
+        {/* Team Members Grid with Staggered Reveal */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {TEAM_MEMBERS.map((member, index) => {
+            const delays = ["delay-75", "delay-150", "delay-200", "delay-250"];
+            return (
+              <div
+                key={member.id}
+                className={cn(
+                  "reveal group relative flex flex-col items-center justify-end overflow-hidden rounded-2xl glass-card p-6 text-center border border-white/[0.08] transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/70",
+                  delays[index % delays.length],
+                  member.borderHover
+                )}
+                style={{
+                  background: 'rgba(14, 18, 28, 0.72)',
+                }}
+              >
               {/* Dynamic Wave Hover Effect */}
               <div
                 className={cn(
@@ -201,7 +204,8 @@ export function TeamSection() {
                 })}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -85,7 +85,7 @@ export function RoiCalculator() {
         </div>
 
         {/* Package Selector Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="reveal delay-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {PACKAGES.map((pkg) => {
             const Icon = pkg.icon;
             const isSelected = selectedPkg === pkg.id;
@@ -138,7 +138,7 @@ export function RoiCalculator() {
         </div>
 
         {/* Selected Package Details Box */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-white/[0.1] bg-gradient-to-r from-[#0e121a]/95 via-[#131926]/90 to-[#0e121a]/95 max-w-3xl mx-auto shadow-xl overflow-hidden min-h-[320px]">
+        <div className="reveal delay-200 glass-card rounded-2xl p-6 sm:p-8 border border-white/[0.1] bg-gradient-to-r from-[#0e121a]/95 via-[#131926]/90 to-[#0e121a]/95 max-w-3xl mx-auto shadow-xl overflow-hidden min-h-[320px]">
           <div key={currentPackage.id} className="animate-detail-fade flex flex-col justify-between h-full">
             <div>
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
@@ -175,7 +175,7 @@ export function RoiCalculator() {
                 href={`https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20get%20a%20quote%20for%20the%20${encodeURIComponent(currentPackage.name)}%20service.`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95"
+                className="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <MessageCircle className="size-4" />
                 <span>Get WhatsApp Quote</span>

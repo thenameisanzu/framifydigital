@@ -206,7 +206,7 @@ export function ContactSection() {
                       placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none transition-all"
                     />
                   </div>
 
@@ -217,7 +217,7 @@ export function ContactSection() {
                     <select
                       value={formData.selectedService}
                       onChange={(e) => setFormData({ ...formData, selectedService: e.target.value })}
-                      className="w-full rounded-xl bg-[#090a0f] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-cyan-400 focus:outline-none"
+                      className="w-full rounded-xl bg-[#090a0f] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none transition-all"
                     >
                       {AVAILABLE_SERVICES.map((s) => (
                         <option key={s} value={s} className="bg-[#090a0f] text-white">
@@ -236,14 +236,14 @@ export function ContactSection() {
                       placeholder="Tell us what you're looking for (e.g. Logo redesign, 10 reels per month, admission posters...)"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none resize-none"
+                      className="w-full rounded-xl bg-white/[0.03] border border-white/[0.1] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none resize-none transition-all"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 transition-all"
+                    className="btn-shimmer w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.01] active:scale-[0.98] disabled:opacity-50 transition-all cursor-pointer"
                   >
                     <Sparkles className="size-4" />
                     <span>Send Project Request</span>

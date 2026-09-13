@@ -143,8 +143,8 @@ export function Services() {
 
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3.5 mb-3">
-                    <div className="size-11 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-md">
-                      <Icon className="size-5" />
+                    <div className="size-11 rounded-xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:rotate-2 group-hover:bg-cyan-500/15 group-hover:border-cyan-400/60 transition-all duration-300 shadow-md">
+                      <Icon className="size-5 transition-transform duration-300" />
                     </div>
                     <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
                       {service.title}
@@ -163,7 +163,7 @@ export function Services() {
                   {/* Deliverables List */}
                   <div className="space-y-2 mb-6 pt-3 border-t border-white/[0.06]">
                     {service.deliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-300 group-hover:text-slate-200 transition-colors">
                         <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
@@ -179,10 +179,10 @@ export function Services() {
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300"
+                    className="group/link inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-all"
                   >
                     <span>Get Quote</span>
-                    <ArrowRight className="size-3.5" />
+                    <ArrowRight className="size-3.5 group-hover/link:translate-x-1 transition-transform duration-200" />
                   </a>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export function Services() {
 
           <a
             href="#contact"
-            className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
+            className="btn-shimmer shrink-0 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95"
           >
             <span>Request Project Quote</span>
             <ArrowRight className="size-4" />

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useFluidPill, FluidPillIndicator } from "./ui/FluidPill";
 import {
   Palette,
   Video,
@@ -109,6 +110,14 @@ export function Portfolio() {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
+  const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const { pillRef } = useFluidPill({
+    activeId: activeTab,
+    containerRef: tabsContainerRef,
+    duration: 380,
+    stretchIntensity: 0.32,
+  });
+
   const filteredItems = activeTab === "all"
     ? PORTFOLIO_ITEMS
     : PORTFOLIO_ITEMS.filter((i) => i.category === activeTab);
@@ -134,23 +143,31 @@ export function Portfolio() {
             </p>
           </div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-white/[0.04] border border-white/[0.1] backdrop-blur-md">
-            {CATEGORIES.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all",
-                  activeTab === tab.id
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20"
-                    : "text-slate-300 hover:text-white hover:bg-white/[0.06]"
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {/* Filter Tabs with Apple-style Fluid Morphing Pill */}
+          <div
+            ref={tabsContainerRef}
+            className="relative flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-white/[0.04] border border-white/[0.1] backdrop-blur-md shadow-inner"
+          >
+            <FluidPillIndicator pillRef={pillRef} className="rounded-lg" />
+            {CATEGORIES.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  data-tab-id={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn(
+                    "relative z-10 px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors duration-200 cursor-pointer select-none",
+                    isActive
+                      ? "text-white font-bold"
+                      : "text-slate-300 hover:text-white hover:bg-white/[0.04]"
+                  )}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
