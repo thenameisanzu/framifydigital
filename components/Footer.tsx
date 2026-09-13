@@ -124,6 +124,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#faq" className="hover:text-cyan-400 transition-colors">
+                  FAQ & Questions
+                </a>
+              </li>
+              <li>
                 <a href="#contact" className="hover:text-cyan-400 transition-colors">
                   Request a Quote
                 </a>
