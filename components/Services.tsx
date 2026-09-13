@@ -97,23 +97,25 @@ const SERVICES: ServiceItem[] = [
 ];
 
 export function Services() {
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+
   return (
-    <section id="services" className="relative w-full py-20 bg-slate-50 dark:bg-[#080e27] border-b border-slate-200 dark:border-sky-500/15 overflow-hidden transition-colors duration-300">
+    <section id="services" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 -left-40 size-96 rounded-full bg-blue-500/10 dark:bg-blue-600/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 size-96 rounded-full bg-cyan-400/10 dark:bg-cyan-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-40 size-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 size-96 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-sky-500/25 bg-white/90 dark:bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-700 dark:text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
-            <Sparkles className="size-3.5 text-cyan-500 dark:text-cyan-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+            <Sparkles className="size-3.5 text-cyan-400" />
             <span>WHAT WE DO</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Our Core <span className="gradient-text-cyan">Creative Services</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+          <p className="mt-3 text-sm sm:text-base text-slate-300">
             Logos, Reels, Posters, and Thumbnails crafted with precision to give your business an unfair advantage.
           </p>
         </div>
@@ -125,40 +127,40 @@ export function Services() {
             return (
               <div
                 key={service.id}
-                className="group relative rounded-2xl glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/40"
+                className="group relative rounded-2xl glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40"
               >
                 <div>
                   {/* Category */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[11px] font-mono font-medium text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">
+                    <span className="text-[11px] font-mono font-medium text-cyan-400 uppercase tracking-wider">
                       {service.category}
                     </span>
                   </div>
 
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3.5 mb-3">
-                    <div className="size-11 rounded-xl bg-slate-100 dark:bg-[#0c1844] border border-slate-200 dark:border-sky-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-sm">
+                    <div className="size-11 rounded-xl bg-[#0c1844] border border-sky-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all shadow-md">
                       <Icon className="size-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
                       {service.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs font-medium text-cyan-700 dark:text-cyan-200/90 mb-2">
+                  <p className="text-xs font-medium text-cyan-200/90 mb-2">
                     {service.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
                     {service.shortDesc}
                   </p>
 
                   {/* Deliverables List */}
-                  <div className="space-y-2 mb-6 pt-3 border-t border-slate-200 dark:border-sky-500/10">
+                  <div className="space-y-2 mb-6 pt-3 border-t border-sky-500/10">
                     {service.deliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
-                        <CheckCircle2 className="size-3.5 text-cyan-500 dark:text-cyan-400 shrink-0 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                        <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -166,14 +168,14 @@ export function Services() {
                 </div>
 
                 {/* Direct Action */}
-                <div className="pt-3 border-t border-slate-200 dark:border-sky-500/15 flex items-center justify-between mt-auto">
-                  <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                <div className="pt-3 border-t border-sky-500/15 flex items-center justify-between mt-auto">
+                  <span className="text-xs font-mono text-slate-400">
                     Custom Deliverables
                   </span>
 
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-600 hover:text-cyan-700 dark:text-cyan-400 dark:hover:text-cyan-300"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300"
                   >
                     <span>Get Quote</span>
                     <ArrowRight className="size-3.5" />
@@ -185,15 +187,15 @@ export function Services() {
         </div>
 
         {/* Clean Consultation Callout */}
-        <div className="mt-12 rounded-2xl glass-card p-6 sm:p-8 border border-slate-200 dark:border-sky-500/25 bg-gradient-to-r from-sky-50/80 via-blue-50/70 to-indigo-50/80 dark:from-[#0c1844]/95 dark:via-[#0d2157]/90 dark:to-[#0c1844]/95 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-md">
+        <div className="mt-12 rounded-2xl glass-card p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-r from-[#0c1844]/95 via-[#0d2157]/90 to-[#0c1844]/95 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <span className="text-xs font-mono uppercase text-cyan-700 dark:text-cyan-400 font-bold block mb-1">
+            <span className="text-xs font-mono uppercase text-cyan-400 font-bold block mb-1">
               📍 Kottayam, Karukachal 686540, Kerala
             </span>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+            <h3 className="text-lg sm:text-xl font-bold text-white">
               Ready to upgrade your brand's visual identity and content?
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+            <p className="text-xs sm:text-sm text-slate-300 mt-1">
               Let's create high-converting logos, viral reels, and commercial posters for your business.
             </p>
           </div>

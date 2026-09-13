@@ -114,28 +114,28 @@ export function Portfolio() {
     : PORTFOLIO_ITEMS.filter((i) => i.category === activeTab);
 
   return (
-    <section id="portfolio" className="relative w-full py-20 bg-white dark:bg-[#060a1d] border-b border-slate-200 dark:border-sky-500/15 overflow-hidden transition-colors duration-300">
+    <section id="portfolio" className="relative w-full py-20 bg-[#060a1d] border-b border-sky-500/15 overflow-hidden">
       {/* Background accents */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-blue-500/5 dark:bg-blue-900/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-blue-900/10 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-sky-500/25 bg-slate-100 dark:bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-700 dark:text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
-              <Sparkles className="size-3.5 text-cyan-500 dark:text-cyan-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+              <Sparkles className="size-3.5 text-cyan-400" />
               <span>OUR WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Featured <span className="gradient-text-cyan">Creative Showcase</span>
             </h2>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 max-w-lg">
+            <p className="mt-2 text-sm text-slate-300 max-w-lg">
               A sample of the logos, reels, posters, and thumbnails we engineer for our clients.
             </p>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-slate-100 dark:bg-[#0c1844]/80 border border-slate-200 dark:border-sky-500/20 backdrop-blur-md shadow-sm">
+          <div className="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-[#0c1844]/80 border border-sky-500/20 backdrop-blur-md">
             {CATEGORIES.map((tab) => (
               <button
                 key={tab.id}
@@ -145,7 +145,7 @@ export function Portfolio() {
                   "px-3 py-1.5 text-xs font-semibold rounded-lg transition-all",
                   activeTab === tab.id
                     ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20"
-                    : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-sky-900/30"
+                    : "text-slate-300 hover:text-white hover:bg-sky-900/30"
                 )}
               >
                 {tab.label}
@@ -159,40 +159,40 @@ export function Portfolio() {
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-slate-200 dark:border-sky-500/15 hover:border-cyan-500/40 transition-all duration-300 shadow-sm"
+              className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300"
             >
               <div>
-                <span className="text-[11px] font-mono font-semibold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider bg-cyan-50 dark:bg-sky-950/80 px-2.5 py-0.5 rounded-md border border-cyan-200 dark:border-sky-500/20 mb-3 inline-block">
+                <span className="text-[11px] font-mono font-semibold text-cyan-400 uppercase tracking-wider bg-sky-950/80 px-2.5 py-0.5 rounded-md border border-sky-500/20 mb-3 inline-block">
                   {item.categoryLabel}
                 </span>
 
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-base font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                <p className="text-xs text-slate-300 leading-relaxed mb-4">
                   {item.description}
                 </p>
 
-                <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-200 dark:border-sky-500/10">
+                <div className="space-y-1.5 mb-5 pt-3 border-t border-sky-500/10">
                   {item.highlights.slice(0, 2).map((h, i) => (
-                    <div key={i} className="flex items-start gap-1.5 text-xs text-slate-600 dark:text-slate-300">
-                      <CheckCircle2 className="size-3.5 text-cyan-500 dark:text-cyan-400 shrink-0 mt-0.5" />
+                    <div key={i} className="flex items-start gap-1.5 text-xs text-slate-300">
+                      <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-200 dark:border-sky-500/15 flex items-center justify-between">
-                <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400">
+              <div className="pt-3 border-t border-sky-500/15 flex items-center justify-between">
+                <span className="text-xs font-mono text-cyan-400">
                   Verified Delivery
                 </span>
 
                 <button
                   type="button"
                   onClick={() => setSelectedItem(item)}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-[#0c1844] hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-600 border border-slate-200 dark:border-sky-500/25 px-3 py-1.5 rounded-lg transition-all shadow-sm"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-200 bg-[#0c1844] hover:bg-cyan-600 border border-sky-500/25 px-3 py-1.5 rounded-lg transition-all"
                 >
                   <span>View Details</span>
                   <ArrowUpRight className="size-3.5" />
@@ -205,45 +205,45 @@ export function Portfolio() {
 
       {/* Item Detail Modal */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-[#080e27] border border-slate-200 dark:border-sky-500/30 p-6 sm:p-7 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative w-full max-w-lg rounded-2xl bg-[#080e27] border border-sky-500/30 p-6 sm:p-7 shadow-2xl">
             <div className="flex items-start justify-between gap-4 mb-4">
               <div>
-                <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 uppercase tracking-widest">
+                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
                   {selectedItem.categoryLabel}
                 </span>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">
+                <h3 className="text-xl font-bold text-white mt-1">
                   {selectedItem.title}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedItem(null)}
-                className="rounded-lg border border-slate-200 dark:border-sky-500/30 bg-slate-100 dark:bg-[#0c1844] px-2.5 py-1 text-xs font-mono text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                className="rounded-lg border border-sky-500/30 bg-[#0c1844] px-2.5 py-1 text-xs font-mono text-slate-300 hover:text-white"
               >
                 CLOSE
               </button>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-5 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed">
               {selectedItem.description}
             </p>
 
-            <div className="rounded-xl bg-slate-50 dark:bg-[#0c1844]/60 border border-slate-200 dark:border-sky-500/15 p-4 mb-6">
-              <h4 className="text-xs font-mono uppercase text-cyan-700 dark:text-cyan-400 font-semibold mb-2 flex items-center gap-1.5">
+            <div className="rounded-xl bg-[#0c1844]/60 border border-sky-500/15 p-4 mb-6">
+              <h4 className="text-xs font-mono uppercase text-cyan-400 font-semibold mb-2 flex items-center gap-1.5">
                 <Sparkles className="size-3.5" /> Key Deliverables Included
               </h4>
               <ul className="space-y-2">
                 {selectedItem.highlights.map((h, idx) => (
-                  <li key={idx} className="text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2">
-                    <CheckCircle2 className="size-3.5 text-cyan-500 dark:text-cyan-400 shrink-0 mt-0.5" />
+                  <li key={idx} className="text-xs text-slate-300 flex items-start gap-2">
+                    <CheckCircle2 className="size-3.5 text-cyan-400 shrink-0 mt-0.5" />
                     <span>{h}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-200 dark:border-sky-500/20">
+            <div className="flex items-center justify-between gap-3 pt-3 border-t border-sky-500/20">
               <a
                 href={`https://wa.me/919447520844?text=Hi%20Framify,%20I'm%20interested%20in%20a%20project%20similar%20to%20${encodeURIComponent(selectedItem.title)}.`}
                 target="_blank"

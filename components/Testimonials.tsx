@@ -69,28 +69,28 @@ export function Testimonials() {
   const currentT = TESTIMONIALS[activeIndex];
 
   return (
-    <section id="testimonials" className="relative w-full py-20 bg-slate-50 dark:bg-[#080e27] border-b border-slate-200 dark:border-sky-500/15 overflow-hidden transition-colors duration-300">
+    <section id="testimonials" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
       {/* Glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[500px] rounded-full bg-blue-500/5 dark:bg-blue-900/15 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[500px] rounded-full bg-blue-900/15 blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-sky-500/25 bg-white/90 dark:bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-700 dark:text-cyan-300 backdrop-blur-md mb-3 shadow-sm">
-            <Quote className="size-3.5 text-cyan-500 dark:text-cyan-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
+            <Quote className="size-3.5 text-cyan-400" />
             <span>CLIENT EXPERIENCES</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
             Trusted by <span className="gradient-text-cyan">Creators & Businesses</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+          <p className="mt-3 text-sm sm:text-base text-slate-300">
             What our clients say about our design quality, video editing, and on-time delivery.
           </p>
         </div>
 
         {/* Featured Testimonial Card */}
         <div className="max-w-3xl mx-auto">
-          <div className="relative rounded-2xl glass-card p-7 sm:p-10 border border-slate-200 dark:border-sky-500/25 bg-gradient-to-br from-white via-sky-50/50 to-blue-50/50 dark:from-[#0c1844]/90 dark:via-[#0e2154]/70 dark:to-[#080e27]/95 shadow-xl">
+          <div className="relative rounded-2xl glass-card p-7 sm:p-10 border border-sky-500/25 bg-gradient-to-br from-[#0c1844]/90 via-[#0e2154]/70 to-[#080e27]/95 shadow-xl">
             {/* Stars & Tag */}
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
               <div className="flex items-center gap-1">
@@ -99,30 +99,30 @@ export function Testimonials() {
                 ))}
               </div>
 
-              <span className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950 border border-cyan-200 dark:border-cyan-400/30 text-cyan-800 dark:text-cyan-300 font-medium">
+              <span className="text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full bg-cyan-950 border border-cyan-400/30 text-cyan-300">
                 {currentT.serviceReceived}
               </span>
             </div>
 
             {/* Big Highlight */}
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-white leading-snug mb-4">
               "{currentT.highlight}"
             </h3>
 
             {/* Body */}
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
               "{currentT.content}"
             </p>
 
             {/* Author and Nav */}
-            <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-sky-500/20">
+            <div className="flex items-center justify-between pt-4 border-t border-sky-500/20">
               <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <h4 className="text-sm font-bold text-white flex items-center gap-1.5">
                   {currentT.name}
-                  <ShieldCheck className="size-4 text-cyan-500 dark:text-cyan-400" />
+                  <ShieldCheck className="size-4 text-cyan-400" />
                 </h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                  {currentT.business} · <span className="text-cyan-700 dark:text-cyan-300 font-semibold">{currentT.location}</span>
+                <p className="text-xs text-slate-400 font-mono">
+                  {currentT.business} · <span className="text-cyan-300">{currentT.location}</span>
                 </p>
               </div>
 
@@ -131,18 +131,18 @@ export function Testimonials() {
                 <button
                   type="button"
                   onClick={prev}
-                  className="p-2 rounded-lg border border-slate-200 dark:border-sky-500/30 bg-slate-100 dark:bg-[#0c1844] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-cyan-400 transition-colors shadow-sm active:scale-95"
+                  className="p-2 rounded-lg border border-sky-500/30 bg-[#0c1844] text-slate-300 hover:text-white hover:border-cyan-400 transition-colors"
                   aria-label="Previous Testimonial"
                 >
                   <ChevronLeft className="size-4" />
                 </button>
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span className="text-xs font-mono text-slate-400">
                   {activeIndex + 1} / {TESTIMONIALS.length}
                 </span>
                 <button
                   type="button"
                   onClick={next}
-                  className="p-2 rounded-lg border border-slate-200 dark:border-sky-500/30 bg-slate-100 dark:bg-[#0c1844] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-cyan-400 transition-colors shadow-sm active:scale-95"
+                  className="p-2 rounded-lg border border-sky-500/30 bg-[#0c1844] text-slate-300 hover:text-white hover:border-cyan-400 transition-colors"
                   aria-label="Next Testimonial"
                 >
                   <ChevronRight className="size-4" />

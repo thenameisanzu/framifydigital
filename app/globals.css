@@ -11,15 +11,14 @@
     --brand-glow: rgba(56, 189, 248, 0.35);
   }
 
-  html.dark {
+  html {
+    scroll-behavior: smooth;
     color-scheme: dark;
   }
 
-  html.light {
-    color-scheme: light;
-  }
-
   body {
+    background-color: #080e27;
+    color: #f8fafc;
     overflow-x: hidden;
   }
 }
@@ -28,18 +27,11 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
-.dark ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #080e27;
 }
-.light ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-.dark ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #1e293b;
-  border-radius: 4px;
-}
-.light ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -47,50 +39,25 @@
 }
 
 /* Glassmorphism & Glow utilities */
-.dark .glass-card {
+.glass-card {
   background: rgba(12, 24, 68, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(56, 189, 248, 0.14);
 }
 
-.light .glass-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-}
-
-.dark .glass-card:hover {
+.glass-card:hover {
   border-color: rgba(56, 189, 248, 0.35);
   box-shadow: 0 12px 40px -10px rgba(56, 189, 248, 0.2);
 }
 
-.light .glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 12px 30px -8px rgba(14, 165, 233, 0.15);
-}
-
-.dark .gradient-text-brand {
+.gradient-text-brand {
   background: linear-gradient(135deg, #ffffff 20%, #93c5fd 60%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.light .gradient-text-brand {
-  background: linear-gradient(135deg, #0f172a 20%, #1e40af 60%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .gradient-text-cyan {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .gradient-text-cyan {
   background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #818cf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -98,10 +65,6 @@
 
 .bg-radial-navy {
   background: radial-gradient(circle at 50% 0%, #152766 0%, #080e27 65%, #05091a 100%);
-}
-
-.light .bg-radial-light {
-  background: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #ffffff 65%, #f8fafc 100%);
 }
 
 @keyframes marquee {
