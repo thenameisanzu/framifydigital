@@ -97,6 +97,36 @@ html.light div[class*="blur-"] {
   background-color: rgba(56, 189, 248, 0.2) !important;
 }
 
+/* ==========================================================================
+   Universal Light Mode Typography & Color Contrast Overrides
+   ========================================================================== */
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light .text-cyan-200,
+html.light .text-cyan-300,
+html.light .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
 /* Light Theme Brand Gradients */
 html.light .gradient-text-brand {
   background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 50%, #4338ca 100%) !important;
@@ -110,7 +140,7 @@ html.light .gradient-text-cyan {
   -webkit-text-fill-color: transparent !important;
 }
 
-/* Light Theme Global Typography */
+/* Light Theme Global Headings */
 html.light h1,
 html.light h2,
 html.light h3,
@@ -127,6 +157,36 @@ html.light section {
 
 html.light section:nth-of-type(even) {
   background-color: #f1f5f9 !important;
+}
+
+/* Light Theme Glass Cards */
+html.light .glass-card {
+  background: #ffffff !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 18px 45px -12px rgba(2, 132, 199, 0.15) !important;
+}
+
+/* Light Theme Background Utility Resets (No dark boxes) */
+html.light [class*="bg-\[\#080e27\]"],
+html.light [class*="bg-\[\#0c1844\]"],
+html.light [class*="bg-\[\#060a1d\]"],
+html.light [class*="bg-\[\#05091a\]"],
+html.light [class*="bg-\[\#0e2154\]"],
+html.light [class*="bg-\[\#0e2257\]"],
+html.light [class*="bg-\[\#0d2157\]"],
+html.light [class*="bg-\[\#102158\]"] {
+  background-color: #ffffff !important;
+}
+
+html.light [class*="border-sky-500"] {
+  border-color: rgba(203, 213, 225, 0.8) !important;
 }
 
 /* Light Theme Header & Logo */
@@ -171,18 +231,24 @@ html.light footer span.uppercase {
   color: #0284c7 !important;
 }
 
-/* Light Theme Hero Section */
+/* ==========================================================================
+   Section 1: Hero Section (Light Mode)
+   ========================================================================== */
 html.light #hero {
   background-color: #f8fafc !important;
   border-color: #e2e8f0 !important;
 }
 
-html.light #hero div[class*="bg-gradient-to-b"] {
-  background: none !important;
+html.light #hero canvas {
+  opacity: 0.95 !important;
 }
 
-html.light #hero .rounded-3xl.bg-\[\#080e27\]\/70 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+html.light #hero .absolute.inset-0.bg-gradient-to-b {
+  display: none !important;
+}
+
+html.light #hero .rounded-3xl {
+  background-color: rgba(255, 255, 255, 0.92) !important;
   border-color: #e2e8f0 !important;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
 }
@@ -247,7 +313,9 @@ html.light #hero span[class*="bg-\[\#080e27\]"] {
   color: #334155 !important;
 }
 
-/* Light Theme Services */
+/* ==========================================================================
+   Section 2: Services (Light Mode)
+   ========================================================================== */
 html.light #services .glass-card {
   background: #ffffff !important;
   border-color: #e2e8f0 !important;
@@ -296,7 +364,32 @@ html.light #services .mt-12.glass-card p {
   color: #334155 !important;
 }
 
-/* Light Theme Portfolio */
+/* ==========================================================================
+   Section 3: Portfolio & Filter Tabs (Light Mode)
+   ========================================================================== */
+html.light #portfolio {
+  background-color: #f1f5f9 !important;
+}
+
+html.light #portfolio p {
+  color: #475569 !important;
+}
+
+html.light #portfolio div[class*="bg-\[\#0c1844\]"] {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light #portfolio button:not(.bg-gradient-to-r) {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+html.light #portfolio button:not(.bg-gradient-to-r):hover {
+  color: #0284c7 !important;
+  background-color: #f0f9ff !important;
+}
+
 html.light #portfolio .glass-card {
   background: #ffffff !important;
   border-color: #e2e8f0 !important;
@@ -305,6 +398,7 @@ html.light #portfolio .glass-card {
 
 html.light #portfolio .glass-card h3 {
   color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
 html.light #portfolio .glass-card p {
@@ -313,6 +407,7 @@ html.light #portfolio .glass-card p {
 
 html.light #portfolio .glass-card div[class*="text-slate-300"] {
   color: #334155 !important;
+  font-weight: 500 !important;
 }
 
 html.light #portfolio .glass-card span.bg-sky-950\/80 {
@@ -322,10 +417,16 @@ html.light #portfolio .glass-card span.bg-sky-950\/80 {
   font-weight: 600 !important;
 }
 
+html.light #portfolio .glass-card span[class*="text-cyan-400"] {
+  color: #0284c7 !important;
+  font-weight: 600 !important;
+}
+
 html.light #portfolio .glass-card button {
   background-color: #f1f5f9 !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
+  font-weight: 600 !important;
 }
 
 html.light #portfolio .glass-card button:hover {
@@ -333,18 +434,11 @@ html.light #portfolio .glass-card button:hover {
   color: #ffffff !important;
 }
 
-html.light #portfolio div[class*="bg-\[\#0c1844\]"] {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-}
-
-html.light #portfolio button:not(.bg-gradient-to-r) {
-  color: #475569 !important;
-}
-
-/* Light Theme Package Estimator (ROI Calculator) */
+/* ==========================================================================
+   Section 4: Package Estimator (Light Mode)
+   ========================================================================== */
 html.light #calculator {
-  background-color: #f1f5f9 !important;
+  background-color: #f8fafc !important;
   border-color: #e2e8f0 !important;
 }
 
@@ -405,6 +499,7 @@ html.light #calculator .glass-card.max-w-3xl p {
 
 html.light #calculator .glass-card.max-w-3xl div[class*="text-slate-200"] {
   color: #1e293b !important;
+  font-weight: 500 !important;
 }
 
 html.light #calculator .glass-card.max-w-3xl span.text-cyan-400 {
@@ -428,7 +523,9 @@ html.light #calculator .glass-card.max-w-3xl .border-t {
   border-color: #e2e8f0 !important;
 }
 
-/* Light Theme Process (How It Works) */
+/* ==========================================================================
+   Section 5: Process (How It Works) (Light Mode)
+   ========================================================================== */
 html.light #framework .glass-card {
   background: #ffffff !important;
   border-color: #e2e8f0 !important;
@@ -458,7 +555,9 @@ html.light #framework .glass-card div[class*="text-slate-300"] {
   color: #334155 !important;
 }
 
-/* Light Theme Testimonials */
+/* ==========================================================================
+   Section 6: Testimonials (Light Mode)
+   ========================================================================== */
 html.light #testimonials .glass-card {
   background: #ffffff !important;
   border-color: #cbd5e1 !important;
@@ -467,6 +566,7 @@ html.light #testimonials .glass-card {
 
 html.light #testimonials .glass-card h3 {
   color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
 html.light #testimonials .glass-card p {
@@ -475,6 +575,7 @@ html.light #testimonials .glass-card p {
 
 html.light #testimonials .glass-card h4 {
   color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
 html.light #testimonials .glass-card span.bg-cyan-950 {
@@ -495,20 +596,84 @@ html.light #testimonials .glass-card button:hover {
   color: #0284c7 !important;
 }
 
-/* Light Theme Contact Section */
-html.light #contact {
+/* ==========================================================================
+   Section 7: FAQ (Light Mode)
+   ========================================================================== */
+html.light #faq {
   background-color: #f8fafc !important;
+}
+
+html.light #faq p {
+  color: #475569 !important;
+}
+
+html.light #faq .rounded-2xl {
+  background-color: #ffffff !important;
   border-color: #e2e8f0 !important;
 }
 
-html.light #contact .glass-card {
+html.light #faq .rounded-2xl:hover {
+  border-color: #38bdf8 !important;
+}
+
+html.light #faq .glass-card {
+  background-color: #f0f9ff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 8px 25px -6px rgba(2, 132, 199, 0.15) !important;
+}
+
+html.light #faq button span {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light #faq div[class*="size-8"] {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light #faq div[class*="border-t"] {
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+  font-weight: 450 !important;
+}
+
+html.light #faq .mt-10 {
   background: #ffffff !important;
   border-color: #cbd5e1 !important;
-  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light #faq .mt-10 h4 {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light #faq .mt-10 p {
+  color: #475569 !important;
+}
+
+/* ==========================================================================
+   Section 8: Contact Section (Light Mode)
+   ========================================================================== */
+html.light #contact {
+  background-color: #f8fafc !important;
+}
+
+html.light #contact p {
+  color: #475569 !important;
+}
+
+html.light #contact .lg\:col-span-5 .glass-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 html.light #contact .lg\:col-span-5 h3 {
   color: #0284c7 !important;
+  font-weight: 800 !important;
 }
 
 html.light #contact .lg\:col-span-5 span.uppercase {
@@ -516,8 +681,13 @@ html.light #contact .lg\:col-span-5 span.uppercase {
   font-weight: 700 !important;
 }
 
-html.light #contact .lg\:col-span-5 a {
+html.light #contact .lg\:col-span-5 a[href="tel:+919447520844"] {
   color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+html.light #contact .lg\:col-span-5 a[href*="instagram"] {
+  color: #db2777 !important;
   font-weight: 700 !important;
 }
 
@@ -528,6 +698,7 @@ html.light #contact .lg\:col-span-5 span[class*="text-slate-200"] {
 
 html.light #contact .lg\:col-span-5 span[class*="text-slate-300"] {
   color: #475569 !important;
+  font-weight: 500 !important;
 }
 
 html.light #contact .lg\:col-span-5 div.size-10 {
@@ -537,6 +708,12 @@ html.light #contact .lg\:col-span-5 div.size-10 {
 
 html.light #contact .lg\:col-span-5 .border-t {
   border-color: #e2e8f0 !important;
+}
+
+html.light #contact .lg\:col-span-7 .glass-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 html.light #contact label {
@@ -550,6 +727,7 @@ html.light #contact textarea {
   background-color: #f8fafc !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
+  font-weight: 500 !important;
 }
 
 html.light #contact input:focus,
@@ -565,7 +743,9 @@ html.light #contact textarea::placeholder {
   color: #94a3b8 !important;
 }
 
-/* Light Theme Marquee */
+/* ==========================================================================
+   Section 9: Marquee & Footer (Light Mode)
+   ========================================================================== */
 html.light .animate-marquee div {
   background-color: #ffffff !important;
   color: #1e293b !important;
@@ -573,18 +753,6 @@ html.light .animate-marquee div {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Light Theme FAQ */
-html.light #faq .bg-\[\#0c1844\]\/40 {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
-}
-
-html.light #faq .glass-card.border-cyan-400\/50 {
-  background-color: #f0f9ff !important;
-  border-color: #0284c7 !important;
-}
-
-/* Light Theme Footer */
 html.light footer {
   background-color: #f8fafc !important;
   border-color: #e2e8f0 !important;
