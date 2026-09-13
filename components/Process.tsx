@@ -125,7 +125,7 @@ export function Process() {
             className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all"
           >
             <MessageCircle className="size-4" />
-            <span>Discuss Your Project on WhatsApp (+91 94475 20844)</span>
+            <span>Discuss Your Project on WhatsApp</span>
           </a>
         </div>
       </div>

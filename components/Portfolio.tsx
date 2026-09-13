@@ -257,7 +257,7 @@ export function Portfolio() {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-2.5 text-xs font-bold text-white shadow-md"
               >
                 <MessageCircle className="size-4" />
-                <span>Discuss on WhatsApp (+91 94475 20844)</span>
+                <span>Discuss on WhatsApp</span>
               </a>
             </div>
           </div>

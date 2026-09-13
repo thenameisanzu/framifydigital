@@ -149,7 +149,7 @@ export function RoiCalculator() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all"
             >
               <MessageCircle className="size-4" />
-              <span>Get WhatsApp Quote (+91 94475 20844)</span>
+              <span>Get WhatsApp Quote</span>
             </a>
           </div>
         </div>

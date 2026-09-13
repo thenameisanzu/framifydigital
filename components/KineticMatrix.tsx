@@ -550,10 +550,10 @@ export function KineticMatrix({
                             href="https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20discuss%20a%20project."
                             target="_blank"
                             rel="noreferrer"
-                            className="w-full sm:w-auto min-w-[220px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
+                            className="w-full sm:w-auto min-w-[180px] inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <MessageCircle className="size-4 shrink-0" />
-                            <span>WhatsApp: +91 94475 20844</span>
+                            <span>Chat on WhatsApp</span>
                         </a>
 
                         <a
