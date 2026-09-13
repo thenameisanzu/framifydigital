@@ -60,18 +60,24 @@ html.light ::-webkit-scrollbar-thumb:hover {
   background: #0284c7;
 }
 
+/* Eliminate dark ambient glow orbs in light mode */
+html.light div[class*="blur-"] {
+  opacity: 0.15 !important;
+  background-color: rgba(56, 189, 248, 0.2) !important;
+}
+
 /* Light Theme Cards & Glassmorphism */
 html.light .glass-card {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
 }
 
 html.light .glass-card:hover {
-  border-color: rgba(2, 132, 199, 0.45);
-  box-shadow: 0 18px 45px -12px rgba(2, 132, 199, 0.15);
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 18px 45px -12px rgba(2, 132, 199, 0.15) !important;
 }
 
 /* Light Theme Section Backgrounds */
@@ -84,8 +90,36 @@ html.light section:nth-of-type(even) {
   background-color: #f1f5f9 !important;
 }
 
-html.light #contact {
+html.light #hero {
   background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light #hero .absolute.inset-0.bg-gradient-to-b {
+  background: linear-gradient(to bottom, rgba(248, 250, 252, 0.3) 0%, transparent 40%, rgba(248, 250, 252, 0.85) 100%) !important;
+}
+
+html.light #hero .rounded-3xl.bg-\[\#080e27\]\/70 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light #hero a[href="#services"] {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+html.light #hero a[href="#services"]:hover {
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+  background-color: #f0f9ff !important;
+}
+
+html.light #hero a[href="#services"] svg {
+  color: #0284c7 !important;
 }
 
 /* Light Theme Typography & Readability */
@@ -115,15 +149,47 @@ html.light .text-slate-400 {
 }
 
 html.light .gradient-text-brand {
-  background: linear-gradient(135deg, #0f172a 15%, #0369a1 60%, #0284c7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 html.light .gradient-text-cyan {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Light Theme Category Badges & Tags (No dark blocks) */
+html.light .bg-sky-950,
+html.light .bg-sky-950\/80,
+html.light .bg-sky-950\/60,
+html.light [class*="bg-sky-950"] {
+  background-color: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #bae6fd !important;
+}
+
+html.light .inline-flex.rounded-full.border-sky-500\/25,
+html.light .inline-flex.rounded-full.border-sky-500\/30 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+html.light .inline-flex.rounded-full.border-sky-500\/25 span.text-cyan-300,
+html.light .inline-flex.rounded-full.border-sky-500\/30 span.text-cyan-200 {
+  color: #0284c7 !important;
+}
+
+/* Light Theme Icon Containers */
+html.light .size-10.rounded-xl,
+html.light .size-11.rounded-xl,
+html.light .size-8.rounded-lg {
+  background-color: #e0f2fe !important;
+  border-color: #bae6fd !important;
+  color: #0284c7 !important;
 }
 
 /* Light Theme Form Controls */
@@ -145,7 +211,7 @@ html.light select option {
   color: #0f172a !important;
 }
 
-/* Light Theme Badges & Sub-Containers */
+/* Light Theme Sub-Containers */
 html.light .bg-\[\#0c1844\],
 html.light .bg-\[\#080e27\],
 html.light .bg-\[\#060a1d\],
@@ -157,7 +223,7 @@ html.light .bg-\[\#0c1844\]\/80,
 html.light .bg-\[\#0c1844\]\/90,
 html.light .bg-\[\#080e27\]\/80,
 html.light .bg-\[\#080e27\]\/90 {
-  background-color: rgba(255, 255, 255, 0.92) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
 html.light .border-sky-500\/10,
@@ -168,13 +234,67 @@ html.light .border-sky-500\/30 {
   border-color: rgba(203, 213, 225, 0.8) !important;
 }
 
+/* Light Theme Portfolio Filter Tabs */
+html.light #portfolio .bg-\[\#0c1844\]\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light #portfolio button {
+  color: #475569 !important;
+}
+
+html.light #portfolio button.bg-gradient-to-r {
+  color: #ffffff !important;
+}
+
+html.light #portfolio button.bg-\[\#0c1844\] {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light #portfolio button.bg-\[\#0c1844\]:hover {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Light Theme Marquee */
+html.light .animate-marquee div {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Light Theme FAQ */
+html.light #faq .bg-\[\#0c1844\]\/40 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light #faq .glass-card.border-cyan-400\/50 {
+  background-color: #f0f9ff !important;
+  border-color: #0284c7 !important;
+}
+
+/* Light Theme Header */
 html.light header {
-  background-color: rgba(255, 255, 255, 0.92) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: rgba(226, 232, 240, 0.95) !important;
 }
 
+html.light header nav a {
+  color: #334155 !important;
+}
+
+html.light header nav a:hover {
+  color: #0284c7 !important;
+}
+
+/* Light Theme Brand Footer (Keep crisp high-contrast brand footer) */
 html.light footer {
-  background-color: #05091a !important; /* Preserves contrast high-impact brand footer */
+  background-color: #05091a !important;
   color: #cbd5e1 !important;
 }
 html.light footer .text-white {

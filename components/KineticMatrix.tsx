@@ -155,6 +155,7 @@ export function KineticMatrix({
             const pointer = pointerRef.current;
 
             const isMobile = width < 640;
+            const isLight = typeof document !== 'undefined' && document.documentElement.classList.contains('light');
 
             // Pointer velocity interpolation
             pointer.vx = (pointer.x - pointer.prevX) / (dt * 1000 || 1);
@@ -163,18 +164,22 @@ export function KineticMatrix({
             pointer.prevY = pointer.y;
             const mouseSpeed = Math.sqrt(pointer.vx * pointer.vx + pointer.vy * pointer.vy);
 
-            // Framify Deep Navy Background & Subtle Ambience
-            const bgColor = '#080e27';
-            const nodeColor = '56, 189, 248';
-            const accentGlow = '56, 189, 248';
+            // 1. Clear Canvas with exact theme background
+            const bgColor = isLight ? '#f8fafc' : '#080e27';
+            const accentGlow = isLight ? '2, 132, 199' : '56, 189, 248';
 
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, width, height);
 
-            // Subtle navy vignette gradient across canvas
+            // Subtle vignette gradient across canvas
             const grad = ctx.createRadialGradient(width / 2, height / 2, 40, width / 2, height / 2, Math.max(width, height) * 0.75);
-            grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
-            grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
+            if (isLight) {
+                grad.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+                grad.addColorStop(1, 'rgba(241, 245, 249, 0.9)');
+            } else {
+                grad.addColorStop(0, 'rgba(12, 24, 68, 0.45)');
+                grad.addColorStop(1, 'rgba(8, 14, 39, 0.98)');
+            }
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, width, height);
 
@@ -373,13 +378,18 @@ export function KineticMatrix({
         const dist = Math.sqrt(dx * dx + dy * dy);
         const stretch = Math.abs(dist - restLen) / restLen;
         const isTensioned = n1.tension > 0.05 || n2.tension > 0.05 || stretch > 0.1;
+        const isLight = typeof document !== 'undefined' && document.documentElement.classList.contains('light');
 
         if (isTensioned) {
             const glow = Math.max(n1.tension, n2.tension, stretch * 2);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
+            ctx.strokeStyle = isLight
+                ? `rgba(2, 132, 199, ${Math.min(0.7, (isMobile ? 0.3 : 0.4) + glow * 0.5)})`
+                : `rgba(56, 189, 248, ${Math.min(0.65, (isMobile ? 0.2 : 0.28) + glow * 0.5)})`;
             ctx.lineWidth = isMobile ? 0.7 : (0.8 + glow * 1.2);
         } else {
-            ctx.strokeStyle = isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)';
+            ctx.strokeStyle = isLight
+                ? (isMobile ? 'rgba(2, 132, 199, 0.12)' : 'rgba(2, 132, 199, 0.18)')
+                : (isMobile ? 'rgba(56, 189, 248, 0.05)' : 'rgba(56, 189, 248, 0.08)');
             ctx.lineWidth = 0.5;
         }
 
