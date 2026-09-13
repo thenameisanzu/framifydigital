@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import InstagramIcon from "./InstagramIcon";
+import ThemeToggle from "./ThemeToggle";
 import {
   Menu,
   X,
@@ -144,7 +145,9 @@ export function Navbar() {
             </nav>
 
             {/* Desktop Right Action */}
-            <div className="hidden lg:flex items-center gap-3.5">
+            <div className="hidden lg:flex items-center gap-3">
+              <ThemeToggle />
+
               <a
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
@@ -166,7 +169,9 @@ export function Navbar() {
             </div>
 
             {/* Mobile / Tablet Actions */}
-            <div className="flex items-center gap-2.5 lg:hidden relative z-50">
+            <div className="flex items-center gap-2 lg:hidden relative z-50">
+              <ThemeToggle />
+
               <a
                 href="#contact"
                 onClick={closeMobileMenu}

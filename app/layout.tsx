@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ClickFeedback from "@/components/ClickFeedback";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import CursorGlow from "@/components/CursorGlow";
+import ThemeProvider from "@/components/ThemeProvider";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -49,13 +50,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${mono.variable} dark`}>
+    <html lang="en" className={`${jakarta.variable} ${mono.variable} dark`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#080e27] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-navy-950">
-        <ScrollProgressBar />
-        <CursorGlow />
-        <SmoothScroll />
-        <ClickFeedback />
-        {children}
+        <ThemeProvider>
+          <ScrollProgressBar />
+          <CursorGlow />
+          <SmoothScroll />
+          <ClickFeedback />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
