@@ -749,42 +749,67 @@ html.light #framework .glass-card div[class*="text-slate-300"] {
 /* ==========================================================================
    Section 6: Testimonials (Light Mode)
    ========================================================================== */
-html.light #testimonials .glass-card {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 12px 35px -10px rgba(15, 23, 42, 0.08) !important;
+html.light #testimonials {
+  background-color: #f8fafc !important;
 }
 
-html.light #testimonials .glass-card h3 {
+html.light #testimonials .testimonial-stagger-card {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.light #testimonials .testimonial-stagger-card:hover {
+  border-color: #0284c7 !important;
+}
+
+html.light #testimonials .testimonial-stagger-card h3 {
   color: #0f172a !important;
   font-weight: 700 !important;
 }
 
-html.light #testimonials .glass-card p {
+html.light #testimonials .testimonial-stagger-card p {
   color: #334155 !important;
 }
 
-html.light #testimonials .glass-card h4 {
+html.light #testimonials .testimonial-stagger-card p.text-xs {
   color: #0f172a !important;
   font-weight: 700 !important;
 }
 
-html.light #testimonials .glass-card span.bg-cyan-950 {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #bae6fd !important;
-  font-weight: 600 !important;
+html.light #testimonials .testimonial-stagger-card[class*="z-20"] {
+  background: #ffffff !important;
+  background-image: linear-gradient(to bottom, #f0f9ff, #ffffff) !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 20px 45px -12px rgba(2, 132, 199, 0.25), 0 0 0 2px #0284c7 !important;
 }
 
-html.light #testimonials .glass-card button {
-  background-color: #f1f5f9 !important;
+html.light #testimonials .testimonial-stagger-card[class*="z-20"] h3 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html.light #testimonials .testimonial-stagger-card[class*="z-20"] span.bg-cyan-400 {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+html.light #testimonials .testimonial-stagger-card .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+html.light #testimonials button {
+  background-color: #ffffff !important;
   border-color: #cbd5e1 !important;
   color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-html.light #testimonials .glass-card button:hover {
+html.light #testimonials button:hover {
   border-color: #0284c7 !important;
-  color: #0284c7 !important;
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
