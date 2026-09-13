@@ -82,7 +82,9 @@ const NAV_LINKS: NavLinkItem[] = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuMounted, setIsMenuMounted] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navContainerRef = useRef<HTMLDivElement | null>(null);
   const { pillRef } = useFluidPill({
@@ -143,11 +145,21 @@ export function Navbar() {
     if (e) {
       e.stopPropagation();
     }
-    setMobileMenuOpen((prev) => !prev);
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+    } else {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+      setIsMenuMounted(true);
+      setMobileMenuOpen(true);
+    }
   };
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsMenuMounted(false);
+    }, 240);
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -307,18 +319,26 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay Backdrop with Smooth Fade */}
-      {mobileMenuOpen && (
+      {/* Mobile Drawer Overlay Backdrop with Smooth Fade In & Out */}
+      {isMenuMounted && (
         <div
           onClick={closeMobileMenu}
-          className="fixed inset-0 bg-black/75 backdrop-blur-md z-40 lg:hidden transition-opacity animate-in fade-in duration-300"
+          className={cn(
+            "fixed inset-0 bg-black/75 backdrop-blur-md z-40 lg:hidden transition-all",
+            mobileMenuOpen ? "animate-in fade-in duration-300" : "animate-backdrop-out"
+          )}
           aria-hidden="true"
         />
       )}
 
-      {/* Mobile Drawer Menu Content with Apple-style Fluid Reveal */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-[60px] inset-x-0 bottom-0 z-40 bg-[#090a0f]/98 backdrop-blur-2xl border-b border-white/[0.08] px-4 py-5 shadow-2xl overflow-y-auto animate-mobile-drawer">
+      {/* Mobile Drawer Menu Content with Apple-style Fluid Reveal & Smooth Closing */}
+      {isMenuMounted && (
+        <div
+          className={cn(
+            "lg:hidden fixed top-[60px] inset-x-0 bottom-0 z-40 bg-[#090a0f]/98 backdrop-blur-2xl border-b border-white/[0.08] px-4 py-5 shadow-2xl overflow-y-auto",
+            mobileMenuOpen ? "animate-mobile-drawer" : "animate-mobile-drawer-out"
+          )}
+        >
           <div className="max-w-md mx-auto flex flex-col space-y-2.5 pb-8">
             <div className="animate-mobile-item text-[11px] font-mono uppercase tracking-widest text-cyan-400 font-bold px-1 mb-1" style={{ animationDelay: '30ms' }}>
               Navigation Menu

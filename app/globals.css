@@ -1307,6 +1307,39 @@ a, button, [role="button"] {
   will-change: transform, opacity, filter;
 }
 
+@keyframes mobileDrawerSlideOut {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0);
+    filter: blur(8px);
+  }
+}
+
+.animate-mobile-drawer-out {
+  animation: mobileDrawerSlideOut 0.24s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity, filter;
+  pointer-events: none;
+}
+
+@keyframes backdropFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-backdrop-out {
+  animation: backdropFadeOut 0.24s ease-out forwards;
+  pointer-events: none;
+}
+
 .animate-mobile-item {
   opacity: 0;
   animation: mobileItemCascadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
