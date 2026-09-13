@@ -115,45 +115,49 @@ export function RoiCalculator() {
         </div>
 
         {/* Selected Package Details Box */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto shadow-xl">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-sky-500/20">
+        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto shadow-xl overflow-hidden min-h-[320px]">
+          <div key={currentPackage.id} className="animate-detail-fade flex flex-col justify-between h-full">
             <div>
-              <span className="text-xs font-mono uppercase text-cyan-400 font-semibold block">Selected Plan:</span>
-              <h3 className="text-xl font-bold text-white mt-0.5">{currentPackage.name}</h3>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-sky-500/20">
+                <div>
+                  <span className="text-xs font-mono uppercase text-cyan-400 font-semibold block">Selected Plan:</span>
+                  <h3 className="text-xl font-bold text-white mt-0.5">{currentPackage.name}</h3>
+                </div>
+
+                <span className="text-xs font-mono text-cyan-200 bg-sky-950/80 px-3.5 py-1.5 rounded-full border border-sky-500/30 shadow-sm">
+                  {currentPackage.unit}
+                </span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-300 my-4 leading-relaxed">
+                {currentPackage.description}
+              </p>
+
+              <div className="space-y-2.5 mb-6">
+                {currentPackage.deliverables.map((d, i) => (
+                  <div key={i} className="flex items-center gap-2.5 text-xs text-slate-200">
+                    <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />
+                    <span>{d}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <span className="text-xs font-mono text-slate-300 bg-sky-950 px-3 py-1 rounded-full border border-sky-500/30">
-              {currentPackage.unit}
-            </span>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-sky-500/20">
+              <span className="text-xs font-mono text-slate-400 text-center sm:text-left">
+                Fast turnaround & direct WhatsApp revision support
+              </span>
 
-          <p className="text-xs sm:text-sm text-slate-300 my-4 leading-relaxed">
-            {currentPackage.description}
-          </p>
-
-          <div className="space-y-2 mb-6">
-            {currentPackage.deliverables.map((d, i) => (
-              <div key={i} className="flex items-center gap-2 text-xs text-slate-200">
-                <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />
-                <span>{d}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-sky-500/20">
-            <span className="text-xs font-mono text-slate-400 text-center sm:text-left">
-              Fast turnaround & direct WhatsApp revision support
-            </span>
-
-            <a
-              href={`https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20get%20a%20quote%20for%20the%20${encodeURIComponent(currentPackage.name)}%20service.`}
-              target="_blank"
-              rel="noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all"
-            >
-              <MessageCircle className="size-4" />
-              <span>Get WhatsApp Quote</span>
-            </a>
+              <a
+                href={`https://wa.me/919447520844?text=Hi%20Framify,%20I'd%20like%20to%20get%20a%20quote%20for%20the%20${encodeURIComponent(currentPackage.name)}%20service.`}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95"
+              >
+                <MessageCircle className="size-4" />
+                <span>Get WhatsApp Quote</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
