@@ -9,6 +9,7 @@ import {
   ArrowRight,
   MessageCircle
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const STEPS = [
   {
@@ -61,7 +62,7 @@ export function Process() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="reveal text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Sparkles className="size-3.5 text-cyan-400" />
             <span>HOW IT WORKS</span>
@@ -76,12 +77,16 @@ export function Process() {
 
         {/* 4 Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STEPS.map((step) => {
+          {STEPS.map((step, index) => {
             const Icon = step.icon;
+            const delays = ["delay-100", "delay-150", "delay-200", "delay-250"];
             return (
               <div
                 key={step.step}
-                className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1"
+                className={cn(
+                  "reveal group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1",
+                  delays[index % delays.length]
+                )}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

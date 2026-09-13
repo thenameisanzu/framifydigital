@@ -120,7 +120,7 @@ export function Portfolio() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
               <Sparkles className="size-3.5 text-cyan-400" />
@@ -156,11 +156,16 @@ export function Portfolio() {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              className="group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300"
-            >
+          {filteredItems.map((item, index) => {
+            const delays = ["delay-100", "delay-150", "delay-200", "delay-250", "delay-300"];
+            return (
+              <div
+                key={item.id}
+                className={cn(
+                  "reveal group relative rounded-2xl glass-card p-6 flex flex-col justify-between border border-sky-500/15 hover:border-cyan-400/40 transition-all duration-300",
+                  delays[index % delays.length]
+                )}
+              >
               <div>
                 <span className="text-[11px] font-mono font-semibold text-cyan-400 uppercase tracking-wider bg-sky-950/80 px-2.5 py-0.5 rounded-md border border-sky-500/20 mb-3 inline-block">
                   {item.categoryLabel}
@@ -199,7 +204,8 @@ export function Portfolio() {
                 </button>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
       </div>
 

@@ -75,7 +75,7 @@ export function Testimonials() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="reveal text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Quote className="size-3.5 text-cyan-400" />
             <span>CLIENT EXPERIENCES</span>
@@ -89,7 +89,7 @@ export function Testimonials() {
         </div>
 
         {/* Featured Testimonial Card */}
-        <div className="max-w-3xl mx-auto">
+        <div className="reveal delay-150 max-w-3xl mx-auto">
           <div className="relative rounded-2xl glass-card p-7 sm:p-10 border border-sky-500/25 bg-gradient-to-br from-[#0c1844]/90 via-[#0e2154]/70 to-[#080e27]/95 shadow-xl">
             {/* Stars & Tag */}
             <div className="flex flex-wrap items-center justify-between gap-3 mb-6">

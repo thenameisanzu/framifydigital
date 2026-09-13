@@ -107,7 +107,8 @@ export function Services() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* Header */}
+        <div className="reveal text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Sparkles className="size-3.5 text-cyan-400" />
             <span>WHAT WE DO</span>
@@ -122,12 +123,16 @@ export function Services() {
 
         {/* Services Grid (Clean 5 items) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service) => {
+          {SERVICES.map((service, index) => {
             const Icon = service.icon;
+            const delays = ["delay-100", "delay-150", "delay-200", "delay-250", "delay-300"];
             return (
               <div
                 key={service.id}
-                className="group relative rounded-2xl glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40"
+                className={cn(
+                  "reveal group relative rounded-2xl glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40",
+                  delays[index % delays.length]
+                )}
               >
                 <div>
                   {/* Category */}

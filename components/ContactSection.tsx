@@ -70,7 +70,7 @@ export function ContactSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="reveal text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Zap className="size-3.5 text-cyan-400" />
             <span>CONTACT US</span>
@@ -85,7 +85,7 @@ export function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           {/* Left Column: Direct Info */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="reveal delay-100 lg:col-span-5 space-y-4">
             <div className="glass-card rounded-2xl p-6 border border-sky-500/20 bg-[#0c1844]/80 backdrop-blur-md space-y-4 shadow-xl">
               <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-cyan-300">
                 Direct Contact
@@ -149,7 +149,7 @@ export function ContactSection() {
           </div>
 
           {/* Right Column: Clean Inquiry Form */}
-          <div className="lg:col-span-7">
+          <div className="reveal delay-200 lg:col-span-7">
             <div className="glass-card rounded-2xl p-6 sm:p-8 border border-sky-500/25 bg-gradient-to-b from-[#0c1844]/95 to-[#080e27]/95 shadow-xl">
               {isSubmitted ? (
                 <div className="text-center py-8 space-y-4 animate-in zoom-in-95 duration-200">

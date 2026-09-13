@@ -13,7 +13,7 @@ const STRIP_ITEMS = [
 
 export function TrustMarquee() {
   return (
-    <section className="relative w-full bg-[#060a1d] py-6 border-b border-sky-500/10 overflow-hidden">
+    <section className="reveal relative w-full bg-[#060a1d] py-6 border-b border-sky-500/10 overflow-hidden">
       <div className="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_64px,_black_calc(100%-64px),transparent_100%)]">
         <div className="flex w-max animate-marquee space-x-6 sm:space-x-10">
           {[...STRIP_ITEMS, ...STRIP_ITEMS].map((item, idx) => (

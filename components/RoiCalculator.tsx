@@ -71,7 +71,7 @@ export function RoiCalculator() {
     <section id="calculator" className="relative w-full py-20 bg-[#080e27] border-b border-sky-500/15 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="reveal text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/25 bg-[#0c1844]/80 px-3.5 py-1 text-xs font-mono text-cyan-300 backdrop-blur-md mb-3">
             <Calculator className="size-3.5 text-cyan-400" />
             <span>PACKAGE ESTIMATOR</span>
@@ -86,16 +86,18 @@ export function RoiCalculator() {
 
         {/* Package Selector Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {PACKAGES.map((pkg) => {
+          {PACKAGES.map((pkg, index) => {
             const Icon = pkg.icon;
             const isSelected = selectedPkg === pkg.id;
+            const delays = ["delay-100", "delay-150", "delay-200", "delay-250"];
             return (
               <button
                 key={pkg.id}
                 type="button"
                 onClick={() => setSelectedPkg(pkg.id)}
                 className={cn(
-                  "p-5 rounded-2xl text-left border transition-all duration-200",
+                  "reveal p-5 rounded-2xl text-left border transition-all duration-200",
+                  delays[index % delays.length],
                   isSelected
                     ? "glass-card border-cyan-400 bg-[#0e2154]/80 shadow-lg shadow-cyan-950"
                     : "bg-[#0c1844]/40 border-sky-500/15 hover:border-sky-400/30 text-slate-300"
@@ -112,7 +114,7 @@ export function RoiCalculator() {
         </div>
 
         {/* Selected Package Details Box */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto">
+        <div className="reveal delay-200 glass-card rounded-2xl p-6 sm:p-8 border border-cyan-500/30 bg-gradient-to-r from-[#0c1844]/95 via-[#0e2257]/90 to-[#0c1844]/95 max-w-3xl mx-auto">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-sky-500/20">
             <div>
               <span className="text-xs font-mono uppercase text-cyan-400 font-semibold block">Selected Plan:</span>
