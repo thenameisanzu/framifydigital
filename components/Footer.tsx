@@ -3,7 +3,7 @@
 import React from "react";
 import Logo from "./Logo";
 import InstagramIcon from "./InstagramIcon";
-import { ArrowUp, Phone, MapPin } from "lucide-react";
+import { ArrowUp, Phone, MapPin, MessageCircle } from "lucide-react";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -37,17 +37,28 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Social Link */}
-            <div className="pt-2">
+            {/* Social & Contact Actions */}
+            <div className="pt-2 flex flex-wrap items-center gap-2.5">
               <a
                 href="https://instagram.com/framifydigitalmarketing"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0c1844] border border-pink-500/30 text-pink-300 hover:border-pink-400 transition-colors text-xs font-mono font-medium"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0c1844] border border-pink-500/30 text-pink-300 hover:border-pink-400 hover:text-white transition-colors text-xs font-mono font-medium"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="size-3.5 text-pink-400" />
                 <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://wa.me/919447520844"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0a2e22] border border-emerald-500/40 text-emerald-300 hover:border-emerald-400 hover:text-white transition-colors text-xs font-mono font-medium"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="size-3.5 text-emerald-400" />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
