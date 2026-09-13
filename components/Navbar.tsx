@@ -66,7 +66,7 @@ export function Navbar() {
               title="Instagram @framifydigitalmarketing"
             >
               <InstagramIcon className="size-3.5 text-pink-400" />
-              <span>@framifydigitalmarketing</span>
+              <span>Instagram</span>
             </a>
 
             <a
@@ -123,7 +123,7 @@ export function Navbar() {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#0c1844] border border-pink-500/30 py-2 text-xs font-bold text-pink-300"
               >
                 <InstagramIcon className="size-4 text-pink-400" />
-                <span>@framifydigitalmarketing</span>
+                <span>Instagram</span>
               </a>
 
               <a

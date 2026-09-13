@@ -107,7 +107,7 @@ export function ContactSection() {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 py-3 text-xs font-bold text-white shadow-md transition-all"
               >
                 <MessageCircle className="size-4" />
-                <span>Chat on WhatsApp (+91 94475 20844)</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
 
@@ -211,7 +211,7 @@ export function ContactSection() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 94475 20844"
+                      placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full rounded-xl bg-[#080e27] border border-sky-500/20 px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
